@@ -3,6 +3,8 @@ package dreyes.mommyslittlehelper;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -19,4 +21,9 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
+	public void sendMessage(View view)
+	{
+		Toast toast = Toast.makeText(getApplicationContext(), "Logging in using Google+", Toast.LENGTH_SHORT);
+		toast.show();
+	}
 }
