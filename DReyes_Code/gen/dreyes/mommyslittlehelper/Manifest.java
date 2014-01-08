@@ -9,6 +9,7 @@ package dreyes.mommyslittlehelper;
 
 public final class Manifest {
     public static final class permission {
-        public static final String MAPS_RECEIVE="dreyes.mommyslittlehelper.permission.MAPS_RECEIVE";
+        public static final String READ_CALENDAR="dreyes.mommyslittlehelper.permission.READ_CALENDAR";
+        public static final String WRITE_CALENDAR="dreyes.mommyslittlehelper.permission.WRITE_CALENDAR";
     }
 }

@@ -7,8 +7,8 @@
     <uses-sdk
         android:minSdkVersion="9"
         android:targetSdkVersion="19" />
-    <permission android:name="dreyes.mommyslittlehelper.permission.MAPS_RECEIVE" 
-        android:protectionLevel="signature"/>
+    <permission android:name="dreyes.mommyslittlehelper.permission.READ_CALENDAR" />
+    <permission android:name="dreyes.mommyslittlehelper.permission.WRITE_CALENDAR" />
     
     <uses-permission android:name="dreyes.mommyslittlehelper.permission.MAPS_RECIEVE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
