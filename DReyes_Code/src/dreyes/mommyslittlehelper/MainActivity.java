@@ -32,11 +32,13 @@ public class MainActivity extends Activity implements ConnectionCallbacks, OnCon
 		.setActions("http://schemas.google.com/AddActivity","http://schemas.google.com/BuyActivity")
 		.setScopes(Scopes.PLUS_LOGIN)
 		.build();
-		setContentView(R.layout.activity_main);
 		
 		mConnectionProgressDialog = new ProgressDialog(this);
 		mConnectionProgressDialog.setMessage("Signing in...");
+		
+		setContentView(R.layout.activity_main);
 	}
+	
 	
 	@Override
 	protected void onStart() {

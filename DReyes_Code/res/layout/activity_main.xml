@@ -21,16 +21,9 @@
         android:text="@string/please_login"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/sign_in_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="notifyUserGoogleSignIn"
-        android:text="@string/login_using_google" />
+   <com.google.gms.common.SignInButton
+       android:id="@+id/sign_in_button"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content" />
 
 </LinearLayout>

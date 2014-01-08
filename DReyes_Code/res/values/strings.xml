@@ -6,5 +6,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="please_login">Please Login</string>
     <string name="login_using_google">Login Using Google+</string>
+    <string name="fed_baby">Fed Baby</string>
+    <string name="sleeping_baby">Sleeping Baby</string>
+    <string name="waking_baby">Baby Waking Up</string>
+    <string name="diaper_change">Diaper Change</string>
 
 </resources>
