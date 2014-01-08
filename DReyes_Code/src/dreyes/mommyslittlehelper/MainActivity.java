@@ -1,21 +1,95 @@
 package dreyes.mommyslittlehelper;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
+import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
+import com.google.android.gms.common.Scopes;
+import com.google.android.gms.plus.PlusClient;
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.IntentSender.SendIntentException;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements ConnectionCallbacks, OnConnectionFailedListener{
 
-//	PlusClient mPlusClient;
+	private static final String TAG = "MainActivity";
+	private static final int REQUEST_CODE_RESOLVE_ERR = 9000;
+	
+	private ProgressDialog mConnectionProgressDialog;
+	private PlusClient mPlusClient;
+	private ConnectionResult mConnectionResult;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-//		mPlusClient = new PlusClient.Builder(this,this,this).setActions("http://schemas.google.com/AddActivity", "http://schemas.google.com/BuyActivity").build();
+		mPlusClient = new PlusClient.Builder(this, this, this)
+		.setActions("http://schemas.google.com/AddActivity","http://schemas.google.com/BuyActivity")
+		.setScopes(Scopes.PLUS_LOGIN)
+		.build();
 		setContentView(R.layout.activity_main);
+		
+		mConnectionProgressDialog = new ProgressDialog(this);
+		mConnectionProgressDialog.setMessage("Signing in...");
+	}
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+		mPlusClient.connect();
+	}
+	
+	@Override
+	protected void onStop() {
+		super.onStop();
+		mPlusClient.disconnect();
+	}
+	
+	@Override
+	public void onConnectionFailed(ConnectionResult result) {
+		if(mConnectionProgressDialog.isShowing())
+		{
+			//The user clicked the sign-in button already. Resolve connection errors, wait until onConnected()
+			if(result.hasResolution())
+			{
+				try
+				{
+					result.startResolutionForResult(this, REQUEST_CODE_RESOLVE_ERR);
+				}catch(SendIntentException e)
+				{
+					mPlusClient.connect();
+				}
+			}
+		}
+		//Save teh intent so that we can start an activity when user click sign-in
+		mConnectionResult = result;
+	}
+	
+	@Override
+	public void onConnected(Bundle connectionHint) {
+		String accountName = mPlusClient.getAccountName();
+		Toast.makeText(this, accountName+ " is connected.", Toast.LENGTH_LONG).show();
+		
+	}
+	
+	@Override
+	public void onDisconnected() {
+		Log.d(TAG, "disconnected");
+		
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int responseCode, Intent intent) {
+		if(requestCode == REQUEST_CODE_RESOLVE_ERR && responseCode == RESULT_OK)
+		{
+			mConnectionResult = null;
+			mPlusClient.connect();
+		}
 	}
 
 	@Override
@@ -25,40 +99,5 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
-	//notify the user that they are signing in with Google+ services
-	public void notifyUserGoogleSignIn(View view)
-	{
-		Toast toast = Toast.makeText(getApplicationContext(), "Logging in using Google+", Toast.LENGTH_SHORT);
-		toast.show();
-//		findViewById(R.id.sign_in_button).setOnClickListener(this);
-	}
-	
-//	public void onClick(View view)
-//	{
-//		if(view.getId() == R.id.sign_in_button && !mPlusClient.isConnected())
-//		{
-//			if(mConnectionResult == null)
-//			{
-//				mConnectionProgressDialog.show();
-//			}
-//			else
-//			{
-//				try
-//				{
-//					mConnectionResult.startResolutionForResult(this,REQUEST_COE_RESOLVE_ERR);
-//				}catch(SendIntentException e)
-//				{
-//					//Try connecting again
-//					mConnectionResult = null;
-//					mPlusClient.connect();
-//				}
-//			}
-//		}
-//	}
-//	
-//	public void onConnected(Bundle connectionHint)
-//	{
-//		mConectionProgressDialog.dismiss{);
-//		Toast.makeText(this, "User is connected!", Toast.LENGTH_LONG).show();
-//	}
+
 }
