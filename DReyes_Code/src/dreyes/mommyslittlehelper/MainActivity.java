@@ -14,9 +14,11 @@ import android.content.IntentSender.SendIntentException;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.Toast;
 
-public class MainActivity extends Activity implements ConnectionCallbacks, OnConnectionFailedListener{
+public class MainActivity extends Activity implements ConnectionCallbacks, OnConnectionFailedListener, OnClickListener{
 
 	private static final String TAG = "MainActivity";
 	private static final int REQUEST_CODE_RESOLVE_ERR = 9000;
@@ -24,6 +26,8 @@ public class MainActivity extends Activity implements ConnectionCallbacks, OnCon
 	private ProgressDialog mConnectionProgressDialog;
 	private PlusClient mPlusClient;
 	private ConnectionResult mConnectionResult;
+	
+	private View signInButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +41,39 @@ public class MainActivity extends Activity implements ConnectionCallbacks, OnCon
 		mConnectionProgressDialog.setMessage("Signing in...");
 		
 		setContentView(R.layout.activity_main);
+		signInButton = (View)findViewById(R.id.sign_in_button);
+		
+		Log.d(TAG, "sign in button assigned");
+		
+		signInButton.setOnClickListener(this);
+		
+		Log.d(TAG, "signInButtons onclicklistener set and created");
+		
 	}
 	
+	@Override
+	public void onClick(View view) {
+		Log.d(TAG, "onClick");
+		if(view.getId() == R.id.sign_in_button && !mPlusClient.isConnected())
+		{
+			if(mConnectionResult == null)
+			{
+				mConnectionProgressDialog.show();
+			}
+			else
+			{
+				try
+				{
+					mConnectionResult.startResolutionForResult(this, REQUEST_CODE_RESOLVE_ERR);
+				}catch(SendIntentException e)
+				{
+					mConnectionResult = null;
+					mPlusClient.connect();
+				}
+			}
+		}
+		
+	}
 	
 	@Override
 	protected void onStart() {
@@ -74,6 +109,7 @@ public class MainActivity extends Activity implements ConnectionCallbacks, OnCon
 	
 	@Override
 	public void onConnected(Bundle connectionHint) {
+		mConnectionProgressDialog.dismiss();
 		String accountName = mPlusClient.getAccountName();
 		Toast.makeText(this, accountName+ " is connected.", Toast.LENGTH_LONG).show();
 		
