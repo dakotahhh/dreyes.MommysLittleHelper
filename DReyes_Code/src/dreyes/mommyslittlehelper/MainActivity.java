@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentSender.SendIntentException;
+import android.support.v4.app.ShareCompat.IntentBuilder;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -112,7 +113,8 @@ public class MainActivity extends Activity implements ConnectionCallbacks, OnCon
 		mConnectionProgressDialog.dismiss();
 		String accountName = mPlusClient.getAccountName();
 		Toast.makeText(this, accountName+ " is connected.", Toast.LENGTH_LONG).show();
-		
+		Intent intent = new Intent(this, GreetUserActivity.class);
+		startActivity(intent);
 	}
 	
 	@Override
