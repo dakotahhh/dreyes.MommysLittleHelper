@@ -25,11 +25,11 @@ public class GreetUserActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-//	public void fedBabyActivity(View view)
-//	{
-//		Intent intent = new Intent(this, FedBabyActivity.class);
-//		startActivity(intent);
-//	}
+	public void fedBabyActivity(View view)
+	{
+		Intent intent = new Intent(this, FedBabyActivity.class);
+		startActivity(intent);
+	}
 //	
 //	public void sleepingBabyActivity(View view)
 //	{
