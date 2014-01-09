@@ -10,5 +10,6 @@
     <string name="sleeping_baby">Sleeping Baby</string>
     <string name="waking_baby">Baby Waking Up</string>
     <string name="diaper_change">Diaper Change</string>
+    <string name="sign_out_user">Sign Out</string>
 
 </resources>

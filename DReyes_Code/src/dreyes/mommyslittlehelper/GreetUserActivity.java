@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 
-public class GreetUserActivity extends Activity {
+public class GreetUserActivity extends Activity{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.activity_greetuser);
 		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -48,6 +50,7 @@ public class GreetUserActivity extends Activity {
 //		Intent intent = new Intent(this, DiaperChangeActivity.class);
 //		startActivity(intent);
 //	}
+
 	
 	
 }
