@@ -32,24 +32,24 @@ public class GreetUserActivity extends Activity{
 		Intent intent = new Intent(this, FedBabyActivity.class);
 		startActivity(intent);
 	}
-//	
-//	public void sleepingBabyActivity(View view)
-//	{
-//		Intent intent = new Intent(this, SleepingBabyActivity.class);
-//		startActivity(intent);
-//	}
-//	
-//	public void wakingBabyActivity(View view)
-//	{
-//		Intent intent = new Intent(this, WakingBabyActivity.class);
-//		startActivity(intent);
-//	}
-//	
-//	public void diaperChangeActivity(View view)
-//	{
-//		Intent intent = new Intent(this, DiaperChangeActivity.class);
-//		startActivity(intent);
-//	}
+	
+	public void sleepingBabyActivity(View view)
+	{
+		Intent intent = new Intent(this, SleepingBabyActivity.class);
+		startActivity(intent);
+	}
+	
+	public void wakingBabyActivity(View view)
+	{
+		Intent intent = new Intent(this, WakingBabyActivity.class);
+		startActivity(intent);
+	}
+	
+	public void diaperChangeActivity(View view)
+	{
+		Intent intent = new Intent(this, DiaperChangeActivity.class);
+		startActivity(intent);
+	}
 
 	
 	

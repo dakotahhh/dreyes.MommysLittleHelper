@@ -11,15 +11,14 @@ public class FedBabyActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_fedbaby);
+//		setContentView(R.layout.activity_fedbaby);
+		Intent intent = new Intent(Intent.ACTION_EDIT);
+		intent.setType("vnd.android.cursor.item/event");
+		intent.putExtra("title", "Fed Baby");
+		intent.putExtra("description", "ate peas");
+		startActivity(intent);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
-//		Intent intent = new Intent(Intent.ACTION_EDIT);
-//		intent.setType("vnd.android.cursor.item/event");
-//		intent.putExtra("title", "Fed Baby");
-//		intent.putExtra("description", "ate peas");
-//		intent.putExtra("beginTime", "4:03");
-//		startActivity(intent);
 	}
 	
 	@Override
