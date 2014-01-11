@@ -44,11 +44,9 @@ public class MainActivity extends Activity implements ConnectionCallbacks, OnCon
 		setContentView(R.layout.activity_main);
 		signInButton = (View)findViewById(R.id.sign_in_button);
 		
-		Log.d(TAG, "sign in button assigned");
 		
 		signInButton.setOnClickListener(this);
 		
-		Log.d(TAG, "signInButtons onclicklistener set and created");
 		
 	}
 	

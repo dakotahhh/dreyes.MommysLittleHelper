@@ -7,35 +7,31 @@
     android:paddingTop="50dp">
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/fedBaby"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/fed_baby"
-        android:onClick="fedBabyActivity" />
+        android:text="@string/fed_baby" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/babySleeping"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/sleeping_baby"
-        android:onClick="sleepingBabyActivity" />
+        android:text="@string/sleeping_baby" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/babyWaking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/waking_baby"
-        android:onClick="wakingBabyActivity" />
+        android:text="@string/waking_baby" />
     
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/changedDiaper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/diaper_change"
-        android:onClick="diaperChangeActivity" />
+        android:text="@string/diaper_change" />
     
     <Button 
-        android:id="@+id/sign_out_button"
+        android:id="@+id/signingOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sign_out_user"/>
