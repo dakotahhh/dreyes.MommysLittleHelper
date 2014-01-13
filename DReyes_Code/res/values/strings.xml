@@ -3,13 +3,14 @@
 
     <string name="app_name">MommysLittleHelper</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
     <string name="please_login">Please Login</string>
-    <string name="login_using_google">Login Using Google+</string>
     <string name="fed_baby">Fed Baby</string>
     <string name="sleeping_baby">Sleeping Baby</string>
     <string name="waking_baby">Baby Waking Up</string>
     <string name="diaper_change">Diaper Change</string>
     <string name="sign_out_user">Sign Out</string>
+    <string name="food_description">Child Ate:</string>
+    <string name="time_fed">Time Fed:</string>
+    <string name="submit">Submit</string>
 
 </resources>

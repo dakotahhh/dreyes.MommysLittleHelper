@@ -52,7 +52,6 @@ public class MainActivity extends Activity implements ConnectionCallbacks, OnCon
 	
 	@Override
 	public void onClick(View view) {
-		Log.d(TAG, "onClick");
 		if(view.getId() == R.id.sign_in_button && !mPlusClient.isConnected())
 		{
 			if(mConnectionResult == null)
