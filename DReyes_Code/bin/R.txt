@@ -58,6 +58,7 @@ int drawable ic_plusone_small_off_client 0x7f02001a
 int drawable ic_plusone_standard_off_client 0x7f02001b
 int drawable ic_plusone_tall_off_client 0x7f02001c
 int drawable mlhlogo 0x7f02001d
+int id action_baby_events 0x7f050014
 int id action_settings 0x7f050013
 int id babySleeping 0x7f05000c
 int id babyWaking 0x7f05000d
@@ -76,7 +77,7 @@ int id signingOut 0x7f05000f
 int id submit 0x7f05000a
 int id terrain 0x7f050003
 int id textView1 0x7f050011
-int id timeSubmit 0x7f050009
+int id timePicker 0x7f050009
 int id timeTitle 0x7f050008
 int integer google_play_services_version 0x7f070000
 int layout activity_fedbaby 0x7f030000
@@ -91,6 +92,7 @@ int string auth_client_needs_update_title 0x7f060017
 int string auth_client_play_services_err_notification_msg 0x7f060018
 int string auth_client_requested_by_msg 0x7f060019
 int string auth_client_using_bad_version_title 0x7f060014
+int string baby_events 0x7f060025
 int string common_google_play_services_enable_button 0x7f060006
 int string common_google_play_services_enable_text 0x7f060005
 int string common_google_play_services_enable_title 0x7f060004

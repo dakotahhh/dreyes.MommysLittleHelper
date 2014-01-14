@@ -53,18 +53,13 @@
                 android:id="@+id/timeTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/timeSubmit"
                 android:text="@string/time_fed" />
 
-            <EditText
-                android:id="@+id/timeSubmit"
+            <TimePicker
+                android:id="@+id/timePicker"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/timeTitle"
-                android:inputType="time" >
-
-                <requestFocus />
-            </EditText>
+				android:layout_toRightOf="@+id/timeTitle"/>
 
         </RelativeLayout>
 

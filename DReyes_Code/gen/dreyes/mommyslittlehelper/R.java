@@ -209,6 +209,7 @@ containing a value of this type.
         public static final int mlhlogo=0x7f02001d;
     }
     public static final class id {
+        public static final int action_baby_events=0x7f050014;
         public static final int action_settings=0x7f050013;
         public static final int babySleeping=0x7f05000c;
         public static final int babyWaking=0x7f05000d;
@@ -227,7 +228,7 @@ containing a value of this type.
         public static final int submit=0x7f05000a;
         public static final int terrain=0x7f050003;
         public static final int textView1=0x7f050011;
-        public static final int timeSubmit=0x7f050009;
+        public static final int timePicker=0x7f050009;
         public static final int timeTitle=0x7f050008;
     }
     public static final class integer {
@@ -267,6 +268,7 @@ containing a value of this type.
         [CHAR LIMIT=70] 
          */
         public static final int auth_client_using_bad_version_title=0x7f060014;
+        public static final int baby_events=0x7f060025;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 

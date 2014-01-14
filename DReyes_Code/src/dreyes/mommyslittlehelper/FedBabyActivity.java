@@ -22,11 +22,6 @@ public class FedBabyActivity extends Activity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_fedbaby);
-//		Intent intent = new Intent(Intent.ACTION_EDIT);
-//		intent.setType("vnd.android.cursor.item/event");
-//		intent.putExtra("title", "Fed Baby");
-//		intent.putExtra("description", "ate peas");
-//		startActivity(intent);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		submit = (Button) findViewById(R.id.submit);
 		submit.setOnClickListener(this);
@@ -34,9 +29,16 @@ public class FedBabyActivity extends Activity implements OnClickListener{
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		if(item.getItemId() == android.R.id.home)
-		{
+		switch (item.getItemId()) {
+		case android.R.id.home:
 			finish();
+		case R.id.action_baby_events:
+			Intent intent = new Intent(this, GreetUserActivity.class);
+			startActivity(intent);
+			break;
+
+		default:
+			break;
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -44,7 +46,7 @@ public class FedBabyActivity extends Activity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		EditText foodDescription = (EditText)findViewById(R.id.foodDescriptionSubmit);
-		EditText timeSubmit = (EditText)findViewById(R.id.timeSubmit);
+		EditText timeSubmit = (EditText)findViewById(R.id.timePicker);
 		String food = foodDescription.getText().toString();
 		String time = timeSubmit.getText().toString();
 		if(time.isEmpty())
@@ -61,4 +63,7 @@ public class FedBabyActivity extends Activity implements OnClickListener{
 		intent.putExtra("beginTime", time);
 		startActivity(intent);
 	}
+	
+	
+	
 }
