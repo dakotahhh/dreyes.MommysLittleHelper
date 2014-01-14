@@ -69,7 +69,7 @@
         </RelativeLayout>
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/submit" />

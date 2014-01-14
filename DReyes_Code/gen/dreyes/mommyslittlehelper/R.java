@@ -212,7 +212,6 @@ containing a value of this type.
         public static final int action_settings=0x7f050013;
         public static final int babySleeping=0x7f05000c;
         public static final int babyWaking=0x7f05000d;
-        public static final int button1=0x7f05000a;
         public static final int changedDiaper=0x7f05000e;
         public static final int fedBaby=0x7f05000b;
         public static final int fedBabyTitle=0x7f050005;
@@ -225,6 +224,7 @@ containing a value of this type.
         public static final int satellite=0x7f050002;
         public static final int sign_in_button=0x7f050012;
         public static final int signingOut=0x7f05000f;
+        public static final int submit=0x7f05000a;
         public static final int terrain=0x7f050003;
         public static final int textView1=0x7f050011;
         public static final int timeSubmit=0x7f050009;

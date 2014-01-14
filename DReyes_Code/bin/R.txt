@@ -61,7 +61,6 @@ int drawable mlhlogo 0x7f02001d
 int id action_settings 0x7f050013
 int id babySleeping 0x7f05000c
 int id babyWaking 0x7f05000d
-int id button1 0x7f05000a
 int id changedDiaper 0x7f05000e
 int id fedBaby 0x7f05000b
 int id fedBabyTitle 0x7f050005
@@ -74,6 +73,7 @@ int id normal 0x7f050001
 int id satellite 0x7f050002
 int id sign_in_button 0x7f050012
 int id signingOut 0x7f05000f
+int id submit 0x7f05000a
 int id terrain 0x7f050003
 int id textView1 0x7f050011
 int id timeSubmit 0x7f050009
