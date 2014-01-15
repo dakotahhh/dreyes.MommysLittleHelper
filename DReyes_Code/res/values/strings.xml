@@ -13,5 +13,9 @@
     <string name="time_fed">Time Fed:</string>
     <string name="submit">Submit</string>
     <string name="baby_events">Baby Events</string>
+    <string name="breast_pump">Breast Pump</string>
+    <string name="right_breast">Right Breast</string>
+    <string name="left_breast">Left Breast</string>
+    <string name="ounces">OZ.</string>
 
 </resources>
