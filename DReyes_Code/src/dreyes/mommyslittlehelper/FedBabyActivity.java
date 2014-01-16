@@ -3,10 +3,13 @@ package dreyes.mommyslittlehelper;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
+import android.provider.CalendarContract.Events;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -49,18 +52,18 @@ public class FedBabyActivity extends Activity implements OnClickListener{
 		EditText timeSubmit = (EditText)findViewById(R.id.timePicker);
 		String food = foodDescription.getText().toString();
 		String time = timeSubmit.getText().toString();
+		GregorianCalendar calDate = null;
 		if(time.isEmpty())
 		{
-			Calendar dateTime = Calendar.getInstance();
-			dateTime.getTime();
-			SimpleDateFormat sdf = new SimpleDateFormat("KK:mm");
-			time = sdf.format(dateTime.getTime());
+			calDate = new GregorianCalendar();
 		}
 		Intent intent = new Intent(Intent.ACTION_EDIT);
 		intent.setType("vnd.android.cursor.item/event");
-		intent.putExtra("title", "Fed Baby");
-		intent.putExtra("description", food);
-		intent.putExtra("beginTime", time);
+		intent.putExtra(Events.TITLE, "Fed Baby");
+		intent.putExtra(Events.DESCRIPTION, food);
+		intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, calDate.getTimeInMillis());
+		intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, calDate.getTimeInMillis());
+		intent.putExtra(Events.HAS_ALARM, false);
 		startActivity(intent);
 	}
 	

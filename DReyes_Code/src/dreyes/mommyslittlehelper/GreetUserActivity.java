@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class GreetUserActivity extends Activity implements OnClickListener{
 
 	private final String TAG = "GREETUSERACTIVITY";
-	private Button fedBabyButton, sleepingBabyButton, wakingBabyButton, diaperChangedButton, signingOutButton;
+	private Button fedBabyButton, sleepingBabyButton, wakingBabyButton, diaperChangedButton, signingOutButton, breastPumpButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +25,12 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 		wakingBabyButton = (Button)findViewById(R.id.babyWaking);
 		diaperChangedButton = (Button)findViewById(R.id.changedDiaper);
 		signingOutButton = (Button)findViewById(R.id.signingOut);
+		breastPumpButton = (Button)findViewById(R.id.breastpump);
 		fedBabyButton.setOnClickListener(this);
 		sleepingBabyButton.setOnClickListener(this);
 		wakingBabyButton.setOnClickListener(this);
 		diaperChangedButton.setOnClickListener(this);
+		breastPumpButton.setOnClickListener(this);
 	}
 	
 	@Override

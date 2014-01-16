@@ -1,21 +1,25 @@
 package dreyes.mommyslittlehelper;
 
+import java.util.GregorianCalendar;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
+import android.provider.CalendarContract.Events;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
-public class DiaperChangeActivity extends Activity {
+public class DiaperChangeActivity extends Activity implements OnClickListener{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Intent intent = new Intent(Intent.ACTION_EDIT);
-		intent.setType("vnd.android.cursor.item/event");
-		intent.putExtra("title", "Changed Diaper");
-		intent.putExtra("description", "just pee");
-		startActivity(intent);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		Button diaperChange = (Button)findViewById(R.id.changedDiaper);
+		diaperChange.setOnClickListener(this);
 	}
 	
 	@Override
@@ -25,6 +29,19 @@ public class DiaperChangeActivity extends Activity {
 			finish();
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onClick(View v) {
+		GregorianCalendar time = new GregorianCalendar();
+		Intent intent = new Intent(Intent.ACTION_EDIT);
+		intent.setType("vnd.android.cursor.item/event");
+		intent.putExtra(Events.TITLE, "Diaper Change");
+		intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, time.getTimeInMillis());
+		intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, time.getTimeInMillis());
+		intent.putExtra(Events.HAS_ALARM, false);
+		startActivity(intent);
+		
 	}
 	
 }

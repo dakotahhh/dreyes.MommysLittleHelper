@@ -55,11 +55,18 @@
                 android:layout_height="wrap_content"
                 android:text="@string/time_fed" />
 
-            <TimePicker
+            <EditText
                 android:id="@+id/timePicker"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-				android:layout_toRightOf="@+id/timeTitle"/>
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="23dp"
+                android:layout_toRightOf="@+id/timeTitle"
+                android:ems="10"
+                android:inputType="time" >
+
+                <requestFocus />
+            </EditText>
 
         </RelativeLayout>
 
