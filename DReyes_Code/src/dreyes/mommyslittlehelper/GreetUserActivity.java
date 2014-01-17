@@ -1,8 +1,12 @@
 package dreyes.mommyslittlehelper;
 
+import java.util.GregorianCalendar;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
+import android.provider.CalendarContract.Events;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -52,17 +56,35 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 		}
 		else if(v.getId() == R.id.babySleeping)
 		{
-			intent = new Intent(this, SleepingBabyActivity.class);
+			GregorianCalendar time = new GregorianCalendar();
+			intent = new Intent(Intent.ACTION_EDIT);
+			intent.setType("vnd.android.cursor.item/event");
+			intent.putExtra(Events.TITLE, "Fell Asleep");
+			intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, time.getTimeInMillis());
+			intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, time.getTimeInMillis());
+			intent.putExtra(Events.HAS_ALARM, false);
 			startActivity(intent);
 		}
 		else if(v.getId() == R.id.babyWaking)
 		{
-			intent = new Intent(this, WakingBabyActivity.class);
+			GregorianCalendar time = new GregorianCalendar();
+			intent = new Intent(Intent.ACTION_EDIT);
+			intent.setType("vnd.android.cursor.item/event");
+			intent.putExtra(Events.TITLE, "Woke Up");
+			intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, time.getTimeInMillis());
+			intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, time.getTimeInMillis());
+			intent.putExtra(Events.HAS_ALARM, false);
 			startActivity(intent);
 		}
 		else if(v.getId() == R.id.changedDiaper)
 		{
-			intent = new Intent(this, DiaperChangeActivity.class);
+			GregorianCalendar time = new GregorianCalendar();
+			intent = new Intent(Intent.ACTION_EDIT);
+			intent.setType("vnd.android.cursor.item/event");
+			intent.putExtra(Events.TITLE, "Diaper Change");
+			intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, time.getTimeInMillis());
+			intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, time.getTimeInMillis());
+			intent.putExtra(Events.HAS_ALARM, false);
 			startActivity(intent);
 		}
 		else if(v.getId() == R.id.breastpump)
