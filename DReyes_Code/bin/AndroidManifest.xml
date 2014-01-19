@@ -34,13 +34,9 @@
         <activity 
             android:name=".FedBabyActivity"/>
         <activity 
-            android:name=".DiaperChangeActivity"/>
-        <activity 
-            android:name=".SleepingBabyActivity"/>
-        <activity 
-            android:name=".WakingBabyActivity"/>
-        <activity 
             android:name=".BreastPumpActivity"/>
+        <activity 
+            android:name=".AddPhotoActivity"/>
         
         <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
     </application>

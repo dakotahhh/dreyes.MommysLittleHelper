@@ -58,8 +58,9 @@ int drawable ic_plusone_small_off_client 0x7f02001a
 int drawable ic_plusone_standard_off_client 0x7f02001b
 int drawable ic_plusone_tall_off_client 0x7f02001c
 int drawable mlhlogo 0x7f02001d
-int id action_baby_events 0x7f05001b
-int id action_settings 0x7f05001a
+int id action_baby_events 0x7f05001c
+int id action_settings 0x7f05001b
+int id addPhoto 0x7f050017
 int id babySleeping 0x7f050013
 int id babyWaking 0x7f050014
 int id breast_submit 0x7f05000b
@@ -70,14 +71,14 @@ int id fedBabyTitle 0x7f05000c
 int id foodDescriptionSubmit 0x7f05000e
 int id foodDescriptionTitle 0x7f05000d
 int id hybrid 0x7f050004
-int id imageView1 0x7f050018
+int id imageView1 0x7f050019
 int id left_breast 0x7f050009
 int id none 0x7f050000
 int id normal 0x7f050001
 int id right_breast 0x7f050006
 int id satellite 0x7f050002
-int id sign_in_button 0x7f050019
-int id signingOut 0x7f050017
+int id sign_in_button 0x7f05001a
+int id signingOut 0x7f050018
 int id submit 0x7f050011
 int id terrain 0x7f050003
 int id textView1 0x7f050005
@@ -93,6 +94,7 @@ int layout activity_greetuser 0x7f030002
 int layout activity_main 0x7f030003
 int menu main 0x7f0a0000
 int string action_settings 0x7f06001b
+int string add_photo 0x7f06002a
 int string app_name 0x7f06001a
 int string auth_client_needs_enabling_title 0x7f060015
 int string auth_client_needs_installation_title 0x7f060016

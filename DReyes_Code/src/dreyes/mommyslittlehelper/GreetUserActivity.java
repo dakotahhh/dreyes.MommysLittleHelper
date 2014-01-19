@@ -92,6 +92,11 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 			intent = new Intent(this, BreastPumpActivity.class);
 			startActivity(intent);
 		}
+		else if (v.getId() == R.id.addPhoto) 
+		{
+			intent = new Intent(this, AddPhotoActivity.class);
+			startActivity(intent);
+		}
 	}
 
 	

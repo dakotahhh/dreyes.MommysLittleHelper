@@ -209,8 +209,9 @@ containing a value of this type.
         public static final int mlhlogo=0x7f02001d;
     }
     public static final class id {
-        public static final int action_baby_events=0x7f05001b;
-        public static final int action_settings=0x7f05001a;
+        public static final int action_baby_events=0x7f05001c;
+        public static final int action_settings=0x7f05001b;
+        public static final int addPhoto=0x7f050017;
         public static final int babySleeping=0x7f050013;
         public static final int babyWaking=0x7f050014;
         public static final int breast_submit=0x7f05000b;
@@ -221,14 +222,14 @@ containing a value of this type.
         public static final int foodDescriptionSubmit=0x7f05000e;
         public static final int foodDescriptionTitle=0x7f05000d;
         public static final int hybrid=0x7f050004;
-        public static final int imageView1=0x7f050018;
+        public static final int imageView1=0x7f050019;
         public static final int left_breast=0x7f050009;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
         public static final int right_breast=0x7f050006;
         public static final int satellite=0x7f050002;
-        public static final int sign_in_button=0x7f050019;
-        public static final int signingOut=0x7f050017;
+        public static final int sign_in_button=0x7f05001a;
+        public static final int signingOut=0x7f050018;
         public static final int submit=0x7f050011;
         public static final int terrain=0x7f050003;
         public static final int textView1=0x7f050005;
@@ -252,6 +253,7 @@ containing a value of this type.
     }
     public static final class string {
         public static final int action_settings=0x7f06001b;
+        public static final int add_photo=0x7f06002a;
         public static final int app_name=0x7f06001a;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 

@@ -17,5 +17,6 @@
     <string name="right_breast">Right Breast</string>
     <string name="left_breast">Left Breast</string>
     <string name="ounces">OZ.</string>
+    <string name="add_photo">Add Photo</string>
 
 </resources>

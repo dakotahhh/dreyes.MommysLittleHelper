@@ -37,6 +37,12 @@
         android:text="@string/breast_pump" />
 
     <Button
+        android:id="@+id/addPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_photo" />
+
+    <Button
         android:id="@+id/signingOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
