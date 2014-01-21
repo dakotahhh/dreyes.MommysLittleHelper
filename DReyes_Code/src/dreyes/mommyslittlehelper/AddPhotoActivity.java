@@ -9,6 +9,7 @@ import java.io.File;
 import java.net.URL;
 
 import com.google.android.gms.plus.PlusClient;
+import com.google.gdata.client.GoogleService;
 import com.google.gdata.client.*;
 import com.google.gdata.client.photos.*;
 import com.google.gdata.data.*;
@@ -20,12 +21,12 @@ import java.util.logging.Logger;
 
 public class AddPhotoActivity extends Activity 
 {
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		SharedPreferences settings = getSharedPreferences("MyPrefs", 0);
-		setLogging(settings.getBoolean("logging", false));
-	
+		PicasawebService myService = new PicasawebService("exampleCo-exampleApp-1");
+		myService.setUserCredentials(username, password)
 	}
 //		super.onCreate(savedInstanceState);
 //		PicasawebService myService = new PicasawebService("exampleCo-exampleApp-1");
