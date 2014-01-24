@@ -23,9 +23,17 @@ import com.google.gdata.util.ServiceException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+//https://accounts.google.com/o/oauth2.auth
+//client id 924534388545-piiam9nacsig3tgldgppfnpddjo8re6l.apps.googleusercontent.com
+//redirect uri urn:ietf:wg:oauth:2.0:oob
+//scope profile
+//https://account.google.com/o/oauth2/auth?scope=profile&state=profile&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=token&client_id=924534388545-piiam9nacsig3tgldgppfnpddjo8re6l.apps.googleusercontent.com
+
 public class AddPhotoActivity extends Activity 
 {
 	PicasawebService myService;
+	final String FEEDURL = "https://picasaweb.google.com/data/feed/api/user/koteyec09?kind=album";
+	URL feedUrl = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +48,7 @@ public class AddPhotoActivity extends Activity
 		String sessionToken = AuthSubUtil.exchangeForSessionToken(onetimeUseToken, null);
 		myService.setAuthSubToken(sessionToken,null);
 		
-		URL feedUrl = new URL("https://picasaweb.google.com/data/feed/api/user/username?kind=album");
+		feedUrl = new URL(FEEDURL);
 		UserFeed myUserFeed = myService.getFeed(feedUrl, UserFeed.class);
 		boolean exists = false;
 		for(AlbumEntry myAlbum :myUserFeed.getAlbumEntries())
@@ -65,7 +73,15 @@ public class AddPhotoActivity extends Activity
 		AlbumEntry mlhAlbum = new AlbumEntry();
 		mlhAlbum.setTitle(new PlainTextConstruct("MLH Album"));
 		mlhAlbum.setDescription(new PlainTextConstruct("my baby"));
-		AlbumEntry insertedEntry = myService.insert(postUrl, mlhAlbum);
+		try {
+			AlbumEntry insertedEntry = myService.insert(feedUrl, mlhAlbum);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void uploadPhoto()
