@@ -2,6 +2,7 @@ package dreyes.mommyslittlehelper;
 
 import java.util.GregorianCalendar;
 
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -94,7 +95,7 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 		}
 		else if (v.getId() == R.id.addPhoto) 
 		{
-			intent = new Intent(this, AddPhotoActivity.class);
+			intent = new Intent(this, ChooseUploadTypeActivity.class);
 			startActivity(intent);
 		}
 	}

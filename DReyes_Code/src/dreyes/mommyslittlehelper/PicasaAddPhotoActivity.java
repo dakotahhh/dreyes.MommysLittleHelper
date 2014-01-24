@@ -29,7 +29,7 @@ import java.util.logging.Logger;
 //scope profile
 //https://account.google.com/o/oauth2/auth?scope=profile&state=profile&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=token&client_id=924534388545-piiam9nacsig3tgldgppfnpddjo8re6l.apps.googleusercontent.com
 
-public class AddPhotoActivity extends Activity 
+public class PicasaAddPhotoActivity extends Activity 
 {
 	PicasawebService myService;
 	final String FEEDURL = "https://picasaweb.google.com/data/feed/api/user/koteyec09?kind=album";

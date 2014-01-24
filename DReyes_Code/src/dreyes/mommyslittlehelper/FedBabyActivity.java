@@ -5,6 +5,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import dreyes.mommyslittlehelper.R;
+import dreyes.mommyslittlehelper.R.id;
+import dreyes.mommyslittlehelper.R.layout;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
