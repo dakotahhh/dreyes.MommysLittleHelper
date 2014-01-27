@@ -20,5 +20,6 @@
     <string name="upload_photo">Upload Photo</string>
     <string name="upload_using_picasa">Upload Using Picasa</string>
     <string name="upload_using_facebook">Upload Using Facebook</string>
+	<string name="app_id">526830324082792</string>
 
 </resources>
