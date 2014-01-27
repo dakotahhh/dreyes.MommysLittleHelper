@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ChooseUploadTypeActivity extends Activity implements OnClickListener{
 
@@ -29,7 +30,8 @@ public class ChooseUploadTypeActivity extends Activity implements OnClickListene
 		}
 		else if(v.getId() == R.id.uploadusingfacebook)
 		{
-			
+			intent = new Intent(this, FacebookAddPhotoActivity.class);
+			startActivity(intent);
 		}
 		
 	}
