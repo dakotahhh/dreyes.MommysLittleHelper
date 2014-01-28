@@ -21,5 +21,10 @@
     <string name="upload_using_picasa">Upload Using Picasa</string>
     <string name="upload_using_facebook">Upload Using Facebook</string>
 	<string name="app_id">526830324082792</string>
+	<string name="ok">OK</string>
+	<string name="successfully_posted_post">Photo Successfully Posted</string>
+	<string name="error">Error</string>
+	<string name="success">Success</string>
+	<string name="photo_post">Photo Post</string>
 
 </resources>

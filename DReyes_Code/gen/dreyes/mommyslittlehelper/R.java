@@ -612,15 +612,20 @@ containing a value of this type.
          */
         public static final int common_signin_button_text_long=0x7f07002c;
         public static final int diaper_change=0x7f070039;
+        public static final int error=0x7f070049;
         public static final int fed_baby=0x7f070036;
         public static final int food_description=0x7f07003b;
         public static final int left_breast=0x7f070041;
+        public static final int ok=0x7f070047;
         public static final int ounces=0x7f070042;
+        public static final int photo_post=0x7f07004b;
         public static final int please_login=0x7f070035;
         public static final int right_breast=0x7f070040;
         public static final int sign_out_user=0x7f07003a;
         public static final int sleeping_baby=0x7f070037;
         public static final int submit=0x7f07003d;
+        public static final int success=0x7f07004a;
+        public static final int successfully_posted_post=0x7f070048;
         public static final int time_fed=0x7f07003c;
         public static final int upload_photo=0x7f070043;
         public static final int upload_using_facebook=0x7f070045;
