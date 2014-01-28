@@ -53,7 +53,7 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 	    
 	    
 	    
-	    setContentView(R.layout.activity_facebookaddphoto);
+	    setContentView(R.layout.activity_uploadwithcameraorgallery);
 
 	    // start Facebook Login
 	    Session.openActiveSession(this, true, new Session.StatusCallback() {
@@ -80,73 +80,73 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 	    });
 	  }
 	  
-	  private interface GraphObjectWithId extends GraphObject
-	  {
-		String getId();  
-	  }
-	  
-	  
-	  private void showPublishResult(String message, GraphObject result, FacebookRequestError error)
-	  {
-		  String title = null;
-		  String alertMessage = null;
-		  if(error == null)
-		  {
-			  title = getString(R.string.success);
-			  String id = result.cast(GraphObjectWithId.class).getId();
-			  alertMessage = getString(R.string.successfully_posted_post, message, id);
-			  
-		  }
-		  else
-		  {
-			  title = getString(R.string.error);
-			  alertMessage = error.getErrorMessage();
-		  }
-		  new AlertDialog.Builder(this)
-		  .setTitle(title).setMessage(alertMessage).setPositiveButton(R.string.ok, null)
-		  .show();
-	  }
-	  
-	  private void postPhoto()
-	  {
-		  if(hasPublishPermission())
-		  {
-			  Bitmap image = BitmapFactory.decodeResource(this.getResources(), R.drawable.icon);
-			  Request request = Request.newUploadPhotoRequest(Session.getActiveSession(), image, new Request.Callback() {
-				
-				@Override
-				public void onCompleted(Response response) {
-					showPublishResult(getString(R.string.photo_post), response.getGraphObject(), response.getError());
-					
-				}
-			});
-			  request.executeAsync();
-		  }
-	  }
-	  
-	  
-	  private boolean hasPublishPermission()
-	  {
-		  Session session = Session.getActiveSession();
-		 return session != null && session.getPermissions().contains("publish_actions");
-	  }
-
-	  @Override
-	  public void onActivityResult(int requestCode, int resultCode, Intent data) {
-	      super.onActivityResult(requestCode, resultCode, data);
-	      Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
-	  }
-	  
-	  private void performPublish(boolean allowNoSession)
-	  {
-		  Session session = Session.getActiveSession();
-		  if(session != null)
-		  {
-			  if(hasPublishPermission())
-			  {
-				 
-			  }
-		  }
-	  }
+//	  private interface GraphObjectWithId extends GraphObject
+//	  {
+//		String getId();  
+//	  }
+//	  
+//	  
+//	  private void showPublishResult(String message, GraphObject result, FacebookRequestError error)
+//	  {
+//		  String title = null;
+//		  String alertMessage = null;
+//		  if(error == null)
+//		  {
+//			  title = getString(R.string.success);
+//			  String id = result.cast(GraphObjectWithId.class).getId();
+//			  alertMessage = getString(R.string.successfully_posted_post, message, id);
+//			  
+//		  }
+//		  else
+//		  {
+//			  title = getString(R.string.error);
+//			  alertMessage = error.getErrorMessage();
+//		  }
+//		  new AlertDialog.Builder(this)
+//		  .setTitle(title).setMessage(alertMessage).setPositiveButton(R.string.ok, null)
+//		  .show();
+//	  }
+//	  
+//	  private void postPhoto()
+//	  {
+//		  if(hasPublishPermission())
+//		  {
+//			  Bitmap image = BitmapFactory.decodeResource(this.getResources(), R.drawable.icon);
+//			  Request request = Request.newUploadPhotoRequest(Session.getActiveSession(), image, new Request.Callback() {
+//				
+//				@Override
+//				public void onCompleted(Response response) {
+//					showPublishResult(getString(R.string.photo_post), response.getGraphObject(), response.getError());
+//					
+//				}
+//			});
+//			  request.executeAsync();
+//		  }
+//	  }
+//	  
+//	  
+//	  private boolean hasPublishPermission()
+//	  {
+//		  Session session = Session.getActiveSession();
+//		 return session != null && session.getPermissions().contains("publish_actions");
+//	  }
+//
+//	  @Override
+//	  public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//	      super.onActivityResult(requestCode, resultCode, data);
+//	      Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
+//	  }
+//	  
+//	  private void performPublish(boolean allowNoSession)
+//	  {
+//		  Session session = Session.getActiveSession();
+//		  if(session != null)
+//		  {
+//			  if(hasPublishPermission())
+//			  {
+//				 
+//			  }
+//		  }
+//	  }
 
 }
