@@ -29,5 +29,13 @@
 	<string name="take_photo">Take Photo</string>
 	<string name="choose_from_gallery">Choose From Gallery</string>
 	<string name="select_picture">Select Picture</string>
+	<string name="error_dialog_button_text">OK</string>
+	<string name="error_dialog_title">Something Went Wrong</string>
+	<string name="progress_dialog_text">Announcing, please wait...</string>
+	<string name="result_dialog_text_with_id">Posted Open Graph Action, id: %1$s</string>
+	<string name="result_dialog_text_default">Post action complete</string>
+	<string name="result_dialog_text_cancelled">Post cancelled.</string>
+	<string name="result_dialog_button_text">Thanks!</string>
+	<string name="result_dialog_title">Result</string>
 
 </resources>
