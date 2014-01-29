@@ -37,5 +37,12 @@
 	<string name="result_dialog_text_cancelled">Post cancelled.</string>
 	<string name="result_dialog_button_text">Thanks!</string>
 	<string name="result_dialog_title">Result</string>
-
+	<string name="error_dialog_default_text">No response from server</string>
+	<string name="error_authentication_retry">An error occured %1$s</string>
+	<string name="error_authentication_reopen">Please re-login</string>
+	<string name="error_permission">Permission to post?</string>
+	<string name="error_server">The server is busy, please retry later</string>
+	<string name="error_bad_request">Please contact developer with message: %1$s</string>
+	<string name="error_unknown">Unknown error</string>
+	
 </resources>
