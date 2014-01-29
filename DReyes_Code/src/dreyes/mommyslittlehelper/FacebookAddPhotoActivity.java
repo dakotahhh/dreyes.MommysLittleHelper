@@ -94,10 +94,12 @@ public class FacebookAddPhotoActivity extends Activity implements OnClickListene
 			if(v.getId() == R.id.take_photo)
 			{
 				Toast.makeText(this, "Take Photo", Toast.LENGTH_LONG).show();
+				startCameraActivity();
 			}
 			else if(v.getId() == R.id.choose_from_gallery)
 			{
 				Toast.makeText(this, "Choose From Gallery", Toast.LENGTH_LONG).show();
+				startGalleryActivity();
 			}
 			
 		}
@@ -111,7 +113,7 @@ public class FacebookAddPhotoActivity extends Activity implements OnClickListene
 			{
 				intent.putExtra(MediaStore.EXTRA_OUTPUT, tempUri);
 			}
-//			startActivityForResult(intent, getRequestCode());
+			startActivityForResult(intent, -1);
 		}
 		
 		private void startGalleryActivity()
@@ -120,7 +122,7 @@ public class FacebookAddPhotoActivity extends Activity implements OnClickListene
 			Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
 			intent.setType("image/*");
 			String selectPicture = getResources().getString(R.string.select_picture);
-//			startActivityForResult(Intent.createChooser(intent, selectPicture), getRequestCode());
+			startActivityForResult(Intent.createChooser(intent, selectPicture), -1);
 		}
 		
 		private Uri getTempUri()
