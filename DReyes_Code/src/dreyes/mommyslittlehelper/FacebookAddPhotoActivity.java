@@ -1,6 +1,9 @@
 package dreyes.mommyslittlehelper;
 
 import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import android.R.integer;
 import android.app.Activity;
@@ -8,6 +11,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
 import android.graphics.drawable.BitmapDrawable;
 
 import com.facebook.*;
@@ -31,6 +35,8 @@ public class FacebookAddPhotoActivity extends Activity implements OnClickListene
 	private Button takePhoto, chooseFromGallery;
 	private ImageView image;
 	private final int ID_INTENT_ID = Menu.FIRST + 2;	
+	private final int REQUEST_IMAGE_CAPTURE = 1;
+	private String mCurrentPhotoPath;
 
 	
 	  @Override
@@ -104,13 +110,30 @@ public class FacebookAddPhotoActivity extends Activity implements OnClickListene
 		
 		private void startCameraActivity()
 		{
-			Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-			tempUri = getTempUri();
-			if(tempUri != null)
+			Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+			if(intent.resolveActivity(getPackageManager()) != null)
 			{
-				intent.putExtra(MediaStore.EXTRA_OUTPUT, tempUri);
+				File photoFile = null;
+				try
+				{
+					photoFile = createImageFile();
+				}catch(IOException e)
+				{
+					
+				}
+				if(photoFile != null)
+				{
+					intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
+				}
+				startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
 			}
-			startActivityForResult(intent, -1);
+//			Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+//			tempUri = getTempUri();
+//			if(tempUri != null)
+//			{
+//				intent.putExtra(MediaStore.EXTRA_OUTPUT, tempUri);
+//			}
+//			startActivityForResult(intent, -1);
 		}
 		
 		private void startGalleryActivity()
@@ -145,10 +168,48 @@ public class FacebookAddPhotoActivity extends Activity implements OnClickListene
 					
 				}
 			}
-			else
+			else if(requestCode == REQUEST_IMAGE_CAPTURE && requestCode == RESULT_OK)
 			{
-				Log.d("Else", "idButSelPic Photopicker cancelled");
+				Bundle extras = data.getExtras();
+				Bitmap imageBitmap = (Bitmap)extras.get("data");
+				image.setImageBitmap(imageBitmap);
 			}
+		}
+		
+		private File createImageFile() throws IOException
+		{
+			String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+			String imageFileName = "JPEG_" + timeStamp + "_";
+			File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+			File image = File.createTempFile(imageFileName, ".jpg", storageDir);
+			mCurrentPhotoPath = "file:" +image.getAbsolutePath();
+			return image;
+		}
+		
+		private void galleryAddPic()
+		{
+			Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+			File f = new File(mCurrentPhotoPath);
+			Uri contentUri = Uri.fromFile(f);
+			intent.setData(contentUri);
+			this.sendBroadcast(intent);
+		}
+		
+		private void setPic()
+		{
+			int width = image.getWidth();
+			int height = image.getHeight();
+			BitmapFactory.Options options = new BitmapFactory.Options();
+			options.inJustDecodeBounds = true;
+			BitmapFactory.decodeFile(mCurrentPhotoPath, options);
+			int photoW = options.outWidth;
+			int photoH = options.outHeight;
+			int scaleFactor = Math.min(photoW/width, photoH/height);
+			options.inJustDecodeBounds = false;
+			options.inSampleSize = scaleFactor;
+			options.inPurgeable = true;
+			Bitmap bit = BitmapFactory.decodeFile(mCurrentPhotoPath,options);
+			image.setImageBitmap(bit);
 		}
 	
 		private Uri getTempUri()
