@@ -25,8 +25,8 @@ public class ChooseUploadTypeActivity extends Activity implements OnClickListene
 		Intent intent;
 		if(v.getId() == R.id.uploadusingpicasa)
 		{
-//			intent = new Intent(this, PicasaAddPhotoActivity.class);
-//			startActivity(intent);
+			intent = new Intent(this, PicasaAddPhotoActivity.class);
+			startActivity(intent);
 		}
 		else if(v.getId() == R.id.uploadusingfacebook)
 		{
