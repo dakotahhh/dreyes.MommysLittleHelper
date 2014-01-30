@@ -1,7 +1,12 @@
 package dreyes.mommyslittlehelper;
 
+import java.io.ByteArrayOutputStream;
+import java.io.Closeable;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -15,6 +20,8 @@ import android.graphics.BitmapFactory.Options;
 import android.graphics.drawable.BitmapDrawable;
 
 import com.facebook.*;
+import com.facebook.android.AsyncFacebookRunner;
+import com.facebook.android.Facebook;
 import com.facebook.model.GraphUser;
 
 import android.net.Uri;
@@ -22,6 +29,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.MediaStore.Images.ImageColumns;
+import android.provider.MediaStore.MediaColumns;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -37,7 +45,8 @@ public class FacebookAddPhotoActivity extends Activity implements OnClickListene
 	private final int ID_INTENT_ID = Menu.FIRST + 2;	
 	private final int REQUEST_IMAGE_CAPTURE = 1;
 	private String mCurrentPhotoPath;
-
+	
+	private Facebook facebook;
 	
 	  @Override
 	  public void onCreate(Bundle savedInstanceState) {
@@ -151,28 +160,119 @@ public class FacebookAddPhotoActivity extends Activity implements OnClickListene
 		@Override
 		protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 			super.onActivityResult(requestCode, resultCode, data);
-			if(requestCode == ID_INTENT_ID)
+			if(requestCode == ID_INTENT_ID && requestCode == RESULT_OK)
 			{
-				if(data != null)
+				Uri selectedImage = data.getData();
+				String filePath = null;
+				String[] columns = {MediaColumns.DATA};
+				Cursor cursor = this.getContentResolver().query(selectedImage, columns, null, null, null);
+				if(cursor != null)
 				{
-					Log.d("ON ACTIVITY", "idButSelPic Photopicker: " + data.getDataString());
-					Cursor cursor = getContentResolver().query(data.getData(), null, null, null, null);
 					cursor.moveToFirst();
-					int idx = cursor.getColumnIndex(ImageColumns.DATA);
-					String fileSource = cursor.getString(idx);
-					Log.d("PICUTRE", "Picture: " + fileSource);
-					
-					Bitmap bitmapPreview = BitmapFactory.decodeFile(fileSource);
-					BitmapDrawable bmpDrawable = new BitmapDrawable(bitmapPreview);
-					image.setBackground(bmpDrawable);
-					
+					int columnIndex = cursor.getColumnIndex(columns[0]);
+					filePath = cursor.getString(columnIndex);
+					if(!cursor.isClosed())
+					{
+						cursor.close();
+					}
 				}
+				else
+				{
+					filePath = selectedImage.getPath();
+				}
+				if(filePath != null)
+				{
+					uploadImagePath(filePath);
+				}
+				else
+				{
+					Toast toast = Toast.makeText(this, "unable to retrieve the selected image", Toast.LENGTH_LONG);
+					toast.show();
+				}
+//				if(data != null)
+//				{
+//					Log.d("ON ACTIVITY", "idButSelPic Photopicker: " + data.getDataString());
+//					Cursor cursor = getContentResolver().query(data.getData(), null, null, null, null);
+//					cursor.moveToFirst();
+//					int idx = cursor.getColumnIndex(ImageColumns.DATA);
+//					String fileSource = cursor.getString(idx);
+//					Log.d("PICUTRE", "Picture: " + fileSource);
+//					
+//					Bitmap bitmapPreview = BitmapFactory.decodeFile(fileSource);
+//					BitmapDrawable bmpDrawable = new BitmapDrawable(bitmapPreview);
+//					image.setBackground(bmpDrawable);
+//					
+//				}
 			}
 			else if(requestCode == REQUEST_IMAGE_CAPTURE && requestCode == RESULT_OK)
 			{
 				Bundle extras = data.getExtras();
 				Bitmap imageBitmap = (Bitmap)extras.get("data");
 				image.setImageBitmap(imageBitmap);
+			}
+		}
+		
+		private void uploadImagePath(String filePath)
+		{
+			FileInputStream fileStream = null;
+			try
+			{
+				fileStream = new FileInputStream(new File(filePath));
+				byte[] bytes = convertStreamToBytes(fileStream);
+				uploadImageBytes(bytes);
+			}catch(Exception e)
+			{
+				Toast toast = Toast.makeText(this, "unable to retrieve image", Toast.LENGTH_LONG);
+				toast.show();
+			}finally
+			{
+				closeStream(fileStream);
+			}
+		}
+		
+		private void uploadImageBytes(byte[] bytes)
+		{
+			Bundle params = new Bundle();
+			params.putString(Facebook.TOKEN, facebook.getAccessToken());
+			params.putString("method", "photos.upload");
+			params.putByteArray("picture", bytes);
+			AsyncFacebookRunner ar = new AsyncFacebookRunner(facebook);
+//			ar.request(null, params, "POST", new WallPostListener());
+		}
+		
+		public static byte[] convertStreamToBytes(InputStream stream) throws IOException
+		{
+			if(stream == null)
+			{
+				return null;
+			}
+			ByteArrayOutputStream output = new ByteArrayOutputStream();
+			copyStream(stream, output);
+			return output.toByteArray();
+		}
+		
+		public static void copyStream(InputStream from, OutputStream to) throws IOException
+		{
+			byte data[] = new byte[8192];
+			int count;
+			while((count = from.read(data)) != -1)
+			{
+				to.write(data,0,count);
+			}
+			from.close();
+		}
+		
+		public static void closeStream(Closeable stream)
+		{
+			try
+			{
+				if(stream != null)
+				{
+					stream.close();
+				}
+			}catch(Exception e)
+			{
+				
 			}
 		}
 		

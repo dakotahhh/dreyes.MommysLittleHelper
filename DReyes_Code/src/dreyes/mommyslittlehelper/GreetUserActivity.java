@@ -1,5 +1,6 @@
 package dreyes.mommyslittlehelper;
 
+import java.io.IOException;
 import java.util.GregorianCalendar;
 
 
@@ -102,6 +103,5 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 		}
 	}
 
-	
 	
 }
