@@ -44,5 +44,8 @@
 	<string name="error_server">The server is busy, please retry later</string>
 	<string name="error_bad_request">Please contact developer with message: %1$s</string>
 	<string name="error_unknown">Unknown error</string>
+	<string name="cancelled">Cancelled</string>
+	<string name="permission_not_granted">Unable to perform selected action because permissions were not granted</string>
+	<string name="hello_user">Hello %1$s!</string>
 	
 </resources>
