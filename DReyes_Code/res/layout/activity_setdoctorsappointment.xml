@@ -8,7 +8,8 @@
         android:id="@+id/currentDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Appointment Date (M-D-YYYY):" />
+        android:text="Appointment Date: (M-D-YYYY)"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 
     <Button
@@ -16,5 +17,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Change Date of Appointment" />
+
+    <TextView
+        android:id="@+id/currentTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Appointment Time: (HH-MM)"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/changeTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Time of Appointment" />
 
 </LinearLayout>
