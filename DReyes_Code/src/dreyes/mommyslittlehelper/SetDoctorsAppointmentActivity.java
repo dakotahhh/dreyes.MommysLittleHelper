@@ -11,6 +11,7 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract.Events;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -20,12 +21,14 @@ import android.widget.TimePicker;
 public class SetDoctorsAppointmentActivity extends Activity {
 
 	private TextView currentDate, currentTime;
-	private Button changeDate,changeTime;
+	private Button changeDate,changeTime,createAppointment;
 	
 	private int year, month, day, hour, minutes;
 	
 	private final int DATE_DIALOG_ID = 000;
 	private final int TIME_DIALOG_ID = 111;
+	private final int APPOINTMENT = 333;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,16 @@ public class SetDoctorsAppointmentActivity extends Activity {
 			public void onClick(View v) {
 				
 				showDialog(TIME_DIALOG_ID);
+			}
+		});
+		
+		createAppointment = (Button)findViewById(R.id.createAppointment);
+		createAppointment.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				createCalendarAppointment();
+				
 			}
 		});
 		
@@ -129,6 +142,15 @@ public class SetDoctorsAppointmentActivity extends Activity {
 		{
 			return "0" + String.valueOf(time);
 		}
+	}
+	
+	private void createCalendarAppointment()
+	{
+		Intent intent = new Intent(Intent.ACTION_EDIT);
+		intent.setType("vnd.android.cursor.item/event");
+		intent.putExtra(Events.TITLE, "Doctors Appointment");
+		intent.putExtra(Events.HAS_ALARM, true);
+		startActivity(intent);
 	}
 
 }
