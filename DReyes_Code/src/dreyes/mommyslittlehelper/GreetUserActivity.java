@@ -19,7 +19,7 @@ import android.widget.Toast;
 public class GreetUserActivity extends Activity implements OnClickListener{
 
 	private final String TAG = "GREETUSERACTIVITY";
-	private Button fedBabyButton, sleepingBabyButton, wakingBabyButton, diaperChangedButton, signingOutButton, breastPumpButton, addPhotoButton;
+	private Button fedBabyButton, sleepingBabyButton, wakingBabyButton, diaperChangedButton, signingOutButton, breastPumpButton, addPhotoButton, setDoctorsAppointmentButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +33,14 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 		signingOutButton = (Button)findViewById(R.id.signingOut);
 		breastPumpButton = (Button)findViewById(R.id.breastpump);
 		addPhotoButton = (Button)findViewById(R.id.addPhoto);
+		setDoctorsAppointmentButton = (Button)findViewById(R.id.doctorsAppointment);
 		fedBabyButton.setOnClickListener(this);
 		sleepingBabyButton.setOnClickListener(this);
 		wakingBabyButton.setOnClickListener(this);
 		diaperChangedButton.setOnClickListener(this);
 		breastPumpButton.setOnClickListener(this);
 		addPhotoButton.setOnClickListener(this);
+		setDoctorsAppointmentButton.setOnClickListener(this);
 	}
 	
 	@Override
@@ -99,6 +101,11 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 		else if (v.getId() == R.id.addPhoto) 
 		{
 			intent = new Intent(this, ChooseUploadTypeActivity.class);
+			startActivity(intent);
+		}
+		else if(v.getId() == R.id.doctorsAppointment)
+		{
+			intent = new Intent(this, SetDoctorsAppointmentActivity.class);
 			startActivity(intent);
 		}
 	}
