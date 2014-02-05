@@ -43,6 +43,12 @@
         android:text="@string/upload_photo" />
 
     <Button
+        android:id="@+id/doctorsAppointment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Doctors Appointment" />
+
+    <Button
         android:id="@+id/signingOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
