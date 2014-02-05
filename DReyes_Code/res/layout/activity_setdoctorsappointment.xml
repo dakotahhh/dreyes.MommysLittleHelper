@@ -10,10 +10,6 @@
         android:layout_height="wrap_content"
         android:text="Appointment Date (M-D-YYYY):" />
 
-    <DatePicker
-        android:id="@+id/datePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/changeDate"
