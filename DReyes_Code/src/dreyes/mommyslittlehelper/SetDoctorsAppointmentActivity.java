@@ -60,6 +60,7 @@ public class SetDoctorsAppointmentActivity extends Activity {
 		minutes = c.get(Calendar.MINUTE);
 		
 		updateDateDisplay();
+		updateTimeDisplay();
 		
 		
 	}
@@ -114,7 +115,7 @@ public class SetDoctorsAppointmentActivity extends Activity {
 		public void onTimeSet(TimePicker view, int selectedHour, int selectedMinutes) {
 			hour = selectedHour;
 			minutes = selectedMinutes;
-			updateDateDisplay();
+			updateTimeDisplay();
 		}
 	};
 	
