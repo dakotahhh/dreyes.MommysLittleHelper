@@ -8,11 +8,17 @@
         android:id="@+id/currentDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Current Date (M-D-YYYY):" />
+        android:text="Appointment Date (M-D-YYYY):" />
 
     <DatePicker
         android:id="@+id/datePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/changeDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Date of Appointment" />
 
 </LinearLayout>
