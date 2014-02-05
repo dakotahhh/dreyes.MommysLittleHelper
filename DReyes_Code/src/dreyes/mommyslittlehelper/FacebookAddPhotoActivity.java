@@ -16,27 +16,29 @@ import com.facebook.model.GraphObject;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.FacebookDialog;
 import com.facebook.widget.FacebookDialog.PendingCall;
-import com.facebook.widget.FriendPickerFragment;
 import com.facebook.widget.LoginButton;
 import com.facebook.widget.ProfilePictureView;
+import com.google.android.gms.internal.cu;
+import com.google.api.client.util.Sleeper;
 
 import android.app.AlertDialog;
-import android.app.Fragment;
 
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.Signature;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.test.PerformanceTestCase;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -47,7 +49,7 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 	private final String PERMISSION = "publish_actions";
 	private final String PENDING_ACTION_BUNDLE_KEY = "";
 	
-	private Button postPhotoButton;
+	private Button postPhotoButton, startGalleryButton;
 	private LoginButton loginButton;
 	private ProfilePictureView profilePictureView;
 	private TextView greeting;
@@ -55,12 +57,13 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 	private ViewGroup controlsContainer;
 	private GraphUser user;
 	private boolean canPresentShareDialog;
+	private Bitmap yourSelectedImage;
 	
 	private enum PendingAction
 	{
 		NONE,
 		POST_PHOTO,
-		POST_STATUS_UPDATE
+		START_GALLERY
 	}
 	
 	private UiLifecycleHelper uiHelper;
@@ -147,18 +150,20 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 			}
 		});
 		
+		startGalleryButton = (Button)findViewById(R.id.startGallery);
+		startGalleryButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				startGallery();
+				
+			}
+		});
+		
+		
 		controlsContainer = (ViewGroup)findViewById(R.id.main_ui_container);
 		
 		final FragmentManager fm = getSupportFragmentManager();
-//		Fragment fragment = fm.findFragmentById(R.id.fragment_container);
-//		if(fragment != null)
-//		{
-//			controlsContainer.setVisibility(View.GONE);
-//			if(fragment instanceof FriendPickerFragment)
-//			{
-//				setFriendPickerListeners(fragment);
-//			}
-//		}
 		
 		fm.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
 			
@@ -193,6 +198,25 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
+		switch (requestCode) {
+		case Menu.FIRST + 1:
+			if(resultCode == RESULT_OK)
+			{
+				Uri selectedImage = data.getData();
+				String[] filePathColumn = {MediaStore.Images.Media.DATA};
+				Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+				cursor.moveToFirst();
+				int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+				String filePath = cursor.getString(columnIndex);
+				cursor.close();
+				yourSelectedImage = BitmapFactory.decodeFile(filePath);
+				postPhoto();
+			}
+			break;
+
+		default:
+			break;
+		}
 		uiHelper.onActivityResult(requestCode, resultCode, data, dialogCallback);
 	}
 	
@@ -253,7 +277,18 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 		case POST_PHOTO:
 			postPhoto();
 			break;
+		case START_GALLERY:
+			startGallery();
+			break;
 		}
+	}
+	
+	private void startGallery()
+	{
+		Intent intent = new Intent(Intent.ACTION_PICK);
+		intent.setType("image/*");
+		startActivityForResult(intent, Menu.FIRST +1);
+		
 	}
 	
 	private interface GraphObjectWithId extends GraphObject
@@ -284,14 +319,6 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 			.show();
 	}
 	
-	private FacebookDialog.ShareDialogBuilder createShareDialogBuilder()
-	{
-		return new FacebookDialog.ShareDialogBuilder(this)
-		.setName("Mommys Little Helper")
-		.setDescription("The 'Mommys Little Helper' sample app posts photos")
-		.setLink("http://developers.facebook.com/android");
-	}
-	
 	private void onClickPostPhoto()
 	{
 		performPublish(PendingAction.POST_PHOTO, false);
@@ -301,8 +328,8 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 	{
 		if(hasPublishPermission())
 		{
-			Bitmap image = BitmapFactory.decodeResource(this.getResources(), R.drawable.feels);
-			Request request = Request.newUploadPhotoRequest(Session.getActiveSession(), image, new Request.Callback() {
+//			Bitmap image = BitmapFactory.decodeResource(this.getResources(), R.drawable.feels);
+			Request request = Request.newUploadPhotoRequest(Session.getActiveSession(), yourSelectedImage, new Request.Callback() {
 				
 				@Override
 				public void onCompleted(Response response) {
@@ -316,15 +343,6 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 		{
 			pendingAction = pendingAction.POST_PHOTO;
 		}
-	}
-	
-	private void showAlert(String title, String message)
-	{
-		new AlertDialog.Builder(this)
-			.setTitle(title)
-			.setMessage(message)
-			.setPositiveButton(R.string.ok, null)
-			.show();
 	}
 	
 	private boolean hasPublishPermission()
