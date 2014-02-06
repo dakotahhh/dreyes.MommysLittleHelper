@@ -2,7 +2,10 @@ package dreyes.mommyslittlehelper;
 
 
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import com.google.api.client.util.Sleeper;
 
@@ -12,7 +15,9 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.provider.CalendarContract.Events;
+import android.provider.CalendarContract.Reminders;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -120,7 +125,7 @@ public class SetDoctorsAppointmentActivity extends Activity {
 		currentTime.setText(new StringBuilder()
 		.append("Appointment Time: ")
 		.append(pad(hour)).append(":")
-		.append(pad(minutes)));
+		.append(minutes));
 	}
 	
 	private TimePickerDialog.OnTimeSetListener timePickerListener = new TimePickerDialog.OnTimeSetListener() {
@@ -135,11 +140,11 @@ public class SetDoctorsAppointmentActivity extends Activity {
 	
 	private String pad(int time)
 	{
-		if(time <= 10)
+		if(time <= 12)
 		{
 			return String.valueOf(time);
 		}
-		else
+		else 
 		{
 			return "0" + String.valueOf(time-12);
 		}
@@ -154,12 +159,23 @@ public class SetDoctorsAppointmentActivity extends Activity {
 	
 	private void createCalendarAppointment()
 	{
-		Intent intent = new Intent(Intent.ACTION_EDIT);
-		intent.setType("vnd.android.cursor.item/event");
-		intent.putExtra(Events.TITLE, "Doctors Appointment");
-		intent.putExtra(Events.DTSTART, createTimeStamp());
-		intent.putExtra(Events.HAS_ALARM, true);
-		startActivity(intent);
+		String startDate = year+"-"+month+"-"+day;
+		String startTime = hour+":"+minutes;
+		Date date;
+		try {
+			date = new SimpleDateFormat("yyy-MM-d-HH:mm").parse(startDate+"-"+startTime);
+			long timeAndDate = date.getTime();
+			Intent intent = new Intent(Intent.ACTION_EDIT);
+			intent.setType("vnd.android.cursor.item/event");
+			intent.putExtra(Events.TITLE, "Doctors Appointment");
+			intent.putExtra(Reminders.MINUTES, 60);
+			intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, timeAndDate);
+			intent.putExtra(Events.HAS_ALARM, true);
+			startActivity(intent);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
