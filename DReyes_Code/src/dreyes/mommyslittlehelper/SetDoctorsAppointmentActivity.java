@@ -146,7 +146,10 @@ public class SetDoctorsAppointmentActivity extends Activity {
 		}
 		else 
 		{
-			return "0" + String.valueOf(time-12);
+			if(time <= 10)
+				return String.valueOf(time-12);
+			else
+				return "0" + String.valueOf(time-12);
 		}
 	}
 	
