@@ -101,6 +101,11 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 			intent = new Intent(this, ChooseUploadTypeActivity.class);
 			startActivity(intent);
 		}
+		else if(v.getId() == R.id.doctorsAppointment)
+		{
+			intent = new Intent(this, SetDoctorsAppointmentActivity.class);
+			startActivity(intent);
+		}
 	}
 
 	
