@@ -1,6 +1,7 @@
 package dreyes.mommyslittlehelper;
 
 
+import java.sql.Timestamp;
 import java.util.Calendar;
 
 import com.google.api.client.util.Sleeper;
@@ -134,14 +135,21 @@ public class SetDoctorsAppointmentActivity extends Activity {
 	
 	private String pad(int time)
 	{
-		if(time >= 10)
+		if(time <= 10)
 		{
 			return String.valueOf(time);
 		}
 		else
 		{
-			return "0" + String.valueOf(time);
+			return "0" + String.valueOf(time-12);
 		}
+	}
+	
+	private long createTimeStamp()
+	{
+		long timeStart;
+		Timestamp start = Timestamp.valueOf(year + "-" + month + "-" + day + " " + hour + ":" + minutes + ":00");
+		return timeStart = start.getTime();
 	}
 	
 	private void createCalendarAppointment()
@@ -149,6 +157,7 @@ public class SetDoctorsAppointmentActivity extends Activity {
 		Intent intent = new Intent(Intent.ACTION_EDIT);
 		intent.setType("vnd.android.cursor.item/event");
 		intent.putExtra(Events.TITLE, "Doctors Appointment");
+		intent.putExtra(Events.DTSTART, createTimeStamp());
 		intent.putExtra(Events.HAS_ALARM, true);
 		startActivity(intent);
 	}
