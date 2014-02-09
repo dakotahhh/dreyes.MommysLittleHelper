@@ -30,6 +30,12 @@
         android:layout_height="wrap_content"
         android:text="Change Appointment Time" />
 
+    <CheckBox
+        android:id="@+id/setReminder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set a Reminder" />
+
     <Button
         android:id="@+id/createAppointment"
         android:layout_width="wrap_content"

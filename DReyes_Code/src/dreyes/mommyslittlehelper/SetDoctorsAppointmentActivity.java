@@ -20,6 +20,7 @@ import android.provider.CalendarContract.Events;
 import android.provider.CalendarContract.Reminders;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -28,7 +29,8 @@ public class SetDoctorsAppointmentActivity extends Activity {
 
 	private TextView currentDate, currentTime;
 	private Button changeDate,changeTime,createAppointment;
-	
+	private CheckBox setReminder;
+	private boolean setReminderChecked = false;
 	private int year, month, day, hour, minutes;
 	
 	private final int DATE_DIALOG_ID = 000;
@@ -40,6 +42,13 @@ public class SetDoctorsAppointmentActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setdoctorsappointment);
+		
+		setReminder = (CheckBox)findViewById(R.id.setReminder);
+		if(setReminder.isChecked())
+		{
+			setReminderChecked = true;
+			setReminder.setChecked(true);
+		}
 		
 		currentDate = (TextView)findViewById(R.id.currentDate);
 		changeDate = (Button)findViewById(R.id.changeDate);
@@ -164,9 +173,16 @@ public class SetDoctorsAppointmentActivity extends Activity {
 			Intent intent = new Intent(Intent.ACTION_EDIT);
 			intent.setType("vnd.android.cursor.item/event");
 			intent.putExtra(Events.TITLE, "Doctors Appointment");
-			intent.putExtra(Reminders.MINUTES, 60);
 			intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, timeAndDate);
-			intent.putExtra(Events.HAS_ALARM, true);
+			if(setReminderChecked)
+			{
+				intent.putExtra(Reminders.MINUTES, 60);
+				intent.putExtra(Events.HAS_ALARM, true);
+			}
+			else
+			{
+				intent.putExtra(Events.HAS_ALARM, false);
+			}
 			startActivity(intent);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
