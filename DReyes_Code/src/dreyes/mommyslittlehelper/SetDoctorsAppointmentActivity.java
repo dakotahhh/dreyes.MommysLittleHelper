@@ -153,20 +153,13 @@ public class SetDoctorsAppointmentActivity extends Activity {
 		}
 	}
 	
-	private long createTimeStamp()
-	{
-		long timeStart;
-		Timestamp start = Timestamp.valueOf(year + "-" + month + "-" + day + " " + hour + ":" + minutes + ":00");
-		return timeStart = start.getTime();
-	}
-	
 	private void createCalendarAppointment()
 	{
 		String startDate = year+"-"+month+"-"+day;
 		String startTime = hour+":"+minutes;
 		Date date;
 		try {
-			date = new SimpleDateFormat("yyy-MM-d-HH:mm").parse(startDate+"-"+startTime);
+			date = new SimpleDateFormat("yyyy-MM-dd-HH:mm").parse(startDate+"-"+startTime);
 			long timeAndDate = date.getTime();
 			Intent intent = new Intent(Intent.ACTION_EDIT);
 			intent.setType("vnd.android.cursor.item/event");
