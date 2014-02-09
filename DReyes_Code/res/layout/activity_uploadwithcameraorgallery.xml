@@ -40,6 +40,12 @@
 	        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 	    <Button
+	        android:id="@+id/takePhoto"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Take Photo" />
+
+	    <Button
 	        android:id="@+id/startGallery"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"

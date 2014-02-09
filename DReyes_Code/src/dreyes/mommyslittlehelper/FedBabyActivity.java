@@ -10,6 +10,7 @@ import dreyes.mommyslittlehelper.R.id;
 import dreyes.mommyslittlehelper.R.layout;
 
 import android.app.Activity;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.CalendarContract;
@@ -19,11 +20,16 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class FedBabyActivity extends Activity implements OnClickListener{
 
-	Button submit;
+	private Button submit, timeSubmit;
+	private TextView timeTitle;
+	private final int TIME_DIALOG_ID = 000;
+	private int hour, minutes;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,26 +38,17 @@ public class FedBabyActivity extends Activity implements OnClickListener{
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		submit = (Button) findViewById(R.id.submit);
 		submit.setOnClickListener(this);
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			finish();
-		case R.id.action_baby_events:
-			Intent intent = new Intent(this, GreetUserActivity.class);
-			startActivity(intent);
-			break;
-
-		default:
-			break;
-		}
-		return super.onOptionsItemSelected(item);
+		timeSubmit = (Button)findViewById(R.id.timeSubmit);
+		timeSubmit.setOnClickListener(this);
+		timeTitle = (TextView)findViewById(R.id.timeTitle);
 	}
 
 	@Override
 	public void onClick(View v) {
+		if(v.getId() == R.id.timeSubmit)
+		{
+			showDialog(TIME_DIALOG_ID);
+		}
 		EditText foodDescription = (EditText)findViewById(R.id.foodDescriptionSubmit);
 		EditText timeSubmit = (EditText)findViewById(R.id.timePicker);
 		String food = foodDescription.getText().toString();
@@ -69,6 +66,30 @@ public class FedBabyActivity extends Activity implements OnClickListener{
 		intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, calDate.getTimeInMillis());
 		intent.putExtra(Events.HAS_ALARM, false);
 		startActivity(intent);
+	}
+	
+	private TimePickerDialog.OnTimeSetListener timePickerListener = new TimePickerDialog.OnTimeSetListener() {
+		
+		@Override
+		public void onTimeSet(TimePicker view, int selectedHour, int selectedMinutes) {
+			hour = selectedHour;
+			minutes = selectedMinutes;
+			updateTimeDisplay();
+			
+		}
+	};
+	
+	private void updateTimeDisplay()
+	{
+		timeTitle.setText(new StringBuilder()
+		.append("Appointment Time: ")
+		.append(pad(hour)).append(":")
+		.append(minutes));
+	}
+	
+	private String pad(int time)
+	{
+		
 	}
 	
 	

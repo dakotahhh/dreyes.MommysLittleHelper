@@ -49,7 +49,7 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 	private final String PERMISSION = "publish_actions";
 	private final String PENDING_ACTION_BUNDLE_KEY = "";
 	
-	private Button postPhotoButton, startGalleryButton;
+	private Button postPhotoButton, startGalleryButton, takePhotoButton;
 	private LoginButton loginButton;
 	private ProfilePictureView profilePictureView;
 	private TextView greeting;
@@ -59,11 +59,15 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 	private boolean canPresentShareDialog;
 	private Bitmap yourSelectedImage;
 	
+	private final int REQUEST_IMAGE_CAPTURE = 000;
+	private final int REQUEST_OPEN_GALLERY = 111;
+	
 	private enum PendingAction
 	{
 		NONE,
 		POST_PHOTO,
-		START_GALLERY
+		START_GALLERY,
+		START_CAMERA
 	}
 	
 	private UiLifecycleHelper uiHelper;
@@ -160,6 +164,15 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 			}
 		});
 		
+		takePhotoButton = (Button)findViewById(R.id.takePhoto);
+		takePhotoButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				
+			}
+		});
 		
 		controlsContainer = (ViewGroup)findViewById(R.id.main_ui_container);
 		
@@ -199,7 +212,7 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		switch (requestCode) {
-		case Menu.FIRST + 1:
+		case REQUEST_OPEN_GALLERY:
 			if(resultCode == RESULT_OK)
 			{
 				Uri selectedImage = data.getData();
@@ -213,7 +226,14 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 				postPhoto();
 			}
 			break;
-
+		case REQUEST_IMAGE_CAPTURE:
+			if(resultCode == RESULT_OK)
+			{
+				Bundle extras = data.getExtras();
+				yourSelectedImage = (Bitmap)extras.get("data");
+				postPhoto();
+			}
+			break;
 		default:
 			break;
 		}
@@ -280,6 +300,8 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 		case START_GALLERY:
 			startGallery();
 			break;
+		case START_CAMERA:
+			break;
 		}
 	}
 	
@@ -287,8 +309,17 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 	{
 		Intent intent = new Intent(Intent.ACTION_PICK);
 		intent.setType("image/*");
-		startActivityForResult(intent, Menu.FIRST +1);
+		startActivityForResult(intent, REQUEST_OPEN_GALLERY);
 		
+	}
+	
+	private void startCamera()
+	{
+		Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+		if(intent.resolveActivity(getPackageManager())!=null)
+		{
+			startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+		}
 	}
 	
 	private interface GraphObjectWithId extends GraphObject
