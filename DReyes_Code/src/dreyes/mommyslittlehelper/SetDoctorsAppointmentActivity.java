@@ -13,7 +13,9 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.provider.CalendarContract.Events;
@@ -24,6 +26,7 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 public class SetDoctorsAppointmentActivity extends Activity {
 
@@ -44,11 +47,18 @@ public class SetDoctorsAppointmentActivity extends Activity {
 		setContentView(R.layout.activity_setdoctorsappointment);
 		
 		setReminder = (CheckBox)findViewById(R.id.setReminder);
-		if(setReminder.isChecked())
-		{
-			setReminderChecked = true;
-			setReminder.setChecked(true);
-		}
+		setReminder.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(setReminder.isChecked())
+				{
+					setReminderChecked = true;
+					setReminder.setChecked(true);
+				}
+				
+			}
+		});
 		
 		currentDate = (TextView)findViewById(R.id.currentDate);
 		changeDate = (Button)findViewById(R.id.changeDate);
@@ -170,12 +180,23 @@ public class SetDoctorsAppointmentActivity extends Activity {
 		try {
 			date = new SimpleDateFormat("yyyy-MM-dd-HH:mm").parse(startDate+"-"+startTime);
 			long timeAndDate = date.getTime();
+//			ContentValues event = new ContentValues();
+//			event.put("calendar_id", "mlhcalendar");
+//			event.put("title", "Doctors Appointment");
+//			event.put("dtstart", timeAndDate);
+//			event.put("dtend", timeAndDate);
+//			event.put("allDay", 0);
+//			event.put("hasAlarm", 0);
+//			Uri eventsUri = Uri.parse("content://calendar/events");
+//			Uri url = getContentResolver().insert(eventsUri, event);
 			Intent intent = new Intent(Intent.ACTION_EDIT);
 			intent.setType("vnd.android.cursor.item/event");
 			intent.putExtra(Events.TITLE, "Doctors Appointment");
 			intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, timeAndDate);
-			if(setReminderChecked)
+			intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, timeAndDate);
+			if(setReminderChecked == true)
 			{
+				Toast.makeText(this, "serReminderCecked", Toast.LENGTH_LONG).show();
 				intent.putExtra(Reminders.MINUTES, 60);
 				intent.putExtra(Events.HAS_ALARM, true);
 			}
