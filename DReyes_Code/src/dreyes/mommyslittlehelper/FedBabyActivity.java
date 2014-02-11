@@ -119,16 +119,13 @@ public class FedBabyActivity extends Activity implements OnClickListener{
 	
 	private String pad(int time)
 	{
-		if(time <=12)
+		if(time <10)
 		{
-			return String.valueOf(time);
+			return "0" + String.valueOf(time);
 		}
 		else
 		{
-			if(time < 10)
-				return String.valueOf(time-12);
-			else
-				return "0" + String.valueOf(time-12);
+			return String.valueOf(time);
 		}
 	}
 	

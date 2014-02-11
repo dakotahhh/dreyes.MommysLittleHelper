@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import com.google.api.client.util.Sleeper;
 
@@ -15,6 +16,7 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
@@ -159,16 +161,13 @@ public class SetDoctorsAppointmentActivity extends Activity {
 	
 	private String pad(int time)
 	{
-		if(time <= 12)
+		if(time <10)
+		{
+			return "0" + String.valueOf(time);
+		}
+		else
 		{
 			return String.valueOf(time);
-		}
-		else 
-		{
-			if(time <= 10)
-				return String.valueOf(time-12);
-			else
-				return "0" + String.valueOf(time-12);
 		}
 	}
 	
@@ -180,13 +179,30 @@ public class SetDoctorsAppointmentActivity extends Activity {
 		try {
 			date = new SimpleDateFormat("yyyy-MM-dd-HH:mm").parse(startDate+"-"+startTime);
 			long timeAndDate = date.getTime();
+//			Uri puri = CalendarContract.Calendars.CONTENT_URI;
+//			String[] projection = new String[]
+//					{
+//						CalendarContract.Calendars._ID,
+//						CalendarContract.Calendars.ACCOUNT_NAME,
+//						CalendarContract.Calendars.CALENDAR_DISPLAY_NAME,
+//						CalendarContract.Calendars.NAME,
+//						CalendarContract.Calendars.CALENDAR_COLOR
+//					};
+//			Cursor calendarCursor = managedQuery(puri, projection, null, null, null);
+//			TimeZone timeZone = TimeZone.getDefault();
 //			ContentValues event = new ContentValues();
-//			event.put("calendar_id", "mlhcalendar");
-//			event.put("title", "Doctors Appointment");
-//			event.put("dtstart", timeAndDate);
-//			event.put("dtend", timeAndDate);
-//			event.put("allDay", 0);
-//			event.put("hasAlarm", 0);
+//			event.put(CalendarContract.Events.CALENDAR_ID, "mlhcalendar");
+//			event.put(CalendarContract.Events.TITLE, "Doctors Appointment");
+//			event.put(CalendarContract.Events.DTSTART, timeAndDate);
+//			event.put(CalendarContract.Events.DTEND, timeAndDate);
+//			event.put(CalendarContract.Events.EVENT_TIMEZONE, timeZone.getID());
+//			event.put(CalendarContract.Events.ALL_DAY, 0);
+//			event.put(CalendarContract.Events.HAS_ALARM, 0);
+//			event.put(CalendarContract.Reminders.MINUTES, 60);
+//			Uri uri = getContentResolver().insert(CalendarContract.Events.CONTENT_URI, event);
+//			String eventId = uri.getLastPathSegment();
+			
+			
 //			Uri eventsUri = Uri.parse("content://calendar/events");
 //			Uri url = getContentResolver().insert(eventsUri, event);
 			Intent intent = new Intent(Intent.ACTION_EDIT);
