@@ -36,11 +36,11 @@ public class BreastPumpActivity extends Activity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_breastpump);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
 		submit = (Button) findViewById(R.id.breast_submit);
 		submit.setOnClickListener(this);
-		timeSubmit = (Button)findViewById(R.id.timeSubmit);
+		timeSubmit = (Button)findViewById(R.id.timeChangeSubmit);
 		timeSubmit.setOnClickListener(this);
+		currentTime = (TextView)findViewById(R.id.currentTime);
 		
 		final Calendar c = Calendar.getInstance();
 		hour = c.get(Calendar.HOUR_OF_DAY);
@@ -82,7 +82,7 @@ public class BreastPumpActivity extends Activity implements OnClickListener{
 				e.printStackTrace();
 			}
 		}
-		else if(v.getId() == R.id.timeSubmit)
+		else if(v.getId() == R.id.timeChangeSubmit)
 		{
 			showDialog(TIME_DIALOG_ID);
 		}
@@ -124,7 +124,7 @@ public class BreastPumpActivity extends Activity implements OnClickListener{
 		}
 		else
 		{
-			return String.valueOf(time);
+			return String.valueOf(time-12);
 		}
 	}
 

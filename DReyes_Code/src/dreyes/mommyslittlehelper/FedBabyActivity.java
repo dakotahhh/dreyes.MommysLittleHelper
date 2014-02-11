@@ -37,7 +37,6 @@ public class FedBabyActivity extends Activity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_fedbaby);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
 		submit = (Button) findViewById(R.id.submit);
 		submit.setOnClickListener(this);
 		timeSubmit = (Button)findViewById(R.id.timeSubmit);
@@ -125,7 +124,7 @@ public class FedBabyActivity extends Activity implements OnClickListener{
 		}
 		else
 		{
-			return String.valueOf(time);
+			return String.valueOf(time-12);
 		}
 	}
 	
