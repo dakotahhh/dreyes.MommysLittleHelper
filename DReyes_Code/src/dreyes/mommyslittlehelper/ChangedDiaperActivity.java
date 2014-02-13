@@ -18,6 +18,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 public class ChangedDiaperActivity extends Activity {
 
@@ -56,7 +57,7 @@ public class ChangedDiaperActivity extends Activity {
 				createCalendarEvent();
 				int pottyNumberId = pottyType.getCheckedRadioButtonId();
 				pottyNumber = (RadioButton)findViewById(pottyNumberId);
-				
+				Toast.makeText(ChangedDiaperActivity.this, pottyNumber.getText(), Toast.LENGTH_LONG).show();
 			}
 		});
 		
