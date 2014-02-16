@@ -14,26 +14,27 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class GreetUserActivity extends Activity implements OnClickListener{
 
 	private final String TAG = "GREETUSERACTIVITY";
-	private Button fedBabyButton, sleepingBabyButton, wakingBabyButton, diaperChangedButton, signingOutButton, breastPumpButton, addPhotoButton, doctorsAppointmentButton;
+	private ImageButton fedBabyButton, sleepingBabyButton, wakingBabyButton, diaperChangedButton, signingOutButton, breastPumpButton, addPhotoButton, doctorsAppointmentButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_greetuser);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-		fedBabyButton = (Button)findViewById(R.id.fedBabyButton);
-		sleepingBabyButton = (Button)findViewById(R.id.sleepingBabyButton);
-		wakingBabyButton = (Button)findViewById(R.id.wakingBabyButton);
-		diaperChangedButton = (Button)findViewById(R.id.diaperChangeButton);
-		signingOutButton = (Button)findViewById(R.id.signOutButton);
-		breastPumpButton = (Button)findViewById(R.id.breastPumpButton);
-		addPhotoButton = (Button)findViewById(R.id.uploadPhotoButton);
-		doctorsAppointmentButton = (Button)findViewById(R.id.createAppointmentButton);
+		fedBabyButton = (ImageButton)findViewById(R.id.fedBabyButton);
+		sleepingBabyButton = (ImageButton)findViewById(R.id.sleepingBabyButton);
+		wakingBabyButton = (ImageButton)findViewById(R.id.wakingBabyButton);
+		diaperChangedButton = (ImageButton)findViewById(R.id.diaperChangeButton);
+		signingOutButton = (ImageButton)findViewById(R.id.signOutButton);
+		breastPumpButton = (ImageButton)findViewById(R.id.breastPumpButton);
+		addPhotoButton = (ImageButton)findViewById(R.id.uploadPhotoButton);
+		doctorsAppointmentButton = (ImageButton)findViewById(R.id.createAppointmentButton);
 		fedBabyButton.setOnClickListener(this);
 		sleepingBabyButton.setOnClickListener(this);
 		wakingBabyButton.setOnClickListener(this);
