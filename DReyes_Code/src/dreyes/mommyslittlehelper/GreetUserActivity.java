@@ -26,14 +26,14 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_greetuser);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-		fedBabyButton = (Button)findViewById(R.id.fedBaby);
-		sleepingBabyButton = (Button)findViewById(R.id.babySleeping);
-		wakingBabyButton = (Button)findViewById(R.id.babyWaking);
-		diaperChangedButton = (Button)findViewById(R.id.changedDiaper);
-		signingOutButton = (Button)findViewById(R.id.signingOut);
-		breastPumpButton = (Button)findViewById(R.id.breastpump);
-		addPhotoButton = (Button)findViewById(R.id.addPhoto);
-		doctorsAppointmentButton = (Button)findViewById(R.id.doctorsAppointment);
+		fedBabyButton = (Button)findViewById(R.id.fedBabyButton);
+		sleepingBabyButton = (Button)findViewById(R.id.sleepingBabyButton);
+		wakingBabyButton = (Button)findViewById(R.id.wakingBabyButton);
+		diaperChangedButton = (Button)findViewById(R.id.diaperChangeButton);
+		signingOutButton = (Button)findViewById(R.id.signOutButton);
+		breastPumpButton = (Button)findViewById(R.id.breastPumpButton);
+		addPhotoButton = (Button)findViewById(R.id.uploadPhotoButton);
+		doctorsAppointmentButton = (Button)findViewById(R.id.createAppointmentButton);
 		fedBabyButton.setOnClickListener(this);
 		sleepingBabyButton.setOnClickListener(this);
 		wakingBabyButton.setOnClickListener(this);
@@ -55,22 +55,22 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		Intent intent;
-		if(v.getId() == R.id.fedBaby)
+		if(v.getId() == R.id.fedBabyButton)
 		{
 			intent = new Intent(this, FedBabyActivity.class);
 			startActivity(intent);
 		}
-		else if(v.getId() == R.id.babySleeping)
+		else if(v.getId() == R.id.sleepingBabyButton)
 		{
 			intent = new Intent(this, SleepingBabyActivity.class);
 			startActivity(intent);
 		}
-		else if(v.getId() == R.id.babyWaking)
+		else if(v.getId() == R.id.wakingBabyButton)
 		{
 			intent = new Intent(this, WakingBabyActivity.class);
 			startActivity(intent);
 		}
-		else if(v.getId() == R.id.changedDiaper)
+		else if(v.getId() == R.id.diaperChangeButton)
 		{
 			GregorianCalendar time = new GregorianCalendar();
 			intent = new Intent(Intent.ACTION_EDIT);
@@ -81,17 +81,17 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 			intent.putExtra(Events.HAS_ALARM, false);
 			startActivity(intent);
 		}
-		else if(v.getId() == R.id.breastpump)
+		else if(v.getId() == R.id.breastPumpButton)
 		{
 			intent = new Intent(this, BreastPumpActivity.class);
 			startActivity(intent);
 		}
-		else if (v.getId() == R.id.addPhoto) 
+		else if (v.getId() == R.id.uploadPhotoButton) 
 		{
 			intent = new Intent(this, ChooseUploadTypeActivity.class);
 			startActivity(intent);
 		}
-		else if(v.getId() == R.id.doctorsAppointment)
+		else if(v.getId() == R.id.createAppointmentButton)
 		{
 			intent = new Intent(this, SetDoctorsAppointmentActivity.class);
 			startActivity(intent);

@@ -16,16 +16,16 @@
             android:layout_height="wrap_content" >
 
             <ImageButton
-                android:id="@+id/imageButton1"
+                android:id="@+id/fedBabyButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/fedbaby" />
+                android:src="@drawable/fedbabybutton" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/sleepingBabyButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/fedbaby" />
+                android:src="@drawable/sleepingbabybutton" />
 
         </LinearLayout>
         <LinearLayout
@@ -33,16 +33,16 @@
             android:layout_height="wrap_content" >
 
             <ImageButton
-                android:id="@+id/imageButton1"
+                android:id="@+id/wakingBabyButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/fedbaby" />
+                android:src="@drawable/wakingbabybutton" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/diaperChangeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/fedbaby" />
+                android:src="@drawable/diaperchangebutton" />
 
         </LinearLayout>
         <LinearLayout
@@ -50,16 +50,16 @@
             android:layout_height="wrap_content" >
 
             <ImageButton
-                android:id="@+id/imageButton1"
+                android:id="@+id/breastPumpButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/fedbaby" />
+                android:src="@drawable/breastpumpbutton" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/createAppointmentButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/fedbaby" />
+                android:src="@drawable/createappointmentbutton" />
 
         </LinearLayout>
         <LinearLayout
@@ -67,16 +67,16 @@
             android:layout_height="wrap_content" >
 
             <ImageButton
-                android:id="@+id/imageButton1"
+                android:id="@+id/uploadPhotoButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/fedbaby" />
+                android:src="@drawable/uploadphotobutton" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/signOutButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/fedbaby" />
+                android:src="@drawable/signoutbutton" />
 
         </LinearLayout>
 
