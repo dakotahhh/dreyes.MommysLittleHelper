@@ -37,20 +37,20 @@ public class SetDoctorsAppointmentActivity extends Activity {
 	private CheckBox setReminder;
 	private boolean setReminderChecked = false;
 	private int year, month, day, hour, minutes;
-	
+
 	private final int DATE_DIALOG_ID = 000;
 	private final int TIME_DIALOG_ID = 111;
 	private final int APPOINTMENT = 333;
-	
-	
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setdoctorsappointment);
-		
+
 		setReminder = (CheckBox)findViewById(R.id.setReminder);
 		setReminder.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				if(setReminder.isChecked())
@@ -58,14 +58,14 @@ public class SetDoctorsAppointmentActivity extends Activity {
 					setReminderChecked = true;
 					setReminder.setChecked(true);
 				}
-				
+
 			}
 		});
-		
+
 		currentDate = (TextView)findViewById(R.id.currentDate);
 		changeDate = (Button)findViewById(R.id.changeDate);
 		changeDate.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				showDialog(DATE_DIALOG_ID);
@@ -74,37 +74,37 @@ public class SetDoctorsAppointmentActivity extends Activity {
 		currentTime = (TextView)findViewById(R.id.currentTime);
 		changeTime = (Button)findViewById(R.id.changeTime);
 		changeTime.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				
+
 				showDialog(TIME_DIALOG_ID);
 			}
 		});
-		
+
 		createAppointment = (Button)findViewById(R.id.createAppointment);
 		createAppointment.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				createCalendarAppointment();
-				
+
 			}
 		});
-		
+
 		final Calendar c = Calendar.getInstance();
 		year = c.get(Calendar.YEAR);
 		month = c.get(Calendar.MONTH);
 		day = c.get(Calendar.DAY_OF_MONTH);
 		hour = c.get(Calendar.HOUR_OF_DAY);
 		minutes = c.get(Calendar.MINUTE);
-		
+
 		updateDateDisplay();
 		updateTimeDisplay();
-		
-		
+
+
 	}
-	
+
 	private void updateDateDisplay()
 	{
 		currentDate.setText(new StringBuilder()
@@ -113,9 +113,9 @@ public class SetDoctorsAppointmentActivity extends Activity {
 				.append(day).append("-")
 				.append(year));
 	}
-	
+
 	private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
-		
+
 		@Override
 		public void onDateSet(DatePicker view, int selectedYear, int selectedMonth,
 				int selectedDay) {
@@ -123,12 +123,12 @@ public class SetDoctorsAppointmentActivity extends Activity {
 			month = selectedMonth;
 			day = selectedDay;
 			updateDateDisplay();
-			
-			
+
+
 		}
 	};
-	
-	
+
+
 	@Override
 	protected Dialog onCreateDialog(int id) 
 	{
@@ -140,7 +140,7 @@ public class SetDoctorsAppointmentActivity extends Activity {
 		}
 		return null;
 	}
-	
+
 	private void updateTimeDisplay()
 	{
 		currentTime.setText(new StringBuilder()
@@ -148,9 +148,9 @@ public class SetDoctorsAppointmentActivity extends Activity {
 		.append(pad(hour)).append(":")
 		.append(minutes));
 	}
-	
+
 	private TimePickerDialog.OnTimeSetListener timePickerListener = new TimePickerDialog.OnTimeSetListener() {
-		
+
 		@Override
 		public void onTimeSet(TimePicker view, int selectedHour, int selectedMinutes) {
 			hour = selectedHour;
@@ -158,7 +158,7 @@ public class SetDoctorsAppointmentActivity extends Activity {
 			updateTimeDisplay();
 		}
 	};
-	
+
 	private String pad(int time)
 	{
 		if(time <10)
@@ -170,7 +170,7 @@ public class SetDoctorsAppointmentActivity extends Activity {
 			return String.valueOf(time);
 		}
 	}
-	
+
 	private void createCalendarAppointment()
 	{
 		String startDate = year+"-"+month+"-"+day;
@@ -201,8 +201,8 @@ public class SetDoctorsAppointmentActivity extends Activity {
 //			event.put(CalendarContract.Reminders.MINUTES, 60);
 //			Uri uri = getContentResolver().insert(CalendarContract.Events.CONTENT_URI, event);
 //			String eventId = uri.getLastPathSegment();
-			
-			
+
+
 //			Uri eventsUri = Uri.parse("content://calendar/events");
 //			Uri url = getContentResolver().insert(eventsUri, event);
 			Intent intent = new Intent(Intent.ACTION_EDIT);

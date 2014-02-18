@@ -21,7 +21,7 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 
 	private final String TAG = "GREETUSERACTIVITY";
 	private ImageButton fedBabyButton, sleepingBabyButton, wakingBabyButton, diaperChangedButton, signingOutButton, breastPumpButton, addPhotoButton, doctorsAppointmentButton;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -42,15 +42,6 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 		breastPumpButton.setOnClickListener(this);
 		addPhotoButton.setOnClickListener(this);
 		doctorsAppointmentButton.setOnClickListener(this);
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		if(item.getItemId() == android.R.id.home)
-		{
-			finish();
-		}
-		return super.onOptionsItemSelected(item);
 	}
 
 	@Override
@@ -99,5 +90,5 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 		}
 	}
 
-	
+
 }
