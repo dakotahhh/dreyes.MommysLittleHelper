@@ -21,7 +21,7 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 
 	private final String TAG = "GREETUSERACTIVITY";
 	private ImageButton fedBabyButton, sleepingBabyButton, wakingBabyButton, diaperChangedButton, signingOutButton, breastPumpButton, addPhotoButton, doctorsAppointmentButton;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -90,5 +90,5 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 		}
 	}
 
-	
+
 }
