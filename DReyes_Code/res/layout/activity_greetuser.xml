@@ -4,9 +4,86 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal" 
-    android:paddingTop="50dp">
+    android:paddingTop="50dp"
+    android:paddingLeft="50dp">
 
-    <Button
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageButton
+                android:id="@+id/fedBabyButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fedbabybutton" />
+
+            <ImageButton
+                android:id="@+id/sleepingBabyButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/sleepingbabybutton" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageButton
+                android:id="@+id/wakingBabyButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/wakingbabybutton" />
+
+            <ImageButton
+                android:id="@+id/diaperChangeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/diaperchangebutton" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageButton
+                android:id="@+id/breastPumpButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/breastpumpbutton" />
+
+            <ImageButton
+                android:id="@+id/createAppointmentButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/createappointmentbutton" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageButton
+                android:id="@+id/uploadPhotoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/uploadphotobutton" />
+
+            <ImageButton
+                android:id="@+id/signOutButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/signoutbutton" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+<!--    <Button
         android:id="@+id/fedBaby"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,5 +130,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sign_out_user" />
+        --> 
 
 </LinearLayout>

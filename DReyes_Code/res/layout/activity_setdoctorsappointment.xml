@@ -8,34 +8,61 @@
         android:id="@+id/currentDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:text="Appointment Date: (M-D-YYYY)"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 
+=======
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+>>>>>>> ui_update
     <Button
         android:id="@+id/changeDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:text="Change Date of Appointment" />
+=======
+        android:text="Change Appointment Date" />
+>>>>>>> ui_update
 
     <TextView
         android:id="@+id/currentTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:text="Appointment Time: (HH-MM)"
+=======
+        android:text="Large Text"
+>>>>>>> ui_update
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
         android:id="@+id/changeTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:text="Change Time of Appointment" />
+=======
+        android:text="Change Appointment Time" />
+
+    <CheckBox
+        android:id="@+id/setReminder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set a Reminder" />
+>>>>>>> ui_update
 
     <Button
         android:id="@+id/createAppointment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_gravity="right"
+=======
+>>>>>>> ui_update
         android:text="Create Appointment" />
 
 </LinearLayout>
