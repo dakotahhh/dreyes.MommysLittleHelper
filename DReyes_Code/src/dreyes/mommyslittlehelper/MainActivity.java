@@ -39,14 +39,24 @@ public class MainActivity extends Activity implements ConnectionCallbacks, OnCon
 		.setScopes(Scopes.PLUS_LOGIN)
 		.build();
 		
-		mConnectionProgressDialog = new ProgressDialog(this);
-		mConnectionProgressDialog.setMessage("Signing in...");
+		if(mPlusClient.isConnected())
+		{
+			Toast.makeText(this, "already signed in", Toast.LENGTH_LONG).show();
+			Intent intent = new Intent(this, GreetUserActivity.class);
+			startActivity(intent);
+		}
+		else
+		{
+			mConnectionProgressDialog = new ProgressDialog(this);
+			mConnectionProgressDialog.setMessage("Signing in...");
+			
+			setContentView(R.layout.activity_main);
+			signInButton = (View)findViewById(R.id.sign_in_button);
+			
+			
+			signInButton.setOnClickListener(this);
+		}
 		
-		setContentView(R.layout.activity_main);
-		signInButton = (View)findViewById(R.id.sign_in_button);
-		
-		
-		signInButton.setOnClickListener(this);
 		
 		
 	}
