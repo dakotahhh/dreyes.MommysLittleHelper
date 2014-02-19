@@ -1,5 +1,8 @@
 package dreyes.mommyslittlehelper;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
 import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
@@ -11,7 +14,12 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentSender.SendIntentException;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
 import android.support.v4.app.ShareCompat.IntentBuilder;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,6 +42,27 @@ public class MainActivity extends Activity implements ConnectionCallbacks, OnCon
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		
+		PackageInfo info;
+		try {
+			info = getPackageManager().getPackageInfo("dreyes.mommyslittlehelper", PackageManager.GET_SIGNATURES);
+			for(Signature signature : info.signatures)
+			{
+				MessageDigest md = MessageDigest.getInstance("SHA");
+				md.update(signature.toByteArray());
+				Log.d("KEYHASH LOOK HERE: ", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+			}
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
 		mPlusClient = new PlusClient.Builder(this, this, this)
 		.setActions("http://schemas.google.com/AddActivity","http://schemas.google.com/BuyActivity")
 		.setScopes(Scopes.PLUS_LOGIN)
