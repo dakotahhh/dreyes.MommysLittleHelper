@@ -41,26 +41,7 @@ public class MainActivity extends Activity implements ConnectionCallbacks, OnCon
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		
-		
-		PackageInfo info;
-		try {
-			info = getPackageManager().getPackageInfo("dreyes.mommyslittlehelper", PackageManager.GET_SIGNATURES);
-			for(Signature signature : info.signatures)
-			{
-				MessageDigest md = MessageDigest.getInstance("SHA");
-				md.update(signature.toByteArray());
-				Log.d("KEYHASH LOOK HERE: ", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-			}
-		} catch (NameNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		super.onCreate(savedInstanceState);	
 		
 		
 		mPlusClient = new PlusClient.Builder(this, this, this)
