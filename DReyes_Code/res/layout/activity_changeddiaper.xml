@@ -4,18 +4,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/currentTimeDiaper"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <Button
-        android:id="@+id/changeTimeDiaper"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Change Time" />
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+	    <TextView
+	        android:id="@+id/currentTimeDiaper"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Large Text"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+	    <Button
+	        android:id="@+id/changeTimeDiaper"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toRightOf="@+id/currentTimeDiaper"
+	        android:text="Change Time" />
+	    
+    </RelativeLayout>
 
     <RadioGroup
         android:id="@+id/radioPottyType"
