@@ -1,5 +1,8 @@
 package dreyes.mommyslittlehelper;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
 import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
@@ -11,7 +14,12 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentSender.SendIntentException;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
 import android.support.v4.app.ShareCompat.IntentBuilder;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,20 +41,32 @@ public class MainActivity extends Activity implements ConnectionCallbacks, OnCon
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState);	
+		
+		
 		mPlusClient = new PlusClient.Builder(this, this, this)
 		.setActions("http://schemas.google.com/AddActivity","http://schemas.google.com/BuyActivity")
 		.setScopes(Scopes.PLUS_LOGIN)
 		.build();
 		
-		mConnectionProgressDialog = new ProgressDialog(this);
-		mConnectionProgressDialog.setMessage("Signing in...");
+		if(mPlusClient.isConnected())
+		{
+			Toast.makeText(this, "already signed in", Toast.LENGTH_LONG).show();
+			Intent intent = new Intent(this, GreetUserActivity.class);
+			startActivity(intent);
+		}
+		else
+		{
+			mConnectionProgressDialog = new ProgressDialog(this);
+			mConnectionProgressDialog.setMessage("Signing in...");
+			
+			setContentView(R.layout.activity_main);
+			signInButton = (View)findViewById(R.id.sign_in_button);
+			
+			
+			signInButton.setOnClickListener(this);
+		}
 		
-		setContentView(R.layout.activity_main);
-		signInButton = (View)findViewById(R.id.sign_in_button);
-		
-		
-		signInButton.setOnClickListener(this);
 		
 		
 	}
