@@ -11,11 +11,19 @@
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Button
-        android:id="@+id/changeDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Change Appointment Date" />
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+	    <Button
+	        android:id="@+id/changeDate"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:text="Change Appointment Date" />
+	    
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/currentTime"
@@ -24,11 +32,19 @@
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Button
-        android:id="@+id/changeTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Change Appointment Time" />
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+	    <Button
+	        android:id="@+id/changeTime"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:text="Change Appointment Time" />
+	   
+	   </RelativeLayout>
 
     <CheckBox
         android:id="@+id/setReminder"
@@ -36,10 +52,18 @@
         android:layout_height="wrap_content"
         android:text="Set a Reminder" />
 
-    <Button
-        android:id="@+id/createAppointment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create Appointment" />
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+	    <Button
+	        android:id="@+id/createAppointment"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:text="Create Appointment" />
+	    
+	</RelativeLayout>
 
 </LinearLayout>

@@ -12,17 +12,26 @@
 	        android:id="@+id/currentTimeDiaper"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
+	        android:layout_alignBaseline="@+id/changeTimeDiaper"
 	        android:text="Large Text"
 	        android:textAppearance="?android:attr/textAppearanceLarge" />
-	
+
 	    <Button
 	        android:id="@+id/changeTimeDiaper"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_toRightOf="@+id/currentTimeDiaper"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
 	        android:text="Change Time" />
 	    
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/diaperTypeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diaper Type"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <RadioGroup
         android:id="@+id/radioPottyType"
@@ -48,11 +57,20 @@
 	        android:text="Both" />
 	    
     </RadioGroup>
-    
-    <Button
-        android:id="@+id/submitDiaper"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+	    <Button
+	        android:id="@+id/submitDiaper"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:text="Submit" />
+        
+    </RelativeLayout>
+
 
 </LinearLayout>
