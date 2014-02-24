@@ -3,9 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal" 
-    android:paddingTop="50dp"
-    android:paddingLeft="50dp">
+    android:gravity="center_horizontal" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,14 +16,14 @@
 
             <ImageButton
                 android:id="@+id/fedBabyButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="160dp"
+                android:layout_height="115dp"
                 android:src="@drawable/fedbabybutton" />
 
             <ImageButton
                 android:id="@+id/sleepingBabyButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="160dp"
+                android:layout_height="115dp"
                 android:src="@drawable/sleepingbabybutton" />
 
         </LinearLayout>
@@ -35,14 +33,14 @@
 
             <ImageButton
                 android:id="@+id/wakingBabyButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="160dp"
+                android:layout_height="115dp"
                 android:src="@drawable/wakingbabybutton" />
 
             <ImageButton
                 android:id="@+id/diaperChangeButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="160dp"
+                android:layout_height="115dp"
                 android:src="@drawable/diaperchangebutton" />
 
         </LinearLayout>
@@ -52,14 +50,14 @@
 
             <ImageButton
                 android:id="@+id/breastPumpButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="160dp"
+                android:layout_height="115dp"
                 android:src="@drawable/breastpumpbutton" />
 
             <ImageButton
                 android:id="@+id/createAppointmentButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="160dp"
+                android:layout_height="115dp"
                 android:src="@drawable/createappointmentbutton" />
 
         </LinearLayout>
@@ -69,14 +67,14 @@
 
             <ImageButton
                 android:id="@+id/uploadPhotoButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="160dp"
+                android:layout_height="115dp"
                 android:src="@drawable/uploadphotobutton" />
 
             <ImageButton
                 android:id="@+id/signOutButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="160dp"
+                android:layout_height="115dp"
                 android:src="@drawable/signoutbutton" />
 
         </LinearLayout>
