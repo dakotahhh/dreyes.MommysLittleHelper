@@ -20,7 +20,7 @@ import android.widget.Toast;
 public class GreetUserActivity extends Activity implements OnClickListener{
 
 	private final String TAG = "GREETUSERACTIVITY";
-	private ImageButton fedBabyButton, sleepingBabyButton, wakingBabyButton, diaperChangedButton, signingOutButton, breastPumpButton, addPhotoButton, doctorsAppointmentButton;
+	private ImageButton fedBabyButton, sleepingBabyButton, wakingBabyButton, diaperChangedButton, signingOutButton, breastPumpButton, addPhotoButton, doctorsAppointmentButton, trackMoodButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +31,11 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 		sleepingBabyButton = (ImageButton)findViewById(R.id.sleepingBabyButton);
 		wakingBabyButton = (ImageButton)findViewById(R.id.wakingBabyButton);
 		diaperChangedButton = (ImageButton)findViewById(R.id.diaperChangeButton);
-		signingOutButton = (ImageButton)findViewById(R.id.signOutButton);
+//		signingOutButton = (ImageButton)findViewById(R.id.signOutButton);
 		breastPumpButton = (ImageButton)findViewById(R.id.breastPumpButton);
 		addPhotoButton = (ImageButton)findViewById(R.id.uploadPhotoButton);
 		doctorsAppointmentButton = (ImageButton)findViewById(R.id.createAppointmentButton);
+		trackMoodButton = (ImageButton)findViewById(R.id.trackMoodButton);
 		fedBabyButton.setOnClickListener(this);
 		sleepingBabyButton.setOnClickListener(this);
 		wakingBabyButton.setOnClickListener(this);
@@ -42,6 +43,7 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 		breastPumpButton.setOnClickListener(this);
 		addPhotoButton.setOnClickListener(this);
 		doctorsAppointmentButton.setOnClickListener(this);
+		trackMoodButton.setOnClickListener(this);
 	}
 
 	@Override
@@ -64,13 +66,14 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 		}
 		else if(v.getId() == R.id.diaperChangeButton)
 		{
-			GregorianCalendar time = new GregorianCalendar();
-			intent = new Intent(Intent.ACTION_EDIT);
-			intent.setType("vnd.android.cursor.item/event");
-			intent.putExtra(Events.TITLE, "Diaper Change");
-			intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, time.getTimeInMillis());
-			intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, time.getTimeInMillis());
-			intent.putExtra(Events.HAS_ALARM, false);
+//			GregorianCalendar time = new GregorianCalendar();
+//			intent = new Intent(Intent.ACTION_EDIT);
+//			intent.setType("vnd.android.cursor.item/event");
+//			intent.putExtra(Events.TITLE, "Diaper Change");
+//			intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, time.getTimeInMillis());
+//			intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, time.getTimeInMillis());
+//			intent.putExtra(Events.HAS_ALARM, false);
+			intent = new Intent(this, ChangedDiaperActivity.class);
 			startActivity(intent);
 		}
 		else if(v.getId() == R.id.breastPumpButton)
@@ -86,6 +89,11 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 		else if(v.getId() == R.id.createAppointmentButton)
 		{
 			intent = new Intent(this, SetDoctorsAppointmentActivity.class);
+			startActivity(intent);
+		}
+		else if(v.getId() == R.id.trackMoodButton)
+		{
+			intent = new Intent(this, MoodActivity.class);
 			startActivity(intent);
 		}
 	}

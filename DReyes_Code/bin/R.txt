@@ -204,7 +204,6 @@ int id radioPottyType 0x7f040013
 int id right_breast 0x7f040008
 int id satellite 0x7f040004
 int id setReminder 0x7f04002d
-int id signOutButton 0x7f040027
 int id sign_in_button 0x7f040029
 int id sleepingBabyButton 0x7f040021
 int id sleepingBabySubmit 0x7f040031
@@ -221,6 +220,7 @@ int id textView4 0x7f04000c
 int id timeChangeSubmit 0x7f04000e
 int id timeSubmit 0x7f04001e
 int id timeTitle 0x7f04001d
+int id trackMoodButton 0x7f040027
 int id uploadGallery 0x7f04003a
 int id uploadPhotoButton 0x7f040026
 int id uploadusingfacebook 0x7f040019

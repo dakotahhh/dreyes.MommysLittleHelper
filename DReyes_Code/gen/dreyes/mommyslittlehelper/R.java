@@ -477,7 +477,6 @@ containing a value of this type.
         public static final int right_breast=0x7f040008;
         public static final int satellite=0x7f040004;
         public static final int setReminder=0x7f04002d;
-        public static final int signOutButton=0x7f040027;
         public static final int sign_in_button=0x7f040029;
         public static final int sleepingBabyButton=0x7f040021;
         public static final int sleepingBabySubmit=0x7f040031;
@@ -494,6 +493,7 @@ containing a value of this type.
         public static final int timeChangeSubmit=0x7f04000e;
         public static final int timeSubmit=0x7f04001e;
         public static final int timeTitle=0x7f04001d;
+        public static final int trackMoodButton=0x7f040027;
         public static final int uploadGallery=0x7f04003a;
         public static final int uploadPhotoButton=0x7f040026;
         public static final int uploadusingfacebook=0x7f040019;

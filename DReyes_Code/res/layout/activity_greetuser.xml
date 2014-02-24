@@ -72,7 +72,7 @@
                 android:src="@drawable/uploadphotobutton" />
 
             <ImageButton
-                android:id="@+id/signOutButton"
+                android:id="@+id/trackMoodButton"
                 android:layout_width="160dp"
                 android:layout_height="115dp"
                 android:src="@drawable/trackmoodbutton" />
