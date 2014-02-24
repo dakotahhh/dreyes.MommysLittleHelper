@@ -75,7 +75,7 @@
                 android:id="@+id/signOutButton"
                 android:layout_width="160dp"
                 android:layout_height="115dp"
-                android:src="@drawable/signoutbutton" />
+                android:src="@drawable/trackmoodbutton" />
 
         </LinearLayout>
 

@@ -354,7 +354,7 @@ containing a value of this type.
         public static final int com_facebook_list_section_header_background=0x7f02000e;
         public static final int com_facebook_loginbutton_silver=0x7f02000f;
         public static final int com_facebook_logo=0x7f020010;
-        public static final int com_facebook_picker_default_separator_color=0x7f020049;
+        public static final int com_facebook_picker_default_separator_color=0x7f02004a;
         public static final int com_facebook_picker_item_background=0x7f020011;
         public static final int com_facebook_picker_list_focused=0x7f020012;
         public static final int com_facebook_picker_list_longpressed=0x7f020013;
@@ -408,9 +408,10 @@ containing a value of this type.
         public static final int mlhlogo=0x7f020043;
         public static final int signoutbutton=0x7f020044;
         public static final int sleepingbabybutton=0x7f020045;
-        public static final int unselected_image=0x7f020046;
-        public static final int uploadphotobutton=0x7f020047;
-        public static final int wakingbabybutton=0x7f020048;
+        public static final int trackmoodbutton=0x7f020046;
+        public static final int unselected_image=0x7f020047;
+        public static final int uploadphotobutton=0x7f020048;
+        public static final int wakingbabybutton=0x7f020049;
     }
     public static final class id {
         public static final int action_baby_events=0x7f040055;
