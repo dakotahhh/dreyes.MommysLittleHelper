@@ -17,7 +17,7 @@ public class MoodActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_moods);
-		vf = (ViewFlipper)findViewById(R.id.ViewFlipper01);
+		vf = (ViewFlipper)findViewById(R.id.flipper01);
 	}
 	
 	@Override

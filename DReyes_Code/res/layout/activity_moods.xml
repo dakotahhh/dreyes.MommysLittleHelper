@@ -5,12 +5,12 @@
     android:orientation="vertical" >
     
     <ViewFlipper 
-        android:id="@id+/ViewFlipper01"
+        android:id="@+id/flipper01"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
         
         <include android:id="@+id/libraryView01" layout="@layout/activity_moodspageone"/>
-        <include android:id="@+id/libraryView02" layout="@layout/page_2"/>
+        <include android:id="@+id/libraryView02" layout="@layout/activity_moodspagetwo"/>
         
     </ViewFlipper>
     
