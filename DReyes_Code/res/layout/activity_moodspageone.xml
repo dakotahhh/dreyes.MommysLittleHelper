@@ -9,7 +9,7 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="The Baby Seems"
+        android:text="The Baby Seems (1/2)"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <LinearLayout
