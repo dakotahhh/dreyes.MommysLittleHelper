@@ -24,7 +24,7 @@
 		        android:id="@+id/imageButton1"
 		        android:layout_width="160dp"
 		        android:layout_height="115dp"
-		        android:src="@drawable/angryimagebutton" />
+		        android:src="@drawable/weepyimagebutton" />
 		
 		    <ImageButton
 		        android:id="@+id/imageButton2"

@@ -1,11 +1,15 @@
 package dreyes.mommyslittlehelper;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.widget.ImageButton;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 public class MoodActivity extends Activity{
@@ -13,11 +17,24 @@ public class MoodActivity extends Activity{
 	private ViewFlipper vf;
 	private float oldTouchValue;
 	
+	public ImageButton angryButton;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_moods);
 		vf = (ViewFlipper)findViewById(R.id.flipper01);
+		
+		angryButton = (ImageButton)findViewById(R.id.angryButton);
+		angryButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(Intent.ACTION_EDIT);
+				intent.setType("vnd.android.cursor.item/event");
+				startActivity(intent);
+			}
+		});
 	}
 	
 	@Override

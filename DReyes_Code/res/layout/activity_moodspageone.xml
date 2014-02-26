@@ -21,13 +21,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 		    <ImageButton
-		        android:id="@+id/imageButton1"
+		        android:id="@+id/angryButton"
 		        android:layout_width="160dp"
 		        android:layout_height="115dp"
 		        android:src="@drawable/angryimagebutton" />
 		
 		    <ImageButton
-		        android:id="@+id/imageButton2"
+		        android:id="@+id/calmButton"
 		        android:layout_width="160dp"
 		        android:layout_height="115dp"
 		        android:src="@drawable/calmimagebutton" />
@@ -37,13 +37,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 		    <ImageButton
-		        android:id="@+id/imageButton1"
+		        android:id="@+id/happyButton"
 		        android:layout_width="160dp"
 		        android:layout_height="115dp"
 		        android:src="@drawable/happyimagebutton" />
 		
 		    <ImageButton
-		        android:id="@+id/imageButton2"
+		        android:id="@+id/hungryButton"
 		        android:layout_width="160dp"
 		        android:layout_height="115dp"
 		        android:src="@drawable/hungryimagebutton" />
@@ -53,13 +53,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 		    <ImageButton
-		        android:id="@+id/imageButton1"
+		        android:id="@+id/sickButton"
 		        android:layout_width="160dp"
 		        android:layout_height="115dp"
 		        android:src="@drawable/sickimagebutton" />
 		
 		    <ImageButton
-		        android:id="@+id/imageButton2"
+		        android:id="@+id/sleepyButton"
 		        android:layout_width="160dp"
 		        android:layout_height="115dp"
 		        android:src="@drawable/sleepyimagebutton" />
