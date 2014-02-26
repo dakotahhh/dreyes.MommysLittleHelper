@@ -19,6 +19,7 @@ public class MoodActivity extends Activity implements OnClickListener{
 	private float oldTouchValue;
 	
 	public ImageButton angryButton, calmButton, happyButton, hungryButton, sickButton, sleepyButton, weepyButton;
+	private String eventDescription;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,20 @@ public class MoodActivity extends Activity implements OnClickListener{
 	
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		if(v.getId() == R.id.angryButton)
+			eventDescription = "Mood: Angry";
+		else if(v.getId() == R.id.calmButton)
+			eventDescription = "Mood: Calm";
+		else if(v.getId() == R.id.happyButton)
+			eventDescription = "Mood: Happy";
+		else if(v.getId() == R.id.hungryButton)
+			eventDescription = "Mood: Hungry";
+		else if(v.getId() == R.id.sickButton)
+			eventDescription = "Mood: Sick";
+		else if(v.getId() == R.id.sleepyButton)
+			eventDescription = "Mood: Sleepy";
+		else if(v.getId() == R.id.weepyButton)
+			eventDescription = "Mood: Weepy";
 		
 	}
 	
