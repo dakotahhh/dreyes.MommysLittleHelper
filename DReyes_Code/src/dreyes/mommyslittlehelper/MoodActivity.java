@@ -17,7 +17,7 @@ public class MoodActivity extends Activity{
 	private ViewFlipper vf;
 	private float oldTouchValue;
 	
-	public ImageButton angryButton;
+	public ImageButton angryButton, calmButton, happyButton, hungryButton, sickButton, sleepyButton, weepyButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,12 @@ public class MoodActivity extends Activity{
 		vf = (ViewFlipper)findViewById(R.id.flipper01);
 		
 		angryButton = (ImageButton)findViewById(R.id.angryButton);
+		calmButton = (ImageButton)findViewById(R.id.calmButton);
+		happyButton = (ImageButton)findViewById(R.id.happyButton);
+		hungryButton = (ImageButton)findViewById(R.id.hungryButton);
+		sickButton = (ImageButton)findViewById(R.id.sickButton);
+		sleepyButton = (ImageButton)findViewById(R.id.sleepyButton);
+		weepyButton = (ImageButton)findViewById(R.id.weepyButton);
 		angryButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
