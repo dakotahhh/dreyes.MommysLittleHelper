@@ -3,6 +3,7 @@ package dreyes.mommyslittlehelper;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract.Events;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -60,6 +61,16 @@ public class MoodActivity extends Activity implements OnClickListener{
 		else if(v.getId() == R.id.weepyButton)
 			eventDescription = "Mood: Weepy";
 		
+	}
+	
+	private void createEvent()
+	{
+		Intent intent = new Intent(Intent.ACTION_EDIT);
+		intent.setType("vnd.android.cursor.item/event");
+		intent.putExtra(Events.TITLE, "Mood");
+		intent.putExtra(Events.DESCRIPTION, eventDescription);
+		intent.putExtra(Events.HAS_ALARM, false);
+		startActivity(intent);
 	}
 	
 	
