@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
@@ -12,7 +13,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
-public class MoodActivity extends Activity{
+public class MoodActivity extends Activity implements OnClickListener{
 
 	private ViewFlipper vf;
 	private float oldTouchValue;
@@ -32,16 +33,21 @@ public class MoodActivity extends Activity{
 		sickButton = (ImageButton)findViewById(R.id.sickButton);
 		sleepyButton = (ImageButton)findViewById(R.id.sleepyButton);
 		weepyButton = (ImageButton)findViewById(R.id.weepyButton);
-		angryButton.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(Intent.ACTION_EDIT);
-				intent.setType("vnd.android.cursor.item/event");
-				startActivity(intent);
-			}
-		});
+		angryButton.setOnClickListener(this);
+		calmButton.setOnClickListener(this);
+		happyButton.setOnClickListener(this);
+		hungryButton.setOnClickListener(this);
+		sickButton.setOnClickListener(this);
+		sleepyButton.setOnClickListener(this);
+		weepyButton.setOnClickListener(this);
 	}
+	
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
@@ -107,5 +113,7 @@ public class MoodActivity extends Activity{
 		outtoRight.setInterpolator(new AccelerateInterpolator());
 		return outtoRight;
 	}
+
+	
 	
 }
