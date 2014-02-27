@@ -87,5 +87,6 @@
 	<classpathentry kind="lib" path="C:/Users/Dakotah/Desktop/google-api-java-client/libs/protobuf-java-2.4.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Dakotah/Desktop/google-api-java-client/libs/transaction-api-1.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Dakotah/Desktop/google-api-java-client/libs/xpp3-1.1.4c.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Dakotah/Downloads/GraphView-3.1.1.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
