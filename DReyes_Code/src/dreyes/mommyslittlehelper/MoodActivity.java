@@ -60,7 +60,7 @@ public class MoodActivity extends Activity implements OnClickListener{
 			eventDescription = "Mood: Sleepy";
 		else if(v.getId() == R.id.weepyButton)
 			eventDescription = "Mood: Weepy";
-		
+		createEvent();
 	}
 	
 	private void createEvent()
