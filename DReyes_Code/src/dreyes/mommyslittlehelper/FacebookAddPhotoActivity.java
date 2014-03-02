@@ -58,28 +58,6 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 	private final int REQUEST_IMAGE_CAPTURE = 000;
 	private final int REQUEST_OPEN_GALLERY = 111;
 	
-	private FacebookFragment fragment;
-	
-//	@Override
-//	protected void onCreate(Bundle savedInstanceState) {
-//		super.onCreate(savedInstanceState);
-//		if(savedInstanceState == null)
-//		{
-//			fragment = new FacebookFragment();
-//			getSupportFragmentManager()
-//				.beginTransaction()
-//				.add(android.R.id.content, fragment)
-//				.commit();
-//		}
-//		else
-//		{
-//			fragment = (FacebookFragment)getSupportFragmentManager()
-//						.findFragmentById(android.R.id.content);
-//		}
-//	}
-	
-	
-	
 	private enum PendingAction
 	{
 		NONE,
