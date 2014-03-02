@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal" >
+    android:gravity="center_vertical" >
 
     <TextView
         android:id="@+id/textView1"
@@ -11,15 +11,12 @@
         android:layout_height="wrap_content"
         android:text="The Baby Seems (1/2)"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
     
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:gravity="center" >
+            
 		    <ImageButton
 		        android:id="@+id/angryButton"
 		        android:layout_width="160dp"
@@ -31,11 +28,13 @@
 		        android:layout_width="160dp"
 		        android:layout_height="115dp"
 		        android:src="@drawable/calmimagebutton" />
+		    
     	</LinearLayout>
     	
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:gravity="center" >
 		    <ImageButton
 		        android:id="@+id/happyButton"
 		        android:layout_width="160dp"
@@ -51,7 +50,8 @@
     	
            <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:gravity="center" >
 		    <ImageButton
 		        android:id="@+id/sickButton"
 		        android:layout_width="160dp"
@@ -64,7 +64,5 @@
 		        android:layout_height="115dp"
 		        android:src="@drawable/sleepyimagebutton" />
     	</LinearLayout>
-    
-    </LinearLayout>
 
 </LinearLayout>

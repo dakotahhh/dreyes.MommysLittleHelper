@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal" >
+    android:gravity="center_vertical" >
 
     <TextView
         android:id="@+id/textView1"
@@ -19,7 +19,8 @@
     
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:gravity="center" >
 		    <ImageButton
 		        android:id="@+id/weepyButton"
 		        android:layout_width="160dp"
@@ -35,7 +36,8 @@
     	
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:gravity="center" >
 		    <ImageButton
 		        android:id="@+id/imageButton1"
 		        android:layout_width="160dp"
@@ -51,7 +53,8 @@
     	
            <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:gravity="center" >
 		    <ImageButton
 		        android:id="@+id/imageButton1"
 		        android:layout_width="160dp"
