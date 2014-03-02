@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.TimeZone;
 
 import com.google.api.client.util.Sleeper;
+import com.google.gdata.data.extensions.Reminder;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -47,20 +48,6 @@ public class SetDoctorsAppointmentActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setdoctorsappointment);
-
-		setReminder = (CheckBox)findViewById(R.id.setReminder);
-		setReminder.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if(setReminder.isChecked())
-				{
-					setReminderChecked = true;
-					setReminder.setChecked(true);
-				}
-
-			}
-		});
 
 		currentDate = (TextView)findViewById(R.id.currentDate);
 		changeDate = (Button)findViewById(R.id.changeDate);
@@ -179,48 +166,15 @@ public class SetDoctorsAppointmentActivity extends Activity {
 		try {
 			date = new SimpleDateFormat("yyyy-MM-dd-HH:mm").parse(startDate+"-"+startTime);
 			long timeAndDate = date.getTime();
-//			Uri puri = CalendarContract.Calendars.CONTENT_URI;
-//			String[] projection = new String[]
-//					{
-//						CalendarContract.Calendars._ID,
-//						CalendarContract.Calendars.ACCOUNT_NAME,
-//						CalendarContract.Calendars.CALENDAR_DISPLAY_NAME,
-//						CalendarContract.Calendars.NAME,
-//						CalendarContract.Calendars.CALENDAR_COLOR
-//					};
-//			Cursor calendarCursor = managedQuery(puri, projection, null, null, null);
-//			TimeZone timeZone = TimeZone.getDefault();
-//			ContentValues event = new ContentValues();
-//			event.put(CalendarContract.Events.CALENDAR_ID, "mlhcalendar");
-//			event.put(CalendarContract.Events.TITLE, "Doctors Appointment");
-//			event.put(CalendarContract.Events.DTSTART, timeAndDate);
-//			event.put(CalendarContract.Events.DTEND, timeAndDate);
-//			event.put(CalendarContract.Events.EVENT_TIMEZONE, timeZone.getID());
-//			event.put(CalendarContract.Events.ALL_DAY, 0);
-//			event.put(CalendarContract.Events.HAS_ALARM, 0);
-//			event.put(CalendarContract.Reminders.MINUTES, 60);
-//			Uri uri = getContentResolver().insert(CalendarContract.Events.CONTENT_URI, event);
-//			String eventId = uri.getLastPathSegment();
-
-
-//			Uri eventsUri = Uri.parse("content://calendar/events");
-//			Uri url = getContentResolver().insert(eventsUri, event);
 			Intent intent = new Intent(Intent.ACTION_EDIT);
 			intent.setType("vnd.android.cursor.item/event");
 			intent.putExtra(Events.TITLE, "Doctors Appointment");
 			intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, timeAndDate);
 			intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, timeAndDate);
-			if(setReminderChecked == true)
-			{
-				Toast.makeText(this, "serReminderCecked", Toast.LENGTH_LONG).show();
-				intent.putExtra(Reminders.MINUTES, 60);
-				intent.putExtra(Events.HAS_ALARM, true);
-			}
-			else
-			{
-				intent.putExtra(Events.HAS_ALARM, false);
-			}
+			intent.putExtra(Reminders.MINUTES, 60);
+			intent.putExtra(Events.HAS_ALARM, 1);
 			startActivity(intent);
+			Toast.makeText(this, "A reminder has been set for an hour before your appointment.", Toast.LENGTH_LONG).show();
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

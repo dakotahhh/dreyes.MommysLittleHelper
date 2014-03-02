@@ -46,11 +46,7 @@
 	   
 	   </RelativeLayout>
 
-    <CheckBox
-        android:id="@+id/setReminder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Set a Reminder" />
+    
 
     <RelativeLayout 
         android:layout_width="match_parent"
