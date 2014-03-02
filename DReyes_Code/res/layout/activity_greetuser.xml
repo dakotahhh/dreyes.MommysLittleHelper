@@ -8,11 +8,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:layout_gravity="center" >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:gravity="center" >
 
             <ImageButton
                 android:id="@+id/fedBabyButton"
@@ -29,7 +31,8 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:gravity="center" >
 
             <ImageButton
                 android:id="@+id/wakingBabyButton"
@@ -44,9 +47,11 @@
                 android:src="@drawable/diaperchangebutton" />
 
         </LinearLayout>
+        
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:gravity="center" >
 
             <ImageButton
                 android:id="@+id/breastPumpButton"
@@ -61,9 +66,11 @@
                 android:src="@drawable/createappointmentbutton" />
 
         </LinearLayout>
+        
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:gravity="center" >
 
             <ImageButton
                 android:id="@+id/uploadPhotoButton"
@@ -80,54 +87,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-<!--    <Button
-        android:id="@+id/fedBaby"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/fed_baby" />
-
-    <Button
-        android:id="@+id/babySleeping"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sleeping_baby" />
-
-    <Button
-        android:id="@+id/babyWaking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/waking_baby" />
-    
-    <Button
-        android:id="@+id/changedDiaper"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/diaper_change" />
-
-    <Button
-        android:id="@+id/breastpump"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/breast_pump" />
-
-    <Button
-        android:id="@+id/addPhoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/upload_photo" />
-
-    <Button
-        android:id="@+id/doctorsAppointment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Set Doctors Appointment" />
-
-    <Button
-        android:id="@+id/signingOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sign_out_user" />
-        --> 
 
 </LinearLayout>
