@@ -26,6 +26,7 @@ public class ChangedDiaperActivity extends Activity {
 	private Button changeTime, submit;
 	private RadioGroup pottyType;
 	private RadioButton pottyNumber;
+	String potty;
 	private int year, month, day, hour, minutes;
 	private final int TIME_DIALOG_ID = 000;
 	
@@ -57,6 +58,7 @@ public class ChangedDiaperActivity extends Activity {
 				createCalendarEvent();
 				int pottyNumberId = pottyType.getCheckedRadioButtonId();
 				pottyNumber = (RadioButton)findViewById(pottyNumberId);
+				potty = pottyNumber.toString();
 				Toast.makeText(ChangedDiaperActivity.this, pottyNumber.getText(), Toast.LENGTH_LONG).show();
 			}
 		});
@@ -122,7 +124,7 @@ public class ChangedDiaperActivity extends Activity {
 			Intent intent = new Intent(Intent.ACTION_EDIT);
 			intent.setType("vnd.android.cursor.item/event");
 			intent.putExtra(Events.TITLE, "Changed Diaper");
-			intent.putExtra(Events.DESCRIPTION, "sumbitn");
+			intent.putExtra(Events.DESCRIPTION, potty);
 			intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, timeAndDate);
 			intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, timeAndDate);
 			intent.putExtra(Events.HAS_ALARM, false);
