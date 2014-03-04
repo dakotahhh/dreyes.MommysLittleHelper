@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 public class BreastPumpActivity extends Activity implements OnClickListener{
 
@@ -59,6 +60,7 @@ public class BreastPumpActivity extends Activity implements OnClickListener{
 		if(v.getId() == R.id.breast_submit)
 		{
 			String startDate = year+"-"+month+"-"+day;
+			Toast.makeText(this, startDate, Toast.LENGTH_LONG).show();
 			String startTime = hour+":"+minutes;
 			Date date;
 			try
@@ -113,7 +115,7 @@ public class BreastPumpActivity extends Activity implements OnClickListener{
 		currentTime.setText(new StringBuilder()
 		.append("Time Fed: ")
 		.append(pad(hour)).append(":")
-		.append(minutes));
+		.append(pad(minutes)));
 	}
 	
 	private String pad(int time)
