@@ -48,7 +48,7 @@ public class BreastPumpActivity extends Activity implements OnClickListener{
 		minutes = c.get(Calendar.MINUTE);
 		year = c.get(Calendar.YEAR);
 		day = c.get(Calendar.DAY_OF_MONTH);
-		month = c.get(Calendar.MONTH);
+		month = c.get(Calendar.MONTH) + 1;
 		
 		updateTimeDisplay();
 	}
@@ -60,7 +60,6 @@ public class BreastPumpActivity extends Activity implements OnClickListener{
 		if(v.getId() == R.id.breast_submit)
 		{
 			String startDate = year+"-"+month+"-"+day;
-			Toast.makeText(this, startDate, Toast.LENGTH_LONG).show();
 			String startTime = hour+":"+minutes;
 			Date date;
 			try
