@@ -97,7 +97,7 @@ public class WakingBabyActivity extends Activity {
 		}
 		else
 		{
-			return String.valueOf(time);
+			return String.valueOf(time-12);
 		}
 	}
 	
