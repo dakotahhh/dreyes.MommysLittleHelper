@@ -37,7 +37,8 @@ public class BreastPumpActivity extends Activity implements OnClickListener{
 	private int hour, minutes, year, day, month;
 	private String right, left;
 	
-	private ArrayList<Integer> leftBreastList, rightBreastList;
+	private ArrayList<Integer> leftBreastList = new ArrayList<Integer>();
+	private ArrayList<Integer> rightBreastList = new ArrayList<Integer>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -100,14 +101,15 @@ public class BreastPumpActivity extends Activity implements OnClickListener{
 		}
 		else if(v.getId() == R.id.leftBreastButton)
 		{
-			SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-			SharedPreferences.Editor editor = preferences.edit();
-			for(int i = 0; i < leftBreastList.size(); i++)
-			{
-				editor.putInt("item_"+i, leftBreastList.get(i));
-			}
-			editor.commit();
-			Intent intent = new Intent(this, )
+//			SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+//			SharedPreferences.Editor editor = preferences.edit();
+//			for(int i = 0; i < leftBreastList.size(); i++)
+//			{
+//				editor.putInt("item_"+i, leftBreastList.get(i));
+//			}
+//			editor.commit();
+			Intent intent = new Intent(this, LeftBreastGraphViewActivity.class);
+			startActivity(intent);
 		}
 		
 		

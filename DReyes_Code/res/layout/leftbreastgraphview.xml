@@ -3,11 +3,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pumping Analytics"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
     
     <com.echo.holographlibrary.LineGraph
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:id="@+id/graph"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Left Breast"
+        android:textColor="#FFBB33"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Right Breast"
+        android:textColor="#99CC00"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </LinearLayout>

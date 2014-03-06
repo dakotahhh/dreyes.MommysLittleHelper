@@ -6,6 +6,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GraphViewSeries;
+import com.jjoe64.graphview.LineGraphView;
+
 import dreyes.mommyslittlehelper.R;
 import dreyes.mommyslittlehelper.R.id;
 import dreyes.mommyslittlehelper.R.layout;
@@ -22,13 +26,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class FedBabyActivity extends Activity implements OnClickListener{
 
-	private Button submit, timeSubmit;
+	private Button submit, timeSubmit, feedingAnalytics;
 	private TextView timeTitle;
 	private final int TIME_DIALOG_ID = 000;
 	private int hour, minutes, year, day, month;
@@ -42,6 +47,8 @@ public class FedBabyActivity extends Activity implements OnClickListener{
 		timeSubmit = (Button)findViewById(R.id.timeSubmit);
 		timeSubmit.setOnClickListener(this);
 		timeTitle = (TextView)findViewById(R.id.timeTitle);
+		feedingAnalytics = (Button)findViewById(R.id.feedingAnalytics);
+		feedingAnalytics.setOnClickListener(this);
 		
 		final Calendar c = Calendar.getInstance();
 		hour = c.get(Calendar.HOUR_OF_DAY);
@@ -62,6 +69,11 @@ public class FedBabyActivity extends Activity implements OnClickListener{
 		else if(v.getId() == R.id.submit)
 		{
 			createCalendarEvent();
+		}
+		else if(v.getId() == R.id.feedingAnalytics)
+		{
+			Intent intent = new Intent(this, FedBabyGraphViewActivity.class);
+			startActivity(intent);
 		}
 	}
 	
