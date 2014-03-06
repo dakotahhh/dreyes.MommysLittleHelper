@@ -2,6 +2,7 @@ package dreyes.mommyslittlehelper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -14,7 +15,9 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.CalendarContract;
 import android.provider.CalendarContract.Events;
 import android.view.MenuItem;
@@ -27,10 +30,14 @@ import android.widget.TimePicker;
 
 public class BreastPumpActivity extends Activity implements OnClickListener{
 
-	private Button submit, timeSubmit;
+	private Button submit, timeSubmit, leftBreastButton, rightBreastButton;
+	private EditText leftBreast, rightBreast;
 	private TextView currentTime;
 	private final int TIME_DIALOG_ID = 000;
 	private int hour, minutes, year, day, month;
+	private String right, left;
+	
+	private ArrayList<Integer> leftBreastList, rightBreastList;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +48,10 @@ public class BreastPumpActivity extends Activity implements OnClickListener{
 		timeSubmit = (Button)findViewById(R.id.timeChangeSubmit);
 		timeSubmit.setOnClickListener(this);
 		currentTime = (TextView)findViewById(R.id.currentTime);
-		
+		leftBreastButton = (Button)findViewById(R.id.leftBreastButton);
+		leftBreastButton.setOnClickListener(this);
+		rightBreastButton = (Button)findViewById(R.id.rightBreastButton);
+		rightBreastButton.setOnClickListener(this);
 		final Calendar c = Calendar.getInstance();
 		hour = c.get(Calendar.HOUR_OF_DAY);
 		minutes = c.get(Calendar.MINUTE);
@@ -65,10 +75,10 @@ public class BreastPumpActivity extends Activity implements OnClickListener{
 			{
 				date = new SimpleDateFormat("yyyy-MM-d-HH:mm").parse(startDate+"-"+startTime);
 				long timeAndDate = date.getTime();
-				EditText rightBreast = (EditText)findViewById(R.id.right_breast);
-				EditText leftBreast = (EditText)findViewById(R.id.left_breast);
-				String right = rightBreast.getText().toString();
-				String left = leftBreast.getText().toString();
+				rightBreast = (EditText)findViewById(R.id.right_breast);
+				leftBreast = (EditText)findViewById(R.id.left_breast);
+				right = rightBreast.getText().toString();
+				left = leftBreast.getText().toString();
 				Intent intent = new Intent(Intent.ACTION_EDIT);
 				intent.setType("vnd.android.cursor.item/event");
 				intent.putExtra(Events.TITLE, "Breast Pump");
@@ -76,6 +86,8 @@ public class BreastPumpActivity extends Activity implements OnClickListener{
 				intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, timeAndDate);
 				intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, timeAndDate);
 				intent.putExtra(Events.HAS_ALARM, false);
+				leftBreastList.add(Integer.parseInt(left));
+				rightBreastList.add(Integer.parseInt(right));
 				startActivity(intent);
 			}catch(ParseException e)
 			{
@@ -86,6 +98,18 @@ public class BreastPumpActivity extends Activity implements OnClickListener{
 		{
 			showDialog(TIME_DIALOG_ID);
 		}
+		else if(v.getId() == R.id.leftBreastButton)
+		{
+			SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+			SharedPreferences.Editor editor = preferences.edit();
+			for(int i = 0; i < leftBreastList.size(); i++)
+			{
+				editor.putInt("item_"+i, leftBreastList.get(i));
+			}
+			editor.commit();
+		}
+		
+		
 	}
 	
 	@Override
