@@ -91,11 +91,35 @@
 
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/breast_submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/submit" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
+        <Button
+            android:id="@+id/breast_submit"
+           
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:text="@string/submit" />
+
+        <Button
+            android:id="@+id/leftBreastAnalytics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/leftBreastAnalytics"
+            android:text="Left Breast Analytics" />
+
+        <Button
+            android:id="@+id/rightBreastAnalytics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="Right Breast Analytics" />
+
+    </RelativeLayout>
 
 </LinearLayout>

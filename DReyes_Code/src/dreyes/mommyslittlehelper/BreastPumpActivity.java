@@ -6,6 +6,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GraphViewSeries;
+import com.jjoe64.graphview.LineGraphView;
+
 import dreyes.mommyslittlehelper.R;
 import dreyes.mommyslittlehelper.R.id;
 import dreyes.mommyslittlehelper.R.layout;
@@ -22,6 +26,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -128,5 +133,19 @@ public class BreastPumpActivity extends Activity implements OnClickListener{
 			return String.valueOf(time-12);
 		}
 	}
+//	
+//	GraphViewSeries exampleSeries = new GraphViewSeries(new GraphViewData[] {
+//		      new GraphViewData(1, 2.0d)
+//		      , new GraphViewData(2, 1.5d)
+//		      , new GraphViewData(3, 2.5d)
+//		      , new GraphViewData(4, 1.0d)
+//		});
+//	
+//	GraphView graphView = new LineGraphView(this, "GraphViewDemo");
+//	graphView.addSeries(exampleSeries); // data
+//	 
+//	LinearLayout layout = (LinearLayout) findViewById(R.id.graph2);
+//	layout.addView(graphView);
+	
 
 }
