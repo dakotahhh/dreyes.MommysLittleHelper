@@ -422,8 +422,8 @@ containing a value of this type.
         public static final int weepyimagebutton=0x7f020051;
     }
     public static final class id {
-        public static final int action_baby_events=0x7f060063;
-        public static final int action_settings=0x7f060062;
+        public static final int action_baby_events=0x7f060064;
+        public static final int action_settings=0x7f060063;
         public static final int angryButton=0x7f060030;
         public static final int breastPumpButton=0x7f060027;
         public static final int breast_submit=0x7f060011;
@@ -468,6 +468,7 @@ containing a value of this type.
         public static final int foodDescriptionSubmit=0x7f06001e;
         public static final int foodDescriptionTitle=0x7f06001d;
         public static final int fragment_container=0x7f060047;
+        public static final int graph=0x7f060062;
         public static final int graph1=0x7f060022;
         public static final int greeting=0x7f060043;
         public static final int happyButton=0x7f060032;
@@ -556,6 +557,7 @@ containing a value of this type.
         public static final int com_facebook_placepickerfragment_list_row=0x7f03001a;
         public static final int com_facebook_search_bar_layout=0x7f03001b;
         public static final int com_facebook_usersettingsfragment=0x7f03001c;
+        public static final int leftbreastgraphview=0x7f03001d;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;

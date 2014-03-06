@@ -149,8 +149,8 @@ int drawable unselected_image 0x7f02004e
 int drawable uploadphotobutton 0x7f02004f
 int drawable wakingbabybutton 0x7f020050
 int drawable weepyimagebutton 0x7f020051
-int id action_baby_events 0x7f060063
-int id action_settings 0x7f060062
+int id action_baby_events 0x7f060064
+int id action_settings 0x7f060063
 int id angryButton 0x7f060030
 int id breastPumpButton 0x7f060027
 int id breast_submit 0x7f060011
@@ -195,6 +195,7 @@ int id flipper01 0x7f06002d
 int id foodDescriptionSubmit 0x7f06001e
 int id foodDescriptionTitle 0x7f06001d
 int id fragment_container 0x7f060047
+int id graph 0x7f060062
 int id graph1 0x7f060022
 int id greeting 0x7f060043
 int id happyButton 0x7f060032
@@ -279,6 +280,7 @@ int layout com_facebook_placepickerfragment 0x7f030019
 int layout com_facebook_placepickerfragment_list_row 0x7f03001a
 int layout com_facebook_search_bar_layout 0x7f03001b
 int layout com_facebook_usersettingsfragment 0x7f03001c
+int layout leftbreastgraphview 0x7f03001d
 int menu main 0x7f0a0000
 int string action_settings 0x7f040034
 int string app_id 0x7f040035
