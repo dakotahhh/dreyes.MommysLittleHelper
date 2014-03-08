@@ -24,8 +24,8 @@ public class ChangedDiaperActivity extends Activity {
 
 	private TextView currentTime;
 	private Button changeTime, submit;
-	private RadioGroup pottyType;
-	private RadioButton pottyNumber;
+	private RadioGroup pottyGroup;
+	private RadioButton pottyType;
 	private int year, month, day, hour, minutes;
 	private final int TIME_DIALOG_ID = 000;
 	
@@ -46,7 +46,7 @@ public class ChangedDiaperActivity extends Activity {
 			}
 		});
 		
-		pottyType = (RadioGroup)findViewById(R.id.radioPottyType);
+		pottyGroup = (RadioGroup)findViewById(R.id.radioButtonGroup);
 		
 		
 		submit = (Button)findViewById(R.id.submitDiaper);
@@ -54,10 +54,10 @@ public class ChangedDiaperActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				createCalendarEvent();
-				int pottyNumberId = pottyType.getCheckedRadioButtonId();
-				pottyNumber = (RadioButton)findViewById(pottyNumberId);
-				Toast.makeText(ChangedDiaperActivity.this, pottyNumber.getText(), Toast.LENGTH_LONG).show();
+				int pottyNumberId = pottyGroup.getCheckedRadioButtonId();
+				pottyType = (RadioButton)findViewById(pottyNumberId);
+				Toast.makeText(ChangedDiaperActivity.this, pottyType.getText(), Toast.LENGTH_LONG).show();
+				createCalendarEvent(pottyType.getText());
 			}
 		});
 		
@@ -111,7 +111,7 @@ public class ChangedDiaperActivity extends Activity {
 		}
 	}
 	
-	private void createCalendarEvent()
+	private void createCalendarEvent(CharSequence pottyType)
 	{
 		String startDate = year+"-"+month+"-"+day;
 		String startTime = hour+":"+minutes;
@@ -122,7 +122,7 @@ public class ChangedDiaperActivity extends Activity {
 			Intent intent = new Intent(Intent.ACTION_EDIT);
 			intent.setType("vnd.android.cursor.item/event");
 			intent.putExtra(Events.TITLE, "Changed Diaper");
-			intent.putExtra(Events.DESCRIPTION, "sumbitn");
+			intent.putExtra(Events.DESCRIPTION, pottyType);
 			intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, timeAndDate);
 			intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, timeAndDate);
 			intent.putExtra(Events.HAS_ALARM, false);
