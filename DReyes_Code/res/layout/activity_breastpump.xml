@@ -95,16 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:text="Left Breast Analytics" />
-
-        <Button
-            android:id="@+id/rightBreastButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/leftBreastButton"
-            android:text="Right Breast Analytics" />
-        
+            android:text="Breast Analytics" />
         
         <Button
             android:id="@+id/breast_submit"

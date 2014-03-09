@@ -2,29 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="278dp"
-        android:layout_height="424dp"
-        android:orientation="vertical" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <TextView
+    <TextView
                 android:id="@+id/fedBabyTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/fed_baby"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
-        </LinearLayout>
 
-        <RelativeLayout
+    <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
@@ -42,8 +29,8 @@
                 android:layout_toRightOf="@+id/foodDescriptionTitle"
                 android:inputType="textMultiLine" />
         </RelativeLayout>
-
-        <RelativeLayout
+        
+    <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
@@ -60,18 +47,11 @@
                 android:layout_alignParentRight="true"
                 android:text="Change Time" />
         </RelativeLayout>
-
-        <RelativeLayout
+    
+    
+    <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
-            
-            <Button
-                android:id="@+id/feedingAnalytics"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:text="View Feeding Analytics" />
             
             <Button
             android:id="@+id/submit"
@@ -80,12 +60,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
             android:text="@string/submit" />
-         
-
             
         </RelativeLayout>
-
-
-    </LinearLayout>
  
 </LinearLayout>
