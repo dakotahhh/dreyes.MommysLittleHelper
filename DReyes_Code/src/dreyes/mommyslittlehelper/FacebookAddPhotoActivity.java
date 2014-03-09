@@ -19,6 +19,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -27,6 +28,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.facebook.AppEventsLogger;
@@ -60,6 +62,9 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 	private boolean canPresentShareDialog;
 	private Bitmap yourSelectedImage;
 	private String currentPhotoPath;
+	private ProgressBar progressBar;
+	private int progressStatus = 0;
+	private Handler hander = new Handler();
 	
 	private final int REQUEST_IMAGE_CAPTURE = 000;
 	private final int REQUEST_OPEN_GALLERY = 111;
@@ -174,6 +179,27 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 			}
 		});
 		
+		progressBar = (ProgressBar)findViewById(R.id.progressBar);
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				while(progressStatus < 100)
+				{
+					progressStatus = doWork();
+					hander.post(new Runnable() {
+						
+						@Override
+						public void run() {
+							progressBar.setProgress(progressStatus);
+							
+						}
+					});
+				}
+				
+			}
+		});
+		
 		controlsContainer = (ViewGroup)findViewById(R.id.main_ui_container);
 		
 		final FragmentManager fm = getSupportFragmentManager();
@@ -231,7 +257,7 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 			{
 				Bundle extras = data.getExtras();
 				yourSelectedImage = (Bitmap)extras.get("data");
-//				postPhoto();
+				postPhoto();
 			}
 			break;
 		default:
@@ -301,6 +327,7 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 			startGallery();
 			break;
 		case START_CAMERA:
+			startCamera();
 			break;
 		}
 	}
