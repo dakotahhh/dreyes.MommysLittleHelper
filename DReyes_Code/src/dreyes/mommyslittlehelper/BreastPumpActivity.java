@@ -30,7 +30,7 @@ import android.widget.TimePicker;
 
 public class BreastPumpActivity extends Activity implements OnClickListener{
 
-	private Button submit, timeSubmit, leftBreastButton, rightBreastButton;
+	private Button submit, timeSubmit, leftBreastButton;
 	private EditText leftBreast, rightBreast;
 	private TextView currentTime;
 	private final int TIME_DIALOG_ID = 000;
@@ -51,8 +51,6 @@ public class BreastPumpActivity extends Activity implements OnClickListener{
 		currentTime = (TextView)findViewById(R.id.currentTime);
 		leftBreastButton = (Button)findViewById(R.id.leftBreastButton);
 		leftBreastButton.setOnClickListener(this);
-		rightBreastButton = (Button)findViewById(R.id.rightBreastButton);
-		rightBreastButton.setOnClickListener(this);
 		final Calendar c = Calendar.getInstance();
 		hour = c.get(Calendar.HOUR_OF_DAY);
 		minutes = c.get(Calendar.MINUTE);
