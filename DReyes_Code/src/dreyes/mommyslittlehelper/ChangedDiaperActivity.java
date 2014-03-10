@@ -102,7 +102,7 @@ public class ChangedDiaperActivity extends Activity {
 		{
 			description = "7)Watery, no solid pieces. Entirely liquid";
 		}
-		else
+		else if(pottyId.equals("Urine"))
 		{
 			description = "Urine";
 		}
