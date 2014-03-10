@@ -180,25 +180,7 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 		});
 		
 		progressBar = (ProgressBar)findViewById(R.id.progressBar);
-		new Thread(new Runnable() {
-			
-			@Override
-			public void run() {
-				while(progressStatus < 100)
-				{
-					progressStatus = doWork();
-					hander.post(new Runnable() {
-						
-						@Override
-						public void run() {
-							progressBar.setProgress(progressStatus);
-							
-						}
-					});
-				}
-				
-			}
-		});
+		
 		
 		controlsContainer = (ViewGroup)findViewById(R.id.main_ui_container);
 		
@@ -322,6 +304,25 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 		{
 		case POST_PHOTO:
 			postPhoto();
+//			new Thread(new Runnable() {
+//							
+//							@Override
+//							public void run() {
+//								while(progressStatus < 100)
+//								{
+//									progressStatus = postPhoto();
+//									hander.post(new Runnable() {
+//										
+//										@Override
+//										public void run() {
+//											progressBar.setProgress(progressStatus);
+//											
+//										}
+//									});
+//								}
+//								
+//							}
+//						});
 			break;
 		case START_GALLERY:
 			startGallery();

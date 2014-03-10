@@ -48,7 +48,7 @@ public class FedBabyActivity extends Activity implements OnClickListener{
 		timeSubmit.setOnClickListener(this);
 		timeTitle = (TextView)findViewById(R.id.timeTitle);
 //		feedingAnalytics = (Button)findViewById(R.id.feedingAnalytics);
-		feedingAnalytics.setOnClickListener(this);
+//		feedingAnalytics.setOnClickListener(this);
 		
 		final Calendar c = Calendar.getInstance();
 		hour = c.get(Calendar.HOUR_OF_DAY);

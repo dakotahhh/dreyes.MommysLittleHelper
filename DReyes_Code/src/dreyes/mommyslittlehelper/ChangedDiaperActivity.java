@@ -57,7 +57,7 @@ public class ChangedDiaperActivity extends Activity {
 				int pottyNumberId = pottyGroup.getCheckedRadioButtonId();
 				pottyType = (RadioButton)findViewById(pottyNumberId);
 				Toast.makeText(ChangedDiaperActivity.this, pottyType.getText(), Toast.LENGTH_LONG).show();
-				createCalendarEvent(pottyType.getText());
+				createCalendarEvent(pottyTypeDescription(pottyType.getText()));
 			}
 		});
 		
@@ -69,6 +69,44 @@ public class ChangedDiaperActivity extends Activity {
 		minutes = c.get(Calendar.MINUTE);
 		
 		updateTimeDisplay();
+	}
+	
+	private String pottyTypeDescription(CharSequence pottyId)
+	{
+		String description = null;
+		if(pottyId.equals("1"))
+		{
+			description = "1)Seperate hard lumps, like lumps (hard to pass)";
+		}
+		else if(pottyId.equals("2"))
+		{
+			description = "2)Sausage-shaped but lumpy";
+		}
+		else if(pottyId.equals("3"))
+		{
+			description = "3)Like a sausage but with cracks on the surface";
+		}
+		else if(pottyId.equals("4"))
+		{
+			description = "4)Like a sausage or snake, smooth and soft";
+		}
+		else if(pottyId.equals("5"))
+		{
+			description = "5)Soft blobs with clear-cut edges";
+		}
+		else if(pottyId.equals("6"))
+		{
+			description = "6)Fluffy pieces with ragged edges, a mushy stool";
+		}
+		else if(pottyId.equals("7"))
+		{
+			description = "7)Watery, no solid pieces. Entirely liquid";
+		}
+		else
+		{
+			description = "Urine";
+		}
+		return description;
 	}
 	
 	@Override
