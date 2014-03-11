@@ -66,13 +66,6 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 		}
 		else if(v.getId() == R.id.diaperChangeButton)
 		{
-//			GregorianCalendar time = new GregorianCalendar();
-//			intent = new Intent(Intent.ACTION_EDIT);
-//			intent.setType("vnd.android.cursor.item/event");
-//			intent.putExtra(Events.TITLE, "Diaper Change");
-//			intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, time.getTimeInMillis());
-//			intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, time.getTimeInMillis());
-//			intent.putExtra(Events.HAS_ALARM, false);
 			intent = new Intent(this, ChangedDiaperActivity.class);
 			startActivity(intent);
 		}

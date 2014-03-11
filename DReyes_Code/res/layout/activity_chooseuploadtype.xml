@@ -7,10 +7,10 @@
     android:paddingTop="200dp" >
 
         <Button
-            android:id="@+id/uploadusingpicasa"
+            android:id="@+id/uploadusinggooglephoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/upload_using_picasa" />
+            android:text="Upload Using Google" />
 
         <Button
             android:id="@+id/uploadusingfacebook"

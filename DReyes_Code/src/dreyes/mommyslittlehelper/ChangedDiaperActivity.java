@@ -56,7 +56,6 @@ public class ChangedDiaperActivity extends Activity {
 			public void onClick(View v) {
 				int pottyNumberId = pottyGroup.getCheckedRadioButtonId();
 				pottyType = (RadioButton)findViewById(pottyNumberId);
-				Toast.makeText(ChangedDiaperActivity.this, pottyType.getText(), Toast.LENGTH_LONG).show();
 				createCalendarEvent(pottyTypeDescription(pottyType.getText()));
 			}
 		});

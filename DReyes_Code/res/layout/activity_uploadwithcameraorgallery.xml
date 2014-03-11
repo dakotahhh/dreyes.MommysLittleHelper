@@ -50,19 +50,19 @@
 	        android:layout_height="wrap_content"
 	        android:text="Choose From Gallery" />
 	
-	  <!--  <Button
+		<Button
 	        android:id="@+id/postPhotoButton"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="Post Photo" />
-	        -->
 	    </LinearLayout>
 
-	<ProgressBar
+	<!-- <ProgressBar
 	    android:id="@+id/progressBar"
 	    style="?android:attr/progressBarStyleLarge"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content" />
+	    -->
 
     </LinearLayout>
 

@@ -149,15 +149,15 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 		profilePictureView = (ProfilePictureView)findViewById(R.id.profilePicture);
 		greeting = (TextView)findViewById(R.id.greeting);
 		
-//		postPhotoButton = (Button)findViewById(R.id.postPhotoButton);
-//		postPhotoButton.setOnClickListener(new View.OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				onClickPostPhoto();
-//				
-//			}
-//		});
+		postPhotoButton = (Button)findViewById(R.id.postPhotoButton);
+		postPhotoButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				onClickPostPhoto();
+				
+			}
+		});
 		
 		startGalleryButton = (Button)findViewById(R.id.startGallery);
 		startGalleryButton.setOnClickListener(new View.OnClickListener() {
@@ -179,7 +179,7 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 			}
 		});
 		
-		progressBar = (ProgressBar)findViewById(R.id.progressBar);
+//		progressBar = (ProgressBar)findViewById(R.id.progressBar);
 		
 		
 		controlsContainer = (ViewGroup)findViewById(R.id.main_ui_container);
@@ -338,7 +338,6 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 		Intent intent = new Intent(Intent.ACTION_PICK);
 		intent.setType("image/*");
 		startActivityForResult(intent, REQUEST_OPEN_GALLERY);
-		
 	}
 	
 	private void startCamera()

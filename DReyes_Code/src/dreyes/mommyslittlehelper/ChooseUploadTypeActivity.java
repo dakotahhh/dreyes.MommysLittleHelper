@@ -14,7 +14,7 @@ public class ChooseUploadTypeActivity extends Activity implements OnClickListene
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_chooseuploadtype);
-		Button picasaUpload = (Button)findViewById(R.id.uploadusingpicasa);
+		Button picasaUpload = (Button)findViewById(R.id.uploadusinggooglephoto);
 		picasaUpload.setOnClickListener(this);
 		Button facebookUpload = (Button)findViewById(R.id.uploadusingfacebook);
 		facebookUpload.setOnClickListener(this);
@@ -23,7 +23,7 @@ public class ChooseUploadTypeActivity extends Activity implements OnClickListene
 	@Override
 	public void onClick(View v) {
 		Intent intent;
-		if(v.getId() == R.id.uploadusingpicasa)
+		if(v.getId() == R.id.uploadusinggooglephoto)
 		{
 			intent = new Intent(this, PicasaAddPhotoActivity.class);
 			startActivity(intent);
