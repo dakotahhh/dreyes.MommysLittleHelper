@@ -118,14 +118,6 @@ public class ChangedDiaperActivity extends Activity {
 		return null;
 	}
 	
-	private void updateTimeDisplay()
-	{
-		currentTime.setText(new StringBuilder()
-		.append("Time Baby Fell Asleep: ")
-		.append(pad(hour)).append(":")
-		.append(minutes));
-	}
-	
 	private TimePickerDialog.OnTimeSetListener timePickerListener = new TimePickerDialog.OnTimeSetListener() {
 		
 		@Override
@@ -136,13 +128,33 @@ public class ChangedDiaperActivity extends Activity {
 		}
 	};
 	
-	private String pad(int time)
+	private void updateTimeDisplay()
+	{
+		currentTime.setText(new StringBuilder()
+		.append("Time of Diaper Change: ")
+		.append(padhours(hour)).append(":")
+		.append(padMinutes(minutes)));
+	}
+	
+	private String padhours(int time)
 	{
 		if(time <10)
 		{
 			return "0" + String.valueOf(time);
 		}
 		else
+		{
+			return String.valueOf(time-12);
+		}
+	}
+	
+	private String padMinutes(int time)
+	{
+		if(time < 10)
+		{
+			return "0" + String.valueOf(time);
+		}
+		else 
 		{
 			return String.valueOf(time);
 		}

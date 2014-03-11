@@ -136,12 +136,12 @@ public class BreastPumpActivity extends Activity implements OnClickListener{
 	private void updateTimeDisplay()
 	{
 		currentTime.setText(new StringBuilder()
-		.append("Time Fed: ")
-		.append(pad(hour)).append(":")
-		.append(minutes));
+		.append("Time Pumped: ")
+		.append(padhours(hour)).append(":")
+		.append(padMinutes(minutes)));
 	}
 	
-	private String pad(int time)
+	private String padhours(int time)
 	{
 		if(time <10)
 		{
@@ -150,6 +150,18 @@ public class BreastPumpActivity extends Activity implements OnClickListener{
 		else
 		{
 			return String.valueOf(time-12);
+		}
+	}
+	
+	private String padMinutes(int time)
+	{
+		if(time < 10)
+		{
+			return "0" + String.valueOf(time);
+		}
+		else 
+		{
+			return String.valueOf(time);
 		}
 	}
 

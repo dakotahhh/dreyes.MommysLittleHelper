@@ -110,7 +110,7 @@ public class PicasaAddPhotoActivity extends Activity
 						.setType("image/jpeg")
 						.setStream(Uri.parse(photoUri))
 						.getIntent()
-						.setPackage("com.google.adroid.apps.plus");
+						.setPackage("com.google.android.apps.plus");
 			}catch(FileNotFoundException e)
 			{
 				e.printStackTrace();

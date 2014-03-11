@@ -15,14 +15,6 @@
             android:text="Large Text"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <Button
-            android:id="@+id/changeTimeWakingUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:text="Change Time" />
-
       
     </RelativeLayout>
 
@@ -37,6 +29,15 @@
           android:layout_alignParentLeft="true"
 	       android:layout_alignParentBottom="true"
           android:text="Submit" />
+
+      <Button
+          android:id="@+id/changeTimeWakingUp"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentRight="true"
+          android:layout_alignParentTop="true"
+          android:text="Change Time" />
+
   </RelativeLayout>
 
 </LinearLayout>
