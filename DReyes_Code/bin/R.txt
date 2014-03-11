@@ -158,8 +158,8 @@ int id calmButton 0x7f060035
 int id changeDate 0x7f06003e
 int id changeTime 0x7f06003f
 int id changeTimeDiaper 0x7f060012
-int id changeTimeSleeping 0x7f060042
-int id changeTimeWakingUp 0x7f06004d
+int id changeTimeSleeping 0x7f060043
+int id changeTimeWakingUp 0x7f06004e
 int id com_facebook_login_activity_progress_bar 0x7f060051
 int id com_facebook_picker_activity_circle 0x7f060050
 int id com_facebook_picker_checkbox 0x7f060053
@@ -229,7 +229,7 @@ int id satellite 0x7f060004
 int id sickButton 0x7f060038
 int id sign_in_button 0x7f060030
 int id sleepingBabyButton 0x7f060028
-int id sleepingBabySubmit 0x7f060043
+int id sleepingBabySubmit 0x7f060042
 int id sleepyButton 0x7f060039
 int id small 0x7f060000
 int id startGallery 0x7f060049
@@ -250,7 +250,7 @@ int id uploadPhotoButton 0x7f06002d
 int id uploadusingfacebook 0x7f06001f
 int id uploadusinggooglephoto 0x7f06001e
 int id wakingBabyButton 0x7f060029
-int id wakingBabySubmit 0x7f06004e
+int id wakingBabySubmit 0x7f06004d
 int id weepyButton 0x7f06003a
 int integer google_play_services_version 0x7f090000
 int layout activity_breastpump 0x7f030000
