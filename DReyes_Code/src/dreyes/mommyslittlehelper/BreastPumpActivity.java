@@ -88,8 +88,6 @@ public class BreastPumpActivity extends Activity implements OnClickListener{
 				intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, timeAndDate);
 				intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, timeAndDate);
 				intent.putExtra(Events.HAS_ALARM, false);
-				leftBreastList.add(Integer.parseInt(left));
-				rightBreastList.add(Integer.parseInt(right));
 				breastPumpList.add(left+" "+right);
 				startActivity(intent);
 			}catch(ParseException e)

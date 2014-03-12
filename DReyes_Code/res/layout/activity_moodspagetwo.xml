@@ -28,10 +28,10 @@
 		        android:src="@drawable/weepyimagebutton" />
 		
 		    <ImageButton
-		        android:id="@+id/imageButton2"
+		        android:id="@+id/moodAnalyticsButton"
 		        android:layout_width="160dp"
 		        android:layout_height="115dp"
-		        android:src="@drawable/calmimagebutton" />
+		        android:src="@drawable/moodanalytics" />
     	</LinearLayout>
     	
         <LinearLayout

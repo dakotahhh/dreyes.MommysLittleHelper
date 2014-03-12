@@ -19,7 +19,7 @@ public class MoodActivity extends Activity implements OnClickListener{
 	private ViewFlipper vf;
 	private float oldTouchValue;
 	
-	public ImageButton angryButton, calmButton, happyButton, hungryButton, sickButton, sleepyButton, weepyButton;
+	public ImageButton angryButton, calmButton, happyButton, hungryButton, sickButton, sleepyButton, weepyButton, analyticsButton;
 	private String eventDescription;
 	
 	@Override
@@ -35,6 +35,7 @@ public class MoodActivity extends Activity implements OnClickListener{
 		sickButton = (ImageButton)findViewById(R.id.sickButton);
 		sleepyButton = (ImageButton)findViewById(R.id.sleepyButton);
 		weepyButton = (ImageButton)findViewById(R.id.weepyButton);
+		analyticsButton = (ImageButton)findViewById(R.id.moodAnalyticsButton);
 		angryButton.setOnClickListener(this);
 		calmButton.setOnClickListener(this);
 		happyButton.setOnClickListener(this);
@@ -42,25 +43,46 @@ public class MoodActivity extends Activity implements OnClickListener{
 		sickButton.setOnClickListener(this);
 		sleepyButton.setOnClickListener(this);
 		weepyButton.setOnClickListener(this);
+		analyticsButton.setOnClickListener(this);
 	}
 	
 	@Override
 	public void onClick(View v) {
 		if(v.getId() == R.id.angryButton)
+		{
 			eventDescription = "Mood: Angry";
+			createEvent();
+		}
 		else if(v.getId() == R.id.calmButton)
+		{
 			eventDescription = "Mood: Calm";
+			createEvent();
+		}
 		else if(v.getId() == R.id.happyButton)
+		{
 			eventDescription = "Mood: Happy";
+			createEvent();
+		}
 		else if(v.getId() == R.id.hungryButton)
+		{
 			eventDescription = "Mood: Hungry";
+			createEvent();
+		}
 		else if(v.getId() == R.id.sickButton)
+		{
 			eventDescription = "Mood: Sick";
+			createEvent();
+		}
 		else if(v.getId() == R.id.sleepyButton)
+		{
 			eventDescription = "Mood: Sleepy";
+			createEvent();
+		}
 		else if(v.getId() == R.id.weepyButton)
+		{
 			eventDescription = "Mood: Weepy";
-		createEvent();
+			createEvent();
+		}
 	}
 	
 	private void createEvent()
