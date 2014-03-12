@@ -1,10 +1,13 @@
 package dreyes.mommyslittlehelper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.SlidingDrawer;
 
 import com.echo.holographlibrary.PieGraph;
@@ -26,6 +29,18 @@ public class MoodPieGraphViewActivity extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.moodpiechartview);
 		
+		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+		SharedPreferences.Editor editor = preferences.edit();
+		
+		int size = preferences.getInt("pie_graph_size", 1);
+		
+		List<String> data = new ArrayList<String>(size);
+		for(int i = 0; i < size; i++)
+		{
+			data.add(preferences.getString("item_"+i, null));
+		}
+		
+		
 		PieGraph pg = (PieGraph)findViewById(R.id.pieGraph);
 		PieSlice angrySlice = new PieSlice();
 		PieSlice calmSlice = new PieSlice();
@@ -43,6 +58,45 @@ public class MoodPieGraphViewActivity extends Activity
 		weepySlice.setColor(Color.parseColor("#800000"));
 		
 		
+		
+		
+		
+		for(String s : data)
+		{
+			if(s.equals("angry"))
+			{
+				angrySliceList.add(s);
+			}
+			else if(s.equals("calm"))
+			{
+				calmSliceList.add(s);
+			}
+			else if(s.equals("happy"))
+			{
+				happySliceList.add(s);
+			}
+			else if(s.equals("hungry"))
+			{
+				hungrySliceList.add(s);
+			}
+			else if(s.equals("sick"))
+			{
+				sickSliceList.add(s);
+			}
+			else if(s.equals("sleepy"))
+			{
+				sleepySliceList.add(s);
+			}
+			else if(s.equals("weepy"))
+			{
+				weepySliceList.add(s);
+			}
+		}
+		
+		
+		
+		
+		
 		angrySlice.setValue(angrySliceList.size());
 		calmSlice.setValue(calmSliceList.size());
 		happySlice.setValue(happySliceList.size());
@@ -50,10 +104,7 @@ public class MoodPieGraphViewActivity extends Activity
 		sickSlice.setValue(sickSliceList.size());
 		sleepySlice.setValue(sleepySliceList.size());
 		weepySlice.setValue(weepySliceList.size());
-		
-		
-		
-		
+
 		pg.addSlice(angrySlice);
 		pg.addSlice(calmSlice);
 		pg.addSlice(hungrySlice);

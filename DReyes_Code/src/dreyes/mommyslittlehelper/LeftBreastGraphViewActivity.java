@@ -62,7 +62,6 @@ public class LeftBreastGraphViewActivity extends Activity{
 					p.setY(d);
 					rightLine.addPoint(p);
 				}
-				Log.d("STUPID", " " + line.getPoints().size());
 			}
 		}
 		
