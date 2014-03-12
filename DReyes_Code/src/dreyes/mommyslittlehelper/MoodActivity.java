@@ -1,8 +1,12 @@
 package dreyes.mommyslittlehelper;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.CalendarContract.Events;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,6 +25,7 @@ public class MoodActivity extends Activity implements OnClickListener{
 	
 	public ImageButton angryButton, calmButton, happyButton, hungryButton, sickButton, sleepyButton, weepyButton, analyticsButton;
 	private String eventDescription;
+	private ArrayList<String> moodList = new ArrayList<String>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,37 +56,58 @@ public class MoodActivity extends Activity implements OnClickListener{
 		if(v.getId() == R.id.angryButton)
 		{
 			eventDescription = "Mood: Angry";
+			moodList.add("angry");
 			createEvent();
 		}
 		else if(v.getId() == R.id.calmButton)
 		{
 			eventDescription = "Mood: Calm";
+			moodList.add("calm");
 			createEvent();
 		}
 		else if(v.getId() == R.id.happyButton)
 		{
 			eventDescription = "Mood: Happy";
+			moodList.add("happy");
 			createEvent();
 		}
 		else if(v.getId() == R.id.hungryButton)
 		{
 			eventDescription = "Mood: Hungry";
+			moodList.add("hungry");
 			createEvent();
 		}
 		else if(v.getId() == R.id.sickButton)
 		{
 			eventDescription = "Mood: Sick";
+			moodList.add("sick");
 			createEvent();
 		}
 		else if(v.getId() == R.id.sleepyButton)
 		{
 			eventDescription = "Mood: Sleepy";
+			moodList.add("sleepy");
 			createEvent();
 		}
 		else if(v.getId() == R.id.weepyButton)
 		{
 			eventDescription = "Mood: Weepy";
+			moodList.add("weepy");
 			createEvent();
+		}
+		else if(v.getId() == R.id.moodAnalyticsButton)
+		{
+			SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+			SharedPreferences.Editor editor = preferences.edit();
+			for(int i = 0; i < moodList.size(); i++)
+			{
+				editor.putString("item_"+i, moodList.get(i));
+			}
+			editor.putInt("pie_graph_size", moodList.size());
+			editor.commit();
+			Intent intent = new Intent(this, MoodPieGraphViewActivity.class);
+			startActivity(intent);
+			
 		}
 	}
 	
