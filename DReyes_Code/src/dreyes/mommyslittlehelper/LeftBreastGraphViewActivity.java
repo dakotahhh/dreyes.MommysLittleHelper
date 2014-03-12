@@ -1,5 +1,9 @@
 package dreyes.mommyslittlehelper;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import com.echo.holographlibrary.Line;
 import com.echo.holographlibrary.LineGraph;
 import com.echo.holographlibrary.LinePoint;
@@ -9,6 +13,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 
 public class LeftBreastGraphViewActivity extends Activity{
 	
@@ -21,35 +26,73 @@ public class LeftBreastGraphViewActivity extends Activity{
 		setContentView(R.layout.leftbreastgraphview);
 		
 		Line line = new Line();
-		LinePoint p = new LinePoint();
+		LinePoint p;
+		Line rightLine = new Line();
+		LinePoint rp;
 		
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-		p.setX(0);
-		p.setY(2.3);
-		line.addPoint(p);
-		p = new LinePoint();
-		p.setX(1);
-		p.setY(1.5);
-		line.addPoint(p);
-		p = new LinePoint();
-		p.setX(2);
-		p.setY(2.4);
-		line.addPoint(p);
-		line.setColor(Color.parseColor("#FFBB33"));
+		SharedPreferences.Editor editor = preferences.edit();
 		
-		Line rightLine = new Line();
-		LinePoint lp = new LinePoint();
-		lp.setX(0);
-		lp.setY(3.3);
-		rightLine.addPoint(lp);
-		lp = new LinePoint();
-		lp.setX(1);
-		lp.setY(1.5);
-		rightLine.addPoint(lp);
-		lp.setX(2);
-		lp.setY(2.5);
-		rightLine.addPoint(lp);
-		rightLine.setColor(Color.parseColor("#99CC00"));
+		int size = preferences.getInt("item_size", 0);
+		
+		List<String> data = new ArrayList<String>(size);
+		for(int i = 0; i < size; i++)
+		{
+			data.add(preferences.getString("item_"+i, null));
+		}
+		
+		
+		for(String s: data)
+		{
+			String[] whole = s.split(" ");
+			for(int i = 0; i < whole.length; i++)
+			{
+				int d = Integer.parseInt(whole[i]);
+				if((i%2)==0)
+				{
+					p = new LinePoint();
+					p.setX(i);
+					p.setY(d);
+					line.addPoint(p);
+				}
+				else
+				{
+					rp = new LinePoint();
+					rp.setX(i-1);
+					rp.setY(d);
+					rightLine.addPoint(rp);
+				}
+			}
+			line.setColor(Color.parseColor("#FFBB33"));
+			rightLine.setColor(Color.parseColor("#99CC00"));
+		}
+		
+//		p.setX(0);
+//		p.setY(2.3);
+//		line.addPoint(p);
+//		p = new LinePoint();
+//		p.setX(1);
+//		p.setY(1.5);
+//		line.addPoint(p);
+//		p = new LinePoint();
+//		p.setX(2);
+//		p.setY(2.4);
+//		line.addPoint(p);
+//		line.setColor(Color.parseColor("#FFBB33"));
+//		
+//		Line rightLine = new Line();
+//		LinePoint lp = new LinePoint();
+//		lp.setX(0);
+//		lp.setY(3.3);
+//		rightLine.addPoint(lp);
+//		lp = new LinePoint();
+//		lp.setX(1);
+//		lp.setY(1.5);
+//		rightLine.addPoint(lp);
+//		lp.setX(2);
+//		lp.setY(2.5);
+//		rightLine.addPoint(lp);
+//		rightLine.setColor(Color.parseColor("#99CC00"));
 		
 		
 		lg = (LineGraph)findViewById(R.id.graph);

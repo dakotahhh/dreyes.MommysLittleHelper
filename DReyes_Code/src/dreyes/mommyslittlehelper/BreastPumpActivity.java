@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import dreyes.mommyslittlehelper.R;
 import dreyes.mommyslittlehelper.R.id;
@@ -20,6 +21,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.CalendarContract;
 import android.provider.CalendarContract.Events;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -39,6 +41,7 @@ public class BreastPumpActivity extends Activity implements OnClickListener{
 	
 	private ArrayList<Integer> leftBreastList = new ArrayList<Integer>();
 	private ArrayList<Integer> rightBreastList = new ArrayList<Integer>();
+	private ArrayList<String> breastPumpList = new ArrayList<String>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -85,8 +88,7 @@ public class BreastPumpActivity extends Activity implements OnClickListener{
 				intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, timeAndDate);
 				intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, timeAndDate);
 				intent.putExtra(Events.HAS_ALARM, false);
-				leftBreastList.add(Integer.parseInt(left));
-				rightBreastList.add(Integer.parseInt(right));
+				breastPumpList.add(left+" "+right);
 				startActivity(intent);
 			}catch(ParseException e)
 			{
@@ -99,13 +101,14 @@ public class BreastPumpActivity extends Activity implements OnClickListener{
 		}
 		else if(v.getId() == R.id.leftBreastButton)
 		{
-//			SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-//			SharedPreferences.Editor editor = preferences.edit();
-//			for(int i = 0; i < leftBreastList.size(); i++)
-//			{
-//				editor.putInt("item_"+i, leftBreastList.get(i));
-//			}
-//			editor.commit();
+			SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+			SharedPreferences.Editor editor = preferences.edit();
+			for(int i = 0; i < breastPumpList.size(); i++)
+			{
+				editor.putString("item_"+i, breastPumpList.get(i));
+			}
+			editor.putInt("item_size", breastPumpList.size());
+			editor.commit();
 			Intent intent = new Intent(this, LeftBreastGraphViewActivity.class);
 			startActivity(intent);
 		}
