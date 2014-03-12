@@ -422,8 +422,8 @@ containing a value of this type.
         public static final int weepyimagebutton=0x7f020051;
     }
     public static final class id {
-        public static final int action_baby_events=0x7f060066;
-        public static final int action_settings=0x7f060065;
+        public static final int action_baby_events=0x7f060067;
+        public static final int action_settings=0x7f060066;
         public static final int angryButton=0x7f060034;
         public static final int breastPumpButton=0x7f06002b;
         public static final int breast_submit=0x7f060010;
@@ -486,6 +486,7 @@ containing a value of this type.
         public static final int none=0x7f060003;
         public static final int normal=0x7f060001;
         public static final int picker_subtitle=0x7f06005e;
+        public static final int pieGraph=0x7f060065;
         public static final int postPhotoButton=0x7f06004a;
         public static final int profilePicture=0x7f060046;
         public static final int radioButtonGroup=0x7f060014;
