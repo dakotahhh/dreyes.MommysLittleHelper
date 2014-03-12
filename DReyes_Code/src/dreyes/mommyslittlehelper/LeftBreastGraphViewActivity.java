@@ -14,6 +14,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 public class LeftBreastGraphViewActivity extends Activity{
@@ -28,11 +29,6 @@ public class LeftBreastGraphViewActivity extends Activity{
 		
 		LeftBreast lb = new LeftBreast();
 		ArrayList<Integer> leftBreasts =  lb.getList();
-		
-		Line line = new Line();
-		LinePoint p;
-		Line rightLine = new Line();
-		LinePoint rp;
 		
 //		if(leftBreasts != null)
 //		{
@@ -70,6 +66,21 @@ public class LeftBreastGraphViewActivity extends Activity{
 			data.add(preferences.getString("item_"+i, null));
 		}
 		
+		data.add("5 2");
+		data.add("7 8");
+		
+		Line line = new Line();
+		LinePoint p;
+		Line rightLine = new Line();
+		
+		p = new LinePoint();
+		p.setX(0);
+		p.setY(2.3);
+		line.addPoint(p);
+		p = new LinePoint();
+		p.setX(1);
+		p.setY(1.5);
+		line.addPoint(p);
 		
 		for(String s: data)
 		{
@@ -79,22 +90,31 @@ public class LeftBreastGraphViewActivity extends Activity{
 				int d = Integer.parseInt(whole[i]);
 				if((i%2)==0)
 				{
-//					Toast.makeText(this, "left boob" + d, Toast.LENGTH_LONG).show();
 					p = new LinePoint();
-					p.setX(i);
+					p.setX(data.indexOf(s));
 					p.setY(d);
 					line.addPoint(p);
 				}
 				else
 				{
-//					Toast.makeText(this, "right boob" + d, Toast.LENGTH_LONG).show();
-					rp = new LinePoint();
-					rp.setX(i-1);
-					rp.setY(d);
-					rightLine.addPoint(rp);
+					p = new LinePoint();
+					p.setX(data.indexOf(s));
+					p.setY(d);
+					rightLine.addPoint(p);
 				}
+				Log.d("STUPID", " " + line.getPoints().size());
 			}
 		}
+		
+		line.setColor(Color.parseColor("#FFBB33"));
+		rightLine.setColor(Color.parseColor("#99CC00"));
+		
+		lg = (LineGraph)findViewById(R.id.graph);
+		lg.addLine(line);
+		lg.addLine(rightLine);
+		lg.setRangeX(0, 10);
+		lg.setRangeY(0, 10);
+		lg.setLineToFill(0);
 		
 	
 		
@@ -123,17 +143,7 @@ public class LeftBreastGraphViewActivity extends Activity{
 //		lp.setY(2.5);
 //		rightLine.addPoint(lp);
 //		rightLine.setColor(Color.parseColor("#99CC00"));
-		
-		
-		line.setColor(Color.parseColor("#FFBB33"));
-		rightLine.setColor(Color.parseColor("#99CC00"));
-		lg = (LineGraph)findViewById(R.id.graph);
-		lg.addLine(line);
-		lg.setRangeY(0, 10);
-		lg.setLineToFill(0);
-		lg.addLine(rightLine);
-		lg.setRangeX(0, 10);
-		lg.setLineToFill(0);
+	
 		
 	}
 
