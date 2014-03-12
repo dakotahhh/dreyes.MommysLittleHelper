@@ -14,6 +14,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 public class LeftBreastGraphViewActivity extends Activity{
 	
@@ -25,10 +26,38 @@ public class LeftBreastGraphViewActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.leftbreastgraphview);
 		
+		LeftBreast lb = new LeftBreast();
+		ArrayList<Integer> leftBreasts =  lb.getList();
+		
 		Line line = new Line();
 		LinePoint p;
 		Line rightLine = new Line();
 		LinePoint rp;
+		
+//		if(leftBreasts != null)
+//		{
+//			
+//			Toast.makeText(this, "not null", Toast.LENGTH_LONG).show();
+//		}
+//		else
+//		{
+//			Toast.makeText(this, "null", Toast.LENGTH_LONG).show();
+//
+//		}
+		
+//		for(int i = 0; i < leftBreasts.size(); i++)
+//		{
+//			p = new LinePoint();
+//			p.setX(i);
+//			p.setY(leftBreasts.get(i));
+//			line.addPoint(p);
+//		}
+//		
+//		line.setColor(Color.parseColor("#FFBB33"));
+//		lg = (LineGraph)findViewById(R.id.graph);
+//		lg.addLine(line);
+//		lg.setRangeY(0, 5);
+//		lg.setLineToFill(0);
 		
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 		SharedPreferences.Editor editor = preferences.edit();
@@ -50,6 +79,7 @@ public class LeftBreastGraphViewActivity extends Activity{
 				int d = Integer.parseInt(whole[i]);
 				if((i%2)==0)
 				{
+//					Toast.makeText(this, "left boob" + d, Toast.LENGTH_LONG).show();
 					p = new LinePoint();
 					p.setX(i);
 					p.setY(d);
@@ -57,15 +87,17 @@ public class LeftBreastGraphViewActivity extends Activity{
 				}
 				else
 				{
+//					Toast.makeText(this, "right boob" + d, Toast.LENGTH_LONG).show();
 					rp = new LinePoint();
 					rp.setX(i-1);
 					rp.setY(d);
 					rightLine.addPoint(rp);
 				}
 			}
-			line.setColor(Color.parseColor("#FFBB33"));
-			rightLine.setColor(Color.parseColor("#99CC00"));
 		}
+		
+	
+		
 		
 //		p.setX(0);
 //		p.setY(2.3);
@@ -79,8 +111,6 @@ public class LeftBreastGraphViewActivity extends Activity{
 //		p.setY(2.4);
 //		line.addPoint(p);
 //		line.setColor(Color.parseColor("#FFBB33"));
-//		
-//		Line rightLine = new Line();
 //		LinePoint lp = new LinePoint();
 //		lp.setX(0);
 //		lp.setY(3.3);
@@ -95,12 +125,14 @@ public class LeftBreastGraphViewActivity extends Activity{
 //		rightLine.setColor(Color.parseColor("#99CC00"));
 		
 		
+		line.setColor(Color.parseColor("#FFBB33"));
+		rightLine.setColor(Color.parseColor("#99CC00"));
 		lg = (LineGraph)findViewById(R.id.graph);
 		lg.addLine(line);
-		lg.setRangeY(0, 5);
+		lg.setRangeY(0, 10);
 		lg.setLineToFill(0);
 		lg.addLine(rightLine);
-		lg.setRangeX(0, 5);
+		lg.setRangeX(0, 10);
 		lg.setLineToFill(0);
 		
 	}
