@@ -240,8 +240,9 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 		case REQUEST_IMAGE_CAPTURE:
 			if(resultCode == RESULT_OK)
 			{
-				Bundle extras = data.getExtras();
-				yourSelectedImage = (Bitmap)extras.get("data");
+//				Bundle extras = data.getExtras();
+//				yourSelectedImage = (Bitmap)extras.get("data");
+				yourSelectedImage = (Bitmap)data.getExtras().get("data");
 				postPhoto();
 			}
 			break;
@@ -307,25 +308,6 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 		{
 		case POST_PHOTO:
 			postPhoto();
-//			new Thread(new Runnable() {
-//							
-//							@Override
-//							public void run() {
-//								while(progressStatus < 100)
-//								{
-//									progressStatus = postPhoto();
-//									hander.post(new Runnable() {
-//										
-//										@Override
-//										public void run() {
-//											progressBar.setProgress(progressStatus);
-//											
-//										}
-//									});
-//								}
-//								
-//							}
-//						});
 			break;
 		case START_GALLERY:
 			startGallery();
@@ -346,51 +328,7 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 	private void startCamera()
 	{
 		Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-		if(intent.resolveActivity(getPackageManager())!=null)
-		{
-			File photoFile = null;
-			try
-			{
-				photoFile = createImageFile();
-				galleryAddPic();
-			}catch(IOException e)
-			{
-				
-			}
-			if(photoFile!=null)
-			{
-				intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
-				startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
-			}
-		}
-	}
-	
-	private void createDirectoryForPictures()
-	{
-		directory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "MommysLittleHelper");
-		if(!directory.exists())
-		{
-			directory.mkdirs();
-		}
-	}
-	
-	private File createImageFile() throws IOException
-	{
-		String timeStamp = new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date());
-		String imageFileName = "JPEG_"+timeStamp+"_";
-		File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-		File image = File.createTempFile(imageFileName, ".jpg",storageDir);
-		currentPhotoPath = "file:"+image.getAbsolutePath();
-		return image;
-	}
-	
-	private void galleryAddPic()
-	{
-		Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-		File f = new File(currentPhotoPath);
-		Uri contentUri = Uri.fromFile(f);
-		mediaScanIntent.setData(contentUri);
-		this.sendBroadcast(mediaScanIntent);
+		startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
 	}
 	
 	private interface GraphObjectWithId extends GraphObject
@@ -428,7 +366,6 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 	
 	private void postPhoto()
 	{
-//		tellUserPhotoIsBeingUploaded();
 		new AlertDialog.Builder(this)
 			.setTitle("Processing")
 			.setMessage("Your post is being uploaded to Facebook.")

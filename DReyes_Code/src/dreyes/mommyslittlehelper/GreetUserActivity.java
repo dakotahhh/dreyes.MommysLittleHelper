@@ -76,7 +76,7 @@ public class GreetUserActivity extends Activity implements OnClickListener{
 		}
 		else if (v.getId() == R.id.uploadPhotoButton) 
 		{
-			intent = new Intent(this, ChooseUploadTypeActivity.class);
+			intent = new Intent(this, FacebookAddPhotoActivity.class);
 			startActivity(intent);
 		}
 		else if(v.getId() == R.id.createAppointmentButton)

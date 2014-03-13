@@ -38,6 +38,7 @@ public class LeftBreastGraphViewActivity extends Activity{
 			data.add(preferences.getString("item_"+i, null));
 		}
 		
+		
 		Line line = new Line();
 		LinePoint p;
 		Line rightLine = new Line();
@@ -47,7 +48,7 @@ public class LeftBreastGraphViewActivity extends Activity{
 			String[] whole = s.split(" ");
 			for(int i = 0; i < whole.length; i++)
 			{
-				int d = Integer.parseInt(whole[i]);
+				float d = Float.parseFloat(whole[i]);
 				if((i%2)==0)
 				{
 					p = new LinePoint();

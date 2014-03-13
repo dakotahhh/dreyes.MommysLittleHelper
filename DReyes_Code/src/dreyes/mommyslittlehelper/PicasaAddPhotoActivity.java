@@ -54,6 +54,11 @@ public class PicasaAddPhotoActivity extends Activity
 	private Bitmap yourSelectedImage;
 	private String filePath;
 	
+	private String fileName;
+	private Uri uri;
+	private String contentType;
+	private long contentLength;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -100,21 +105,21 @@ public class PicasaAddPhotoActivity extends Activity
 		
 		private void postPhoto()
 		{
-			File tmpFile = new File(filePath);
-			String photoUri = null;
-			try
-			{
-				photoUri = MediaStore.Images.Media.insertImage(getContentResolver(), tmpFile.getAbsolutePath(), null, null);
-				Intent intent = ShareCompat.IntentBuilder.from(this)
-						.setText("My baby")
-						.setType("image/jpeg")
-						.setStream(Uri.parse(photoUri))
-						.getIntent()
-						.setPackage("com.google.android.apps.plus");
-			}catch(FileNotFoundException e)
-			{
-				e.printStackTrace();
-			}
+//			File tmpFile = new File(filePath);
+//			String photoUri = null;
+//			try
+//			{
+//				photoUri = MediaStore.Images.Media.insertImage(getContentResolver(), tmpFile.getAbsolutePath(), null, null);
+//				Intent intent = ShareCompat.IntentBuilder.from(this)
+//						.setText("My baby")
+//						.setType("image/jpeg")
+//						.setStream(Uri.parse(photoUri))
+//						.getIntent()
+//						.setPackage("com.google.android.apps.plus");
+//			}catch(FileNotFoundException e)
+//			{
+//				e.printStackTrace();
+//			}
 		
 		}
 
