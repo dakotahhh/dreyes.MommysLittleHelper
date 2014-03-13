@@ -92,11 +92,11 @@ public class WakingBabyActivity extends Activity {
 	private String padhours(int time)
 	{
 		String timeString = null;
-		if(time <10)
+		if(time <= 12)
 		{
-			timeString = "0" + String.valueOf(time);
+			timeString = String.valueOf(time);
 		}
-		else if(time > 12)
+		else
 		{
 			timeString =  String.valueOf(time-12);
 		}
