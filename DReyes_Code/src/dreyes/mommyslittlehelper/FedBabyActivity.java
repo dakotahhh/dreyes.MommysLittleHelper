@@ -47,8 +47,8 @@ public class FedBabyActivity extends Activity implements OnClickListener{
 		timeSubmit = (Button)findViewById(R.id.timeSubmit);
 		timeSubmit.setOnClickListener(this);
 		timeTitle = (TextView)findViewById(R.id.timeTitle);
-//		feedingAnalytics = (Button)findViewById(R.id.feedingAnalytics);
-//		feedingAnalytics.setOnClickListener(this);
+		feedingAnalytics = (Button)findViewById(R.id.feedingAnalyticsButton);
+		feedingAnalytics.setOnClickListener(this);
 		
 		final Calendar c = Calendar.getInstance();
 		hour = c.get(Calendar.HOUR_OF_DAY);
@@ -70,11 +70,11 @@ public class FedBabyActivity extends Activity implements OnClickListener{
 		{
 			createCalendarEvent();
 		}
-//		else if(v.getId() == R.id.feedingAnalytics)
-//		{
-//			Intent intent = new Intent(this, FedBabyGraphViewActivity.class);
-//			startActivity(intent);
-//		}
+		else if(v.getId() == R.id.feedingAnalyticsButton)
+		{
+			Intent intent = new Intent(this, FeedingBarGraphView.class);
+			startActivity(intent);
+		}
 	}
 	
 	private void createCalendarEvent()

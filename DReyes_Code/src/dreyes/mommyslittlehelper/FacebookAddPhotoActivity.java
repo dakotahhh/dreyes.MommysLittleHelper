@@ -7,6 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.Signature;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -66,6 +67,7 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 	private ProgressBar progressBar;
 	private int progressStatus = 0;
 	private Handler hander = new Handler();
+	private File directory, file;
 	
 	private final int REQUEST_IMAGE_CAPTURE = 000;
 	private final int REQUEST_OPEN_GALLERY = 111;
@@ -350,6 +352,7 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 			try
 			{
 				photoFile = createImageFile();
+				galleryAddPic();
 			}catch(IOException e)
 			{
 				
@@ -359,6 +362,15 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 				intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
 				startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
 			}
+		}
+	}
+	
+	private void createDirectoryForPictures()
+	{
+		directory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "MommysLittleHelper");
+		if(!directory.exists())
+		{
+			directory.mkdirs();
 		}
 	}
 	

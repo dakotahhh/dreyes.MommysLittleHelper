@@ -53,6 +53,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
             
+        	 <Button
+                android:id="@+id/feedingAnalyticsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="Feeding Analytics" />    
+        
+        
             <Button
             android:id="@+id/submit"
             android:layout_width="fill_parent"
@@ -60,6 +69,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
             android:text="@string/submit" />
+
+           
             
         </RelativeLayout>
  
