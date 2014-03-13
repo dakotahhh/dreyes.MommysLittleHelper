@@ -423,8 +423,8 @@ containing a value of this type.
         public static final int weepyimagebutton=0x7f020052;
     }
     public static final class id {
-        public static final int action_baby_events=0x7f060068;
-        public static final int action_settings=0x7f060067;
+        public static final int action_baby_events=0x7f06006c;
+        public static final int action_settings=0x7f06006b;
         public static final int angryButton=0x7f060034;
         public static final int breastPumpButton=0x7f06002b;
         public static final int breast_submit=0x7f060010;
@@ -517,6 +517,10 @@ containing a value of this type.
         public static final int textView2=0x7f060009;
         public static final int textView3=0x7f06000a;
         public static final int textView4=0x7f06000c;
+        public static final int textView5=0x7f060067;
+        public static final int textView6=0x7f060068;
+        public static final int textView7=0x7f060069;
+        public static final int textView8=0x7f06006a;
         public static final int timeChangeSubmit=0x7f06000e;
         public static final int timeSubmit=0x7f060024;
         public static final int timeTitle=0x7f060023;
