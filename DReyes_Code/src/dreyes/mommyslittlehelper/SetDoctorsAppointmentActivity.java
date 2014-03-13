@@ -186,7 +186,7 @@ public class SetDoctorsAppointmentActivity extends Activity {
 			intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, timeAndDate);
 			intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, timeAndDate);
 			intent.putExtra(Reminders.MINUTES, 60);
-			intent.putExtra(Events.HAS_ALARM, 1);
+			intent.putExtra(Events.HAS_ALARM, true);
 			startActivity(intent);
 			Toast.makeText(this, "A reminder has been set for an hour before your appointment.", Toast.LENGTH_LONG).show();
 		} catch (ParseException e) {

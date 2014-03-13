@@ -1,12 +1,17 @@
 package dreyes.mommyslittlehelper;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.CalendarContract;
 import android.provider.CalendarContract.Events;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,6 +31,7 @@ public class MoodActivity extends Activity implements OnClickListener{
 	public ImageButton angryButton, calmButton, happyButton, hungryButton, sickButton, sleepyButton, weepyButton, analyticsButton;
 	private String eventDescription;
 	private ArrayList<String> moodList = new ArrayList<String>();
+	private int hour, minutes, year, day, month;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +55,12 @@ public class MoodActivity extends Activity implements OnClickListener{
 		sleepyButton.setOnClickListener(this);
 		weepyButton.setOnClickListener(this);
 		analyticsButton.setOnClickListener(this);
+		final Calendar c = Calendar.getInstance();
+		hour = c.get(Calendar.HOUR_OF_DAY);
+		minutes = c.get(Calendar.MINUTE);
+		year = c.get(Calendar.YEAR);
+		day = c.get(Calendar.DAY_OF_MONTH);
+		month = c.get(Calendar.MONTH);
 	}
 	
 	@Override
@@ -113,12 +125,25 @@ public class MoodActivity extends Activity implements OnClickListener{
 	
 	private void createEvent()
 	{
-		Intent intent = new Intent(Intent.ACTION_EDIT);
-		intent.setType("vnd.android.cursor.item/event");
-		intent.putExtra(Events.TITLE, "Mood");
-		intent.putExtra(Events.DESCRIPTION, eventDescription);
-		intent.putExtra(Events.HAS_ALARM, false);
-		startActivity(intent);
+		String startDate = year+"-"+month+"-"+day;
+		String startTime = hour+":"+minutes;
+		Date date;
+		try
+		{
+			date = new SimpleDateFormat("yyyy-MM-d-HH:mm").parse(startDate+"-"+startTime);
+			long timeAndDate = date.getTime();
+			Intent intent = new Intent(Intent.ACTION_EDIT);
+			intent.setType("vnd.android.cursor.item/event");
+			intent.putExtra(Events.TITLE, "Mood");
+			intent.putExtra(Events.DESCRIPTION, eventDescription);
+			intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, timeAndDate);
+			intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, timeAndDate);
+			intent.putExtra(Events.HAS_ALARM, false);
+			startActivity(intent);
+		}catch(ParseException e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	
