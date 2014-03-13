@@ -60,7 +60,7 @@
         <activity 
             android:name=".LeftBreastGraphViewActivity"/>
         <activity 
-            android:name=".FedBabyGraphViewActivity"/>
+            android:name=".FeedingBarGraphView"/>
         <activity
             android:name=".ChangedDiaperActivity"/>
         <activity 
