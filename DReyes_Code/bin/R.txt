@@ -289,8 +289,9 @@ int layout com_facebook_placepickerfragment 0x7f030019
 int layout com_facebook_placepickerfragment_list_row 0x7f03001a
 int layout com_facebook_search_bar_layout 0x7f03001b
 int layout com_facebook_usersettingsfragment 0x7f03001c
-int layout leftbreastgraphview 0x7f03001d
-int layout moodpiechartview 0x7f03001e
+int layout fedbabybargraphview 0x7f03001d
+int layout leftbreastgraphview 0x7f03001e
+int layout moodpiechartview 0x7f03001f
 int menu main 0x7f0a0000
 int string action_settings 0x7f040034
 int string app_id 0x7f040035

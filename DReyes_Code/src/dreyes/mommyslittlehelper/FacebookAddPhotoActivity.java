@@ -30,6 +30,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.AppEventsLogger;
 import com.facebook.FacebookAuthorizationException;
@@ -415,14 +416,18 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 	
 	private void postPhoto()
 	{
+//		tellUserPhotoIsBeingUploaded();
+		new AlertDialog.Builder(this)
+			.setTitle("Processing")
+			.setMessage("Your post is being uploaded to Facebook.")
+			.setPositiveButton(R.string.ok, null)
+			.show();
 		if(hasPublishPermission())
 		{
 			Request request = Request.newUploadPhotoRequest(Session.getActiveSession(), yourSelectedImage, new Request.Callback() {
-				
 				@Override
 				public void onCompleted(Response response) {
 					showPublishResult(getString(R.string.photo_post), response.getGraphObject(), response.getError());
-					
 				}
 			});
 			request.executeAsync();
@@ -431,6 +436,11 @@ public class FacebookAddPhotoActivity extends FragmentActivity
 		{
 			pendingAction = pendingAction.POST_PHOTO;
 		}
+	}
+	
+	private void tellUserPhotoIsBeingUploaded()
+	{
+		Toast.makeText(this, "Your post is being uploaded to Facebook", Toast.LENGTH_LONG).show();
 	}
 	
 	private boolean hasPublishPermission()

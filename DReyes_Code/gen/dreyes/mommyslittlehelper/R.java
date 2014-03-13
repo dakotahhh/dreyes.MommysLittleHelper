@@ -566,8 +566,9 @@ containing a value of this type.
         public static final int com_facebook_placepickerfragment_list_row=0x7f03001a;
         public static final int com_facebook_search_bar_layout=0x7f03001b;
         public static final int com_facebook_usersettingsfragment=0x7f03001c;
-        public static final int leftbreastgraphview=0x7f03001d;
-        public static final int moodpiechartview=0x7f03001e;
+        public static final int fedbabybargraphview=0x7f03001d;
+        public static final int leftbreastgraphview=0x7f03001e;
+        public static final int moodpiechartview=0x7f03001f;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;
