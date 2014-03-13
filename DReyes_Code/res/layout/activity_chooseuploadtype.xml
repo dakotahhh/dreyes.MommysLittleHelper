@@ -6,11 +6,12 @@
     android:gravity="center_horizontal"
     android:paddingTop="200dp" >
 
-        <Button
+       <!--  <Button
             android:id="@+id/uploadusinggooglephoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Upload Using Google" />
+            -->
 
         <Button
             android:id="@+id/uploadusingfacebook"
